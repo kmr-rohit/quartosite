@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>About – Developer Learning Wiki</title>
+<title>Developer Learning Wiki</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,6 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-listing/list.min.js"></script>
+<script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -67,10 +69,83 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script>
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-latest-blog .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-date','listing-title','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
+      
+      searchColumns: ["listing-project","listing-website","listing-format","listing-language","listing-freeze","listing-title-block-banner","listing-title","listing-date","listing-categories","listing-path","listing-outputHref","listing-date-modified","listing-author","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-latest-blog'] = new List('listing-latest-blog', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
 <style>html{ scroll-behavior: smooth; }</style>
 
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="css/home.css">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -91,7 +166,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./about.html" aria-current="page"> 
+    <a class="nav-link" href="./about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -185,7 +260,7 @@ ul.task-list li input[type="checkbox"] {
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/your-username"> <i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/kmr-rohit"> <i class="bi bi-github" role="img">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
@@ -210,369 +285,96 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#about-this-wiki" id="toc-about-this-wiki" class="nav-link active" data-scroll-target="#about-this-wiki">About This Wiki</a>
-  <ul class="collapse">
-  <li><a href="#who-i-am" id="toc-who-i-am" class="nav-link" data-scroll-target="#who-i-am">Who I Am</a></li>
-  <li><a href="#what-this-wiki-is" id="toc-what-this-wiki-is" class="nav-link" data-scroll-target="#what-this-wiki-is">What This Wiki Is</a>
-  <ul class="collapse">
-  <li><a href="#learning-journey" id="toc-learning-journey" class="nav-link" data-scroll-target="#learning-journey">🎯 <strong>Learning Journey</strong></a></li>
-  <li><a href="#knowledge-base" id="toc-knowledge-base" class="nav-link" data-scroll-target="#knowledge-base">📚 <strong>Knowledge Base</strong></a></li>
-  <li><a href="#digital-garden" id="toc-digital-garden" class="nav-link" data-scroll-target="#digital-garden">🌱 <strong>Digital Garden</strong></a></li>
-  </ul></li>
-  <li><a href="#my-learning-philosophy" id="toc-my-learning-philosophy" class="nav-link" data-scroll-target="#my-learning-philosophy">My Learning Philosophy</a>
-  <ul class="collapse">
-  <li><a href="#continuous-improvement" id="toc-continuous-improvement" class="nav-link" data-scroll-target="#continuous-improvement"><strong>Continuous Improvement</strong></a></li>
-  <li><a href="#practical-application" id="toc-practical-application" class="nav-link" data-scroll-target="#practical-application"><strong>Practical Application</strong></a></li>
-  <li><a href="#systematic-approach" id="toc-systematic-approach" class="nav-link" data-scroll-target="#systematic-approach"><strong>Systematic Approach</strong></a></li>
-  </ul></li>
-  <li><a href="#learning-goals" id="toc-learning-goals" class="nav-link" data-scroll-target="#learning-goals">Learning Goals</a>
-  <ul class="collapse">
-  <li><a href="#short-term-next-6-months" id="toc-short-term-next-6-months" class="nav-link" data-scroll-target="#short-term-next-6-months"><strong>Short-term (Next 6 months)</strong></a></li>
-  <li><a href="#medium-term-6-12-months" id="toc-medium-term-6-12-months" class="nav-link" data-scroll-target="#medium-term-6-12-months"><strong>Medium-term (6-12 months)</strong></a></li>
-  <li><a href="#long-term-1-years" id="toc-long-term-1-years" class="nav-link" data-scroll-target="#long-term-1-years"><strong>Long-term (1+ years)</strong></a></li>
-  </ul></li>
-  <li><a href="#how-i-learn" id="toc-how-i-learn" class="nav-link" data-scroll-target="#how-i-learn">How I Learn</a>
-  <ul class="collapse">
-  <li><a href="#reading-strategy" id="toc-reading-strategy" class="nav-link" data-scroll-target="#reading-strategy"><strong>Reading Strategy</strong></a></li>
-  <li><a href="#practice-approach" id="toc-practice-approach" class="nav-link" data-scroll-target="#practice-approach"><strong>Practice Approach</strong></a></li>
-  <li><a href="#community-engagement" id="toc-community-engagement" class="nav-link" data-scroll-target="#community-engagement"><strong>Community Engagement</strong></a></li>
-  </ul></li>
-  <li><a href="#technology-stack" id="toc-technology-stack" class="nav-link" data-scroll-target="#technology-stack">Technology Stack</a>
-  <ul class="collapse">
-  <li><a href="#languages-frameworks" id="toc-languages-frameworks" class="nav-link" data-scroll-target="#languages-frameworks"><strong>Languages &amp; Frameworks</strong></a></li>
-  <li><a href="#tools-platforms" id="toc-tools-platforms" class="nav-link" data-scroll-target="#tools-platforms"><strong>Tools &amp; Platforms</strong></a></li>
-  <li><a href="#areas-of-focus" id="toc-areas-of-focus" class="nav-link" data-scroll-target="#areas-of-focus"><strong>Areas of Focus</strong></a></li>
-  </ul></li>
-  <li><a href="#why-i-built-this-wiki" id="toc-why-i-built-this-wiki" class="nav-link" data-scroll-target="#why-i-built-this-wiki">Why I Built This Wiki</a>
-  <ul class="collapse">
-  <li><a href="#personal-growth" id="toc-personal-growth" class="nav-link" data-scroll-target="#personal-growth"><strong>Personal Growth</strong></a></li>
-  <li><a href="#community-contribution" id="toc-community-contribution" class="nav-link" data-scroll-target="#community-contribution"><strong>Community Contribution</strong></a></li>
-  <li><a href="#professional-development" id="toc-professional-development" class="nav-link" data-scroll-target="#professional-development"><strong>Professional Development</strong></a></li>
-  </ul></li>
-  <li><a href="#how-to-use-this-wiki" id="toc-how-to-use-this-wiki" class="nav-link" data-scroll-target="#how-to-use-this-wiki">How to Use This Wiki</a>
-  <ul class="collapse">
-  <li><a href="#for-learners" id="toc-for-learners" class="nav-link" data-scroll-target="#for-learners"><strong>For Learners</strong></a></li>
-  <li><a href="#for-developers" id="toc-for-developers" class="nav-link" data-scroll-target="#for-developers"><strong>For Developers</strong></a></li>
-  <li><a href="#for-contributors" id="toc-for-contributors" class="nav-link" data-scroll-target="#for-contributors"><strong>For Contributors</strong></a></li>
-  </ul></li>
-  <li><a href="#get-in-touch" id="toc-get-in-touch" class="nav-link" data-scroll-target="#get-in-touch">Get in Touch</a>
-  <ul class="collapse">
-  <li><a href="#social-media" id="toc-social-media" class="nav-link" data-scroll-target="#social-media"><strong>Social Media</strong></a></li>
-  <li><a href="#contact" id="toc-contact" class="nav-link" data-scroll-target="#contact"><strong>Contact</strong></a></li>
-  <li><a href="#collaboration" id="toc-collaboration" class="nav-link" data-scroll-target="#collaboration"><strong>Collaboration</strong></a></li>
-  </ul></li>
-  <li><a href="#acknowledgments" id="toc-acknowledgments" class="nav-link" data-scroll-target="#acknowledgments">Acknowledgments</a>
-  <ul class="collapse">
-  <li><a href="#inspiration" id="toc-inspiration" class="nav-link" data-scroll-target="#inspiration"><strong>Inspiration</strong></a></li>
-  <li><a href="#resources" id="toc-resources" class="nav-link" data-scroll-target="#resources"><strong>Resources</strong></a></li>
-  </ul></li>
-  </ul></li>
-  </ul>
-</nav>
-    </div>
+    
 <!-- main -->
-<main class="content column-body" id="quarto-document-content">
+<main class="content page-columns page-full column-body" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">About</h1>
+
+
+
+<div class="column-body-outset">
+<div class="quarto-layout-panel" data-layout="[[42,8,50]]">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 42.0%;justify-content: flex-start;">
+<p><span class="centered-text"><img src="./images/home.png" class="rounded-corners developer img-fluid" alt="Developer Learning Journey"> <span class="small-text">Your journey to becoming a better software developer</span></span></p>
 </div>
+<div class="quarto-layout-cell" style="flex-basis: 8.0%;justify-content: flex-start;">
 
-
-
-<div class="quarto-title-meta column-body">
-
-    
-  
-    
-  </div>
-  
-
-
-</header>
-
-
-<section id="about-this-wiki" class="level1">
-<h1>About This Wiki</h1>
-<p>Welcome to my Developer Learning Wiki! This is my personal knowledge base and learning journey as a software developer.</p>
-<section id="who-i-am" class="level2">
-<h2 class="anchored" data-anchor-id="who-i-am">Who I Am</h2>
-<p>I’m a software developer passionate about continuous learning and sharing knowledge. This wiki serves as my digital garden where I document my learning journey, organize technical knowledge, and share insights with the developer community.</p>
-</section>
-<section id="what-this-wiki-is" class="level2">
-<h2 class="anchored" data-anchor-id="what-this-wiki-is">What This Wiki Is</h2>
-<section id="learning-journey" class="level3">
-<h3 class="anchored" data-anchor-id="learning-journey">🎯 <strong>Learning Journey</strong></h3>
-<p>This wiki tracks my progress through four main areas of software development: - <strong>Data Structures &amp; Algorithms</strong>: Core computer science fundamentals - <strong>System Design</strong>: Scalable architecture and distributed systems - <strong>Technical Blogs</strong>: Analysis of engineering articles and insights - <strong>Books</strong>: Reading notes and summaries from technical literature</p>
-</section>
-<section id="knowledge-base" class="level3">
-<h3 class="anchored" data-anchor-id="knowledge-base">📚 <strong>Knowledge Base</strong></h3>
-<p>A comprehensive collection of: - <strong>Code Examples</strong>: Practical implementations and solutions - <strong>Architecture Patterns</strong>: System design principles and trade-offs - <strong>Best Practices</strong>: Industry standards and proven approaches - <strong>Learning Resources</strong>: Curated materials and references</p>
-</section>
-<section id="digital-garden" class="level3">
-<h3 class="anchored" data-anchor-id="digital-garden">🌱 <strong>Digital Garden</strong></h3>
-<p>A living document that: - <strong>Grows Over Time</strong>: New content added regularly - <strong>Connects Ideas</strong>: Links between related concepts - <strong>Evolves</strong>: Content updated as my understanding deepens - <strong>Shares Knowledge</strong>: Open for others to learn from</p>
-</section>
-</section>
-<section id="my-learning-philosophy" class="level2">
-<h2 class="anchored" data-anchor-id="my-learning-philosophy">My Learning Philosophy</h2>
-<section id="continuous-improvement" class="level3">
-<h3 class="anchored" data-anchor-id="continuous-improvement"><strong>Continuous Improvement</strong></h3>
-<ul>
-<li>Never stop learning and growing</li>
-<li>Embrace new technologies and approaches</li>
-<li>Learn from both successes and failures</li>
-<li>Share knowledge with the community</li>
-</ul>
-</section>
-<section id="practical-application" class="level3">
-<h3 class="anchored" data-anchor-id="practical-application"><strong>Practical Application</strong></h3>
-<ul>
-<li>Theory is important, but practice is essential</li>
-<li>Build real projects to solidify understanding</li>
-<li>Apply concepts to solve actual problems</li>
-<li>Learn by doing, not just reading</li>
-</ul>
-</section>
-<section id="systematic-approach" class="level3">
-<h3 class="anchored" data-anchor-id="systematic-approach"><strong>Systematic Approach</strong></h3>
-<ul>
-<li>Organize knowledge in a structured way</li>
-<li>Connect related concepts and patterns</li>
-<li>Document learnings for future reference</li>
-<li>Review and refine understanding regularly</li>
-</ul>
-</section>
-</section>
-<section id="learning-goals" class="level2">
-<h2 class="anchored" data-anchor-id="learning-goals">Learning Goals</h2>
-<section id="short-term-next-6-months" class="level3">
-<h3 class="anchored" data-anchor-id="short-term-next-6-months"><strong>Short-term (Next 6 months)</strong></h3>
-<ul>
-<li>Master fundamental DSA concepts and problem-solving</li>
-<li>Understand scalable system design patterns</li>
-<li>Analyze 20+ technical articles and blogs</li>
-<li>Complete 6 technical books with detailed notes</li>
-</ul>
-</section>
-<section id="medium-term-6-12-months" class="level3">
-<h3 class="anchored" data-anchor-id="medium-term-6-12-months"><strong>Medium-term (6-12 months)</strong></h3>
-<ul>
-<li>Build and deploy scalable applications</li>
-<li>Contribute to open source projects</li>
-<li>Share knowledge through blog posts and presentations</li>
-<li>Mentor other developers in their learning journey</li>
-</ul>
-</section>
-<section id="long-term-1-years" class="level3">
-<h3 class="anchored" data-anchor-id="long-term-1-years"><strong>Long-term (1+ years)</strong></h3>
-<ul>
-<li>Develop expertise in distributed systems</li>
-<li>Create comprehensive learning resources</li>
-<li>Build a strong professional network</li>
-<li>Contribute to the broader developer community</li>
-</ul>
-</section>
-</section>
-<section id="how-i-learn" class="level2">
-<h2 class="anchored" data-anchor-id="how-i-learn">How I Learn</h2>
-<section id="reading-strategy" class="level3">
-<h3 class="anchored" data-anchor-id="reading-strategy"><strong>Reading Strategy</strong></h3>
-<ol type="1">
-<li><strong>Active Reading</strong>: Take notes, ask questions, make connections</li>
-<li><strong>Implementation</strong>: Build examples and practice exercises</li>
-<li><strong>Reflection</strong>: Connect concepts to real-world applications</li>
-<li><strong>Sharing</strong>: Write summaries and discuss with others</li>
-</ol>
-</section>
-<section id="practice-approach" class="level3">
-<h3 class="anchored" data-anchor-id="practice-approach"><strong>Practice Approach</strong></h3>
-<ol type="1">
-<li><strong>LeetCode/HackerRank</strong>: Regular problem-solving practice</li>
-<li><strong>Personal Projects</strong>: Build applications using learned concepts</li>
-<li><strong>Code Reviews</strong>: Learn from others and improve code quality</li>
-<li><strong>Teaching</strong>: Explain concepts to reinforce understanding</li>
-</ol>
-</section>
-<section id="community-engagement" class="level3">
-<h3 class="anchored" data-anchor-id="community-engagement"><strong>Community Engagement</strong></h3>
-<ol type="1">
-<li><strong>Study Groups</strong>: Join learning communities and discussions</li>
-<li><strong>Open Source</strong>: Contribute to projects and learn from codebases</li>
-<li><strong>Conferences</strong>: Attend events and network with other developers</li>
-<li><strong>Mentorship</strong>: Both giving and receiving guidance</li>
-</ol>
-</section>
-</section>
-<section id="technology-stack" class="level2">
-<h2 class="anchored" data-anchor-id="technology-stack">Technology Stack</h2>
-<section id="languages-frameworks" class="level3">
-<h3 class="anchored" data-anchor-id="languages-frameworks"><strong>Languages &amp; Frameworks</strong></h3>
-<ul>
-<li><strong>Python</strong>: Primary language for algorithms and data science</li>
-<li><strong>JavaScript/TypeScript</strong>: Web development and full-stack applications</li>
-<li><strong>Go</strong>: Systems programming and microservices</li>
-<li><strong>SQL</strong>: Database design and optimization</li>
-</ul>
-</section>
-<section id="tools-platforms" class="level3">
-<h3 class="anchored" data-anchor-id="tools-platforms"><strong>Tools &amp; Platforms</strong></h3>
-<ul>
-<li><strong>Git</strong>: Version control and collaboration</li>
-<li><strong>Docker</strong>: Containerization and deployment</li>
-<li><strong>AWS/GCP</strong>: Cloud platforms and services</li>
-<li><strong>Kubernetes</strong>: Container orchestration</li>
-</ul>
-</section>
-<section id="areas-of-focus" class="level3">
-<h3 class="anchored" data-anchor-id="areas-of-focus"><strong>Areas of Focus</strong></h3>
-<ul>
-<li><strong>Backend Development</strong>: APIs, databases, server-side logic</li>
-<li><strong>System Design</strong>: Scalable architecture and distributed systems</li>
-<li><strong>DevOps</strong>: CI/CD, monitoring, infrastructure as code</li>
-<li><strong>Data Engineering</strong>: ETL pipelines, analytics, machine learning</li>
-</ul>
-</section>
-</section>
-<section id="why-i-built-this-wiki" class="level2">
-<h2 class="anchored" data-anchor-id="why-i-built-this-wiki">Why I Built This Wiki</h2>
-<section id="personal-growth" class="level3">
-<h3 class="anchored" data-anchor-id="personal-growth"><strong>Personal Growth</strong></h3>
-<ul>
-<li><strong>Track Progress</strong>: Document my learning journey</li>
-<li><strong>Retain Knowledge</strong>: Create a searchable knowledge base</li>
-<li><strong>Identify Gaps</strong>: Understand areas that need improvement</li>
-<li><strong>Stay Motivated</strong>: Visualize progress and achievements</li>
-</ul>
-</section>
-<section id="community-contribution" class="level3">
-<h3 class="anchored" data-anchor-id="community-contribution"><strong>Community Contribution</strong></h3>
-<ul>
-<li><strong>Share Knowledge</strong>: Help others learn and grow</li>
-<li><strong>Get Feedback</strong>: Learn from community insights</li>
-<li><strong>Build Network</strong>: Connect with like-minded developers</li>
-<li><strong>Give Back</strong>: Contribute to the developer ecosystem</li>
-</ul>
-</section>
-<section id="professional-development" class="level3">
-<h3 class="anchored" data-anchor-id="professional-development"><strong>Professional Development</strong></h3>
-<ul>
-<li><strong>Portfolio</strong>: Showcase skills and knowledge</li>
-<li><strong>Interview Prep</strong>: Organize knowledge for technical interviews</li>
-<li><strong>Career Growth</strong>: Demonstrate continuous learning</li>
-<li><strong>Thought Leadership</strong>: Share insights and perspectives</li>
-</ul>
-</section>
-</section>
-<section id="how-to-use-this-wiki" class="level2">
-<h2 class="anchored" data-anchor-id="how-to-use-this-wiki">How to Use This Wiki</h2>
-<section id="for-learners" class="level3">
-<h3 class="anchored" data-anchor-id="for-learners"><strong>For Learners</strong></h3>
-<ul>
-<li><strong>Browse by Topic</strong>: Explore specific areas of interest</li>
-<li><strong>Follow the Journey</strong>: See how concepts build upon each other</li>
-<li><strong>Practice Examples</strong>: Use code examples and exercises</li>
-<li><strong>Ask Questions</strong>: Reach out for clarification or discussion</li>
-</ul>
-</section>
-<section id="for-developers" class="level3">
-<h3 class="anchored" data-anchor-id="for-developers"><strong>For Developers</strong></h3>
-<ul>
-<li><strong>Reference Material</strong>: Use as a quick reference guide</li>
-<li><strong>Learning Path</strong>: Follow structured learning paths</li>
-<li><strong>Code Examples</strong>: Copy and adapt code for your projects</li>
-<li><strong>Best Practices</strong>: Learn from documented patterns and approaches</li>
-</ul>
-</section>
-<section id="for-contributors" class="level3">
-<h3 class="anchored" data-anchor-id="for-contributors"><strong>For Contributors</strong></h3>
-<ul>
-<li><strong>Suggest Improvements</strong>: Point out errors or areas for enhancement</li>
-<li><strong>Share Resources</strong>: Recommend additional learning materials</li>
-<li><strong>Collaborate</strong>: Work together on projects or learning goals</li>
-<li><strong>Mentor</strong>: Help guide others in their learning journey</li>
-</ul>
-</section>
-</section>
-<section id="get-in-touch" class="level2">
-<h2 class="anchored" data-anchor-id="get-in-touch">Get in Touch</h2>
-<p>I’m always interested in connecting with other developers and learners. Here are some ways to reach out:</p>
-<section id="social-media" class="level3">
-<h3 class="anchored" data-anchor-id="social-media"><strong>Social Media</strong></h3>
-<ul>
-<li><strong>GitHub</strong>: [Your GitHub Profile]</li>
-<li><strong>LinkedIn</strong>: [Your LinkedIn Profile]</li>
-<li><strong>Twitter</strong>: [Your Twitter Handle]</li>
-</ul>
-</section>
-<section id="contact" class="level3">
-<h3 class="anchored" data-anchor-id="contact"><strong>Contact</strong></h3>
-<ul>
-<li><strong>Email</strong>: [Your Email]</li>
-<li><strong>Discord</strong>: [Your Discord Handle]</li>
-<li><strong>Slack</strong>: [Your Slack Workspace]</li>
-</ul>
-</section>
-<section id="collaboration" class="level3">
-<h3 class="anchored" data-anchor-id="collaboration"><strong>Collaboration</strong></h3>
-<ul>
-<li><strong>Study Groups</strong>: Join or form learning communities</li>
-<li><strong>Open Source</strong>: Contribute to projects together</li>
-<li><strong>Blog Posts</strong>: Guest write or collaborate on content</li>
-<li><strong>Presentations</strong>: Speak at meetups or conferences</li>
-</ul>
-</section>
-</section>
-<section id="acknowledgments" class="level2">
-<h2 class="anchored" data-anchor-id="acknowledgments">Acknowledgments</h2>
-<section id="inspiration" class="level3">
-<h3 class="anchored" data-anchor-id="inspiration"><strong>Inspiration</strong></h3>
-<ul>
-<li><strong>Digital Garden Movement</strong>: Inspired by the concept of digital gardens</li>
-<li><strong>Developer Communities</strong>: Learning from the broader developer ecosystem</li>
-<li><strong>Open Source</strong>: Building on the work of countless contributors</li>
-<li><strong>Mentors</strong>: Those who have guided my learning journey</li>
-</ul>
-</section>
-<section id="resources" class="level3">
-<h3 class="anchored" data-anchor-id="resources"><strong>Resources</strong></h3>
-<ul>
-<li><strong>Quarto</strong>: The amazing tool that powers this wiki</li>
-<li><strong>GitHub</strong>: Platform for hosting and collaboration</li>
-<li><strong>Learning Platforms</strong>: LeetCode, HackerRank, Coursera, etc.</li>
-<li><strong>Technical Blogs</strong>: Countless engineers sharing their knowledge</li>
-</ul>
-<hr>
-<p><em>This wiki is a work in progress, constantly evolving as I learn and grow. Thank you for being part of this journey!</em></p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
-Start Your Own Learning Journey
+<section id="developer-learning-wiki" class="level1 quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<h1>Developer Learning Wiki</h1>
+<p><span class="small-text">Software Developer</span><br><span class="small-text">Learning Journey &amp; Knowledge Base</span><br><span class="small-text">Continuous Growth</span></p>
+<p>
+&nbsp;
+</p>
+<p><a href="./blog.html">Blog</a> ⸱ <a href="https://github.com/your-username">GitHub</a> ⸱ <a href="https://linkedin.com/in/your-profile">LinkedIn</a> ⸱ <a href="about.html">About</a></p>
+<p>
+&nbsp;
+</p>
+<p>Welcome to my learning journey as a software developer. This wiki serves as my personal knowledge base covering four main areas: <strong>Data Structures &amp; Algorithms</strong>, <strong>System Design</strong>, <strong>Technical Blog Breakdowns</strong>, and <strong>Book Notes</strong>.</p>
+<p>
+&nbsp;
+</p>
+<section id="learning-areas" class="level2">
+<h2 class="anchored" data-anchor-id="learning-areas">Learning Areas</h2>
+<section id="data-structures-algorithms" class="level3">
+<h3 class="anchored" data-anchor-id="data-structures-algorithms">🧮 <a href="./dsa/index.html">Data Structures &amp; Algorithms</a></h3>
+<p>Core computer science fundamentals, problem-solving techniques, and algorithmic thinking.</p>
+</section>
+<section id="system-design" class="level3">
+<h3 class="anchored" data-anchor-id="system-design">🏗️ <a href="./system-design/index.html">System Design</a></h3>
+<p>Scalable architecture patterns, distributed systems, and real-world system design challenges.</p>
+</section>
+<section id="technical-blogs" class="level3">
+<h3 class="anchored" data-anchor-id="technical-blogs">📝 <a href="./technical-blogs/index.html">Technical Blogs</a></h3>
+<p>Breakdowns and notes from technical articles, engineering blogs, and industry insights.</p>
+</section>
+<section id="books" class="level3">
+<h3 class="anchored" data-anchor-id="books">📚 <a href="./books/index.html">Books</a></h3>
+<p>Reading notes, summaries, and key takeaways from technical books and resources.</p>
+<p>
+&nbsp;
+</p>
+</section>
+</section>
+</section>
 </div>
 </div>
-<div class="callout-body-container callout-body">
-<ul>
-<li><strong>Choose a Focus</strong>: Pick an area that interests you</li>
-<li><strong>Set Goals</strong>: Define what you want to achieve</li>
-<li><strong>Create Structure</strong>: Organize your learning systematically</li>
-<li><strong>Share Progress</strong>: Document and share your journey</li>
-<li><strong>Stay Consistent</strong>: Make learning a regular habit</li>
-</ul>
 </div>
+<section id="latest-blog-posts" class="level2 column-body-outset">
+<h2 class="anchored" data-anchor-id="latest-blog-posts">Latest Blog Posts</h2>
+<div id="listing-latest-blog" class="quarto-listing quarto-listing-container-custom">
+<table class="quarto-listing-table table caption-top" data-quarto-postprocess="true">
+<tbody class="list">
+<tr class="odd" data-index="0" data-categories="U3lzdGVtJTIwRGVzaWduJTJDTGVhcm5pbmc=" data-listing-date-sort="1710441000000" data-listing-file-modified-sort="1752959786472" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1325">
+<td class="listing-date">15 Mar, 2024</td>
+<td class="listing-title"><a href="./blog/system-design-learning-path.html">My System Design Learning Path</a></td>
+<td><span class="badge badge-primary" style="background:rgb(242, 233, 249); color: rgb(84, 31, 84);">System Design</span> <span class="badge badge-primary" style="background:rgb(242, 233, 249); color: rgb(84, 31, 84);">Learning</span></td>
+</tr>
+</tbody>
+</table>
+<div class="listing-no-matching d-none">No matching items</div>
 </div>
+<p><em><a href="./blog.html">All Posts</a></em></p>
+</section>
+<section id="stay-updated" class="level4 column-body-outset">
+<h4 class="anchored" data-anchor-id="stay-updated">Stay Updated</h4>
+<p>Get notified about new learning notes and technical insights.</p>
+<form action="https://buttondown.email/api/emails/embed-subscribe/your-newsletter" method="post" target="popupwindow" onsubmit="window.open('https://buttondown.email/your-newsletter', 'popupwindow')" class="embeddable-buttondown-form">
+<div class="form-group">
+<input type="email" class="form-control" aria-describedby="emailHelp" name="email" id="bd-email" placeholder="Enter your email."> <small id="emailHelp" class="form-text text-muted">I’ll never share your email with anyone else.</small>
+</div>
+<p>
+&nbsp;
+</p>
+<div class="form-group">
+<input type="submit" value="Subscribe" class="btn btn-primary">
+</div>
+</form>
+</section>
 
 
-</section>
-</section>
-</section>
+
 
 </main> <!-- /main -->
 <script type="text/javascript" src="https://sdk.userbase.com/2/userbase.js"></script>
@@ -600,7 +402,7 @@ Start Your Own Learning Journey
         <p> © 2024 • Developer Learning Wiki • <a href="./about.html">About</a> • <i data-target="calvinmodal" data-toggle="modal" class="bi bi-emoji-smile-upside-down"></i>
             </p>
     
-        <p> Found an error? Please leave a comment here or submit a PR <a href="https://github.com/your-username/your-repo-name">in this repository</a>, thanks!</p>
+        <p> Found an error? Please leave a comment here or submit a PR <a href="https://github.com/kmr-rohit/quartosite">in this repository</a>, thanks!</p>
     
 
         <div class="slideshow-container">
@@ -625,7 +427,7 @@ Start Your Own Learning Journey
 
     
         <div class="about-links">
-            <a href="https://github.com/your-username" class="about-link">
+            <a href="https://github.com/kmr-rohit" class="about-link">
                 <i class="bi bi-github"></i>
             </a>
             <a href="https://linkedin.com/in/your-profile" class="about-link">
@@ -722,7 +524,7 @@ Start Your Own Learning Journey
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/your-username\.github\.io\/your-repo-name");
+        var filterRegex = new RegExp("https:\/\/kmr-rohit\.github\.io\/quartosite");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }

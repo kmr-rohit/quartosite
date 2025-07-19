@@ -1,17 +1,18 @@
 project:
   type: website
+  output-dir: docs
   preview:
     port: 7777
   
 website:
   title: "Developer Learning Wiki"
-  site-url: https://your-username.github.io/your-repo-name
+  site-url: https://kmr-rohit.github.io/quartosite
   navbar:
     background: white
     pinned: false
     right:
       - icon: github
-        href: https://github.com/your-username
+        href: https://github.com/kmr-rohit
       - icon: linkedin
         href: https://linkedin.com/in/your-profile
       - icon: rss
