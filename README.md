@@ -37,7 +37,7 @@ A comprehensive learning wiki built with Quarto to document my journey as a soft
 ### Local Development
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/quartosite.git
+git clone https://github.com/kmr-rohit/quartosite.git
 cd quartosite
 
 # Install Quarto (if not already installed)
@@ -48,7 +48,7 @@ quarto preview
 ```
 
 ### Deployment
-This site is configured for deployment on Vercel. Simply connect your GitHub repository to Vercel and it will automatically build and deploy.
+This site is configured for deployment on GitHub Pages. The site will be available at `https://kmr-rohit.github.io/quartosite` once GitHub Pages is enabled in your repository settings.
 
 ## 📁 Project Structure
 
@@ -88,7 +88,7 @@ quartosite/
 - **Quarto**: Static site generator
 - **Markdown**: Content authoring
 - **HTML/CSS/JavaScript**: Frontend
-- **Vercel**: Hosting and deployment
+- **GitHub Pages**: Hosting and deployment
 - **GitHub**: Version control
 
 ## 📝 Contributing
@@ -106,8 +106,8 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ## 🔗 Links
 
-- **Live Site**: [Your Vercel URL]
-- **GitHub Repository**: https://github.com/your-username/quartosite
+- **Live Site**: https://kmr-rohit.github.io/quartosite
+- **GitHub Repository**: https://github.com/kmr-rohit/quartosite
 - **Quarto Documentation**: https://quarto.org/docs/
 
 ---
