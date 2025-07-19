@@ -2536,5 +2536,50 @@
   },
   "blog/course-plan/2024-fall/index.qmd": {
     "index.html": "bcdb4601"
+  },
+  "technical-blogs/notes.qmd": {
+    "notes.html": "9a4aa89e"
+  },
+  "technical-blogs/index.qmd": {
+    "index.html": "6d7f3a14"
+  },
+  "technical-blogs/breakdowns.qmd": {
+    "breakdowns.html": "4df57af5"
+  },
+  "dsa/data-structures.qmd": {
+    "data-structures.html": "7ca4d98c"
+  },
+  "dsa/index.qmd": {
+    "index.html": "7a042c8c"
+  },
+  "dsa/algorithms.qmd": {
+    "algorithms.html": "e02da13b"
+  },
+  "dsa/problems.qmd": {
+    "problems.html": "98628b80"
+  },
+  "books/notes.qmd": {
+    "notes.html": "0921257c"
+  },
+  "books/index.qmd": {
+    "index.html": "52529698"
+  },
+  "books/reading-list.qmd": {
+    "reading-list.html": "932448cb"
+  },
+  "blog/system-design-learning-path.qmd": {
+    "system-design-learning-path.html": "45f900b5"
+  },
+  "system-design/index.qmd": {
+    "index.html": "7dc7ec86"
+  },
+  "system-design/case-studies.qmd": {
+    "case-studies.html": "0615027e"
+  },
+  "system-design/scalability.qmd": {
+    "scalability.html": "73d83a08"
+  },
+  "system-design/patterns.qmd": {
+    "patterns.html": "b7e4207c"
   }
 }

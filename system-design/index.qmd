@@ -1,0 +1,157 @@
+---
+title: "System Design"
+order: 1
+---
+
+# System Design
+
+Welcome to my System Design learning journey! This section covers scalable architecture patterns, distributed systems, and real-world system design challenges.
+
+## Quick Navigation
+
+- **[Design Patterns](/system-design/patterns.qmd)** - Common architectural patterns and their use cases
+- **[Case Studies](/system-design/case-studies.qmd)** - Real-world system design examples
+- **[Scalability](/system-design/scalability.qmd)** - Horizontal/vertical scaling, load balancing, caching
+
+## What is System Design?
+
+System design is the process of defining the architecture, components, modules, interfaces, and data for a system to satisfy specified requirements. It's about making trade-offs between different aspects like:
+
+- **Scalability**: How well the system handles growth
+- **Reliability**: How often the system fails
+- **Availability**: How much time the system is operational
+- **Performance**: How fast the system responds
+- **Maintainability**: How easy it is to modify and extend
+
+## System Design Interview Process
+
+### 1. Requirements Gathering
+- **Functional Requirements**: What the system should do
+- **Non-Functional Requirements**: Performance, scalability, availability
+- **Constraints**: Budget, timeline, technology stack
+
+### 2. Capacity Planning
+- **Traffic Estimation**: Requests per second, data storage needs
+- **Storage Calculation**: Data size, growth rate
+- **Bandwidth Requirements**: Network capacity needed
+
+### 3. High-Level Design
+- **System Architecture**: Overall structure and components
+- **Database Design**: Data models and storage strategies
+- **API Design**: Interface definitions and protocols
+
+### 4. Detailed Design
+- **Component Design**: Individual service specifications
+- **Data Flow**: How data moves through the system
+- **Error Handling**: Failure scenarios and recovery
+
+## Key Concepts
+
+### Scalability
+- **Horizontal Scaling**: Adding more machines
+- **Vertical Scaling**: Adding more resources to existing machines
+- **Load Balancing**: Distributing traffic across multiple servers
+
+### Availability
+- **Redundancy**: Multiple copies of critical components
+- **Failover**: Automatic switching to backup systems
+- **Data Replication**: Keeping data synchronized across locations
+
+### Consistency
+- **ACID Properties**: Atomicity, Consistency, Isolation, Durability
+- **CAP Theorem**: Consistency, Availability, Partition Tolerance
+- **Eventual Consistency**: Data becomes consistent over time
+
+### Performance
+- **Latency**: Time to respond to a request
+- **Throughput**: Number of requests handled per unit time
+- **Caching**: Storing frequently accessed data
+
+## Common System Design Topics
+
+### Web Applications
+- **Client-Server Architecture**
+- **RESTful APIs**
+- **Microservices**
+- **API Gateway Pattern**
+
+### Data Storage
+- **Relational Databases**: MySQL, PostgreSQL
+- **NoSQL Databases**: MongoDB, Cassandra, Redis
+- **Data Warehousing**: BigQuery, Snowflake
+- **CDN**: Content Delivery Networks
+
+### Messaging Systems
+- **Message Queues**: RabbitMQ, Apache Kafka
+- **Event-Driven Architecture**
+- **Pub/Sub Pattern**
+
+### Monitoring & Observability
+- **Logging**: Centralized log management
+- **Metrics**: Performance monitoring
+- **Tracing**: Distributed request tracking
+- **Alerting**: Proactive issue detection
+
+## Learning Resources
+
+### Books
+- "Designing Data-Intensive Applications" by Martin Kleppmann
+- "System Design Interview" by Alex Xu
+- "Building Microservices" by Sam Newman
+
+### Online Resources
+- **High Scalability**: Real-world architecture examples
+- **AWS Architecture Center**: Cloud-specific patterns
+- **Google Cloud Architecture Framework**
+- **Martin Fowler's Blog**: Software architecture insights
+
+### Practice Platforms
+- **Grokking the System Design Interview**
+- **System Design Primer (GitHub)**
+- **InterviewBit System Design**
+
+## Interview Preparation
+
+### Common Questions
+1. **Design a URL Shortener**
+2. **Design a Chat Application**
+3. **Design a Social Media Feed**
+4. **Design a Video Streaming Service**
+5. **Design a Ride-Sharing Service**
+
+### Interview Tips
+
+::: {.callout-tip}
+## Before the Interview
+- Practice drawing system diagrams
+- Understand common design patterns
+- Know your numbers (latency, throughput, storage)
+- Prepare questions to ask the interviewer
+:::
+
+::: {.callout-warning}
+## During the Interview
+- Start with requirements clarification
+- Begin with a high-level design
+- Discuss trade-offs explicitly
+- Consider failure scenarios
+- Be ready to dive deep into any component
+:::
+
+## Current Learning Focus
+
+::: {.callout-note}
+## Active Topics
+- Distributed systems and consistency models
+- Microservices architecture patterns
+- Cloud-native design principles
+- Event-driven architecture
+:::
+
+::: {.callout-tip}
+## Next Steps
+- Practice designing systems from scratch
+- Study real-world architecture case studies
+- Implement small-scale distributed systems
+- Learn cloud platform-specific patterns
+::: 

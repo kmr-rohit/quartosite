@@ -1,0 +1,497 @@
+---
+title: "Book Notes"
+order: 3
+---
+
+# Book Notes
+
+Detailed notes and summaries from my technical book readings.
+
+## Currently Reading
+
+### "Designing Data-Intensive Applications" by Martin Kleppmann
+
+**Progress**: 60% (Chapter 5: Replication)  
+**Category**: System Design  
+**Rating**: ⭐⭐⭐⭐⭐ (so far)
+
+#### Chapter 1: Reliable, Scalable, and Maintainable Applications
+
+**Key Concepts**:
+- **Reliability**: System continues working correctly despite faults
+- **Scalability**: System can handle increased load gracefully
+- **Maintainability**: System can be modified and operated easily
+
+**Important Points**:
+- **Faults vs Failures**: Faults are component failures, failures are system-wide
+- **Scalability Metrics**: Throughput (requests/second) and response time
+- **Maintainability Factors**: Operability, simplicity, evolvability
+
+**Code Example**:
+```python
+# Example: Fault-tolerant service
+class FaultTolerantService:
+    def __init__(self, primary_service, backup_service):
+        self.primary = primary_service
+        self.backup = backup_service
+        self.current = self.primary
+    
+    def handle_request(self, request):
+        try:
+            return self.current.process(request)
+        except ServiceUnavailableError:
+            # Failover to backup
+            self.current = self.backup
+            return self.current.process(request)
+```
+
+#### Chapter 2: Data Models and Query Languages
+
+**Key Concepts**:
+- **Relational Model**: Tables with relationships, SQL queries
+- **Document Model**: Self-contained documents, hierarchical data
+- **Graph Model**: Entities and relationships, complex queries
+
+**Trade-offs**:
+- **Relational**: ACID transactions, complex queries, schema flexibility
+- **Document**: Schema flexibility, locality, complex queries harder
+- **Graph**: Complex relationships, query complexity, scaling challenges
+
+**Practical Application**:
+```sql
+-- Relational: User with multiple addresses
+CREATE TABLE users (
+    id INT PRIMARY KEY,
+    name VARCHAR(100),
+    email VARCHAR(100)
+);
+
+CREATE TABLE addresses (
+    id INT PRIMARY KEY,
+    user_id INT,
+    street VARCHAR(200),
+    city VARCHAR(100),
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+-- Document: User with embedded addresses
+{
+    "id": 123,
+    "name": "John Doe",
+    "email": "john@example.com",
+    "addresses": [
+        {"street": "123 Main St", "city": "New York"},
+        {"street": "456 Oak Ave", "city": "Los Angeles"}
+    ]
+}
+```
+
+#### Chapter 3: Storage and Retrieval
+
+**Key Concepts**:
+- **B-tree**: Balanced tree structure, good for range queries
+- **LSM-tree**: Log-structured merge tree, high write throughput
+- **Hash Indexes**: Key-value lookups, no range queries
+
+**Performance Characteristics**:
+- **B-tree**: O(log n) reads and writes, good for mixed workloads
+- **LSM-tree**: O(log n) reads, O(1) writes, write-optimized
+- **Hash Index**: O(1) reads and writes, no range queries
+
+**Implementation Example**:
+```python
+# Simple B-tree implementation concept
+class BTreeNode:
+    def __init__(self, leaf=True):
+        self.leaf = leaf
+        self.keys = []
+        self.children = []
+        self.values = []
+
+class BTree:
+    def __init__(self, t=3):
+        self.root = BTreeNode()
+        self.t = t  # minimum degree
+    
+    def search(self, key, node=None):
+        if node is None:
+            node = self.root
+        
+        i = 0
+        while i < len(node.keys) and key > node.keys[i]:
+            i += 1
+        
+        if i < len(node.keys) and node.keys[i] == key:
+            return node.values[i]
+        
+        if node.leaf:
+            return None
+        
+        return self.search(key, node.children[i])
+```
+
+#### Chapter 4: Encoding and Evolution
+
+**Key Concepts**:
+- **Schema Evolution**: Handling data format changes over time
+- **Backward Compatibility**: New code can read old data
+- **Forward Compatibility**: Old code can read new data
+
+**Encoding Formats**:
+- **JSON**: Human-readable, schema-less, verbose
+- **Protocol Buffers**: Binary, schema-based, efficient
+- **Avro**: Schema evolution, binary format
+
+**Schema Evolution Example**:
+```protobuf
+// Protocol Buffer schema evolution
+message User {
+    string id = 1;
+    string name = 2;
+    string email = 3;
+    // New field added - optional for backward compatibility
+    optional string phone = 4;
+}
+
+// Migration strategy
+def migrate_user_data(old_user, new_schema):
+    new_user = {
+        'id': old_user.get('id'),
+        'name': old_user.get('name'),
+        'email': old_user.get('email'),
+        'phone': old_user.get('phone', '')  # Default value
+    }
+    return new_user
+```
+
+#### Chapter 5: Replication (In Progress)
+
+**Key Concepts**:
+- **Leader-Follower Replication**: Single leader, multiple followers
+- **Multi-Leader Replication**: Multiple leaders, conflict resolution
+- **Leaderless Replication**: No single leader, quorum-based
+
+**Consistency Models**:
+- **Synchronous**: Wait for all replicas to confirm
+- **Asynchronous**: Don't wait for replica confirmation
+- **Semi-synchronous**: Wait for some replicas
+
+---
+
+### "Cracking the Coding Interview" by Gayle McDowell
+
+**Progress**: 40% (Arrays & Strings section)  
+**Category**: DSA  
+**Rating**: ⭐⭐⭐⭐⭐
+
+#### Chapter 1: Arrays and Strings
+
+**Key Techniques**:
+- **Two Pointers**: Efficient array traversal and manipulation
+- **Sliding Window**: Contiguous subarray problems
+- **Hash Tables**: O(1) lookups for frequency counting
+
+**Common Patterns**:
+```python
+# Two Pointers - Two Sum in sorted array
+def two_sum_sorted(arr, target):
+    left, right = 0, len(arr) - 1
+    while left < right:
+        current_sum = arr[left] + arr[right]
+        if current_sum == target:
+            return [left, right]
+        elif current_sum < target:
+            left += 1
+        else:
+            right -= 1
+    return []
+
+# Sliding Window - Longest substring without repeating characters
+def longest_substring(s):
+    char_map = {}
+    left = 0
+    max_length = 0
+    
+    for right, char in enumerate(s):
+        if char in char_map and char_map[char] >= left:
+            left = char_map[char] + 1
+        char_map[char] = right
+        max_length = max(max_length, right - left + 1)
+    
+    return max_length
+
+# Hash Table - Character frequency
+def is_anagram(s, t):
+    if len(s) != len(t):
+        return False
+    
+    char_count = {}
+    for char in s:
+        char_count[char] = char_count.get(char, 0) + 1
+    
+    for char in t:
+        if char not in char_count or char_count[char] == 0:
+            return False
+        char_count[char] -= 1
+    
+    return True
+```
+
+#### Chapter 2: Linked Lists
+
+**Key Techniques**:
+- **Fast/Slow Pointers**: Detect cycles, find middle
+- **Reversing**: Iterative and recursive approaches
+- **Merging**: Combine sorted lists efficiently
+
+**Common Patterns**:
+```python
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+# Fast/Slow Pointers - Detect cycle
+def has_cycle(head):
+    if not head or not head.next:
+        return False
+    
+    slow = fast = head
+    while fast and fast.next:
+        slow = slow.next
+        fast = fast.next.next
+        if slow == fast:
+            return True
+    
+    return False
+
+# Reverse Linked List
+def reverse_list(head):
+    prev = None
+    curr = head
+    
+    while curr:
+        next_temp = curr.next
+        curr.next = prev
+        prev = curr
+        curr = next_temp
+    
+    return prev
+
+# Merge Two Sorted Lists
+def merge_two_lists(l1, l2):
+    dummy = ListNode(0)
+    current = dummy
+    
+    while l1 and l2:
+        if l1.val <= l2.val:
+            current.next = l1
+            l1 = l1.next
+        else:
+            current.next = l2
+            l2 = l2.next
+        current = current.next
+    
+    current.next = l1 if l1 else l2
+    return dummy.next
+```
+
+## Completed Books
+
+### "Clean Code" by Robert C. Martin
+
+**Category**: Programming  
+**Rating**: ⭐⭐⭐⭐⭐  
+**Completion Date**: January 2024
+
+#### Key Principles
+
+**Meaningful Names**:
+- Use intention-revealing names
+- Avoid disinformation and abbreviations
+- Make names pronounceable and searchable
+- Use consistent naming conventions
+
+**Functions**:
+- Keep functions small (ideally < 20 lines)
+- Do one thing well
+- Use descriptive names
+- Minimize arguments (0-3 is ideal)
+
+**Code Example**:
+```python
+# Bad: Unclear names and long function
+def process_data(data):
+    result = []
+    for item in data:
+        if item['status'] == 'active' and item['age'] > 18:
+            result.append({
+                'name': item['name'],
+                'score': item['score'] * 1.1
+            })
+    return result
+
+# Good: Clear names and small functions
+def get_eligible_users(users):
+    return [user for user in users if is_eligible(user)]
+
+def is_eligible(user):
+    return user['status'] == 'active' and user['age'] > 18
+
+def calculate_bonus_score(user):
+    return {
+        'name': user['name'],
+        'score': user['score'] * BONUS_MULTIPLIER
+    }
+```
+
+#### SOLID Principles
+
+**Single Responsibility Principle (SRP)**:
+- A class should have only one reason to change
+- Each class should have a single, well-defined purpose
+
+**Open/Closed Principle (OCP)**:
+- Open for extension, closed for modification
+- Use inheritance and polymorphism
+
+**Liskov Substitution Principle (LSP)**:
+- Subtypes must be substitutable for their base types
+- Don't violate the contract of the base class
+
+**Interface Segregation Principle (ISP)**:
+- Clients shouldn't depend on interfaces they don't use
+- Keep interfaces small and focused
+
+**Dependency Inversion Principle (DIP)**:
+- Depend on abstractions, not concretions
+- High-level modules shouldn't depend on low-level modules
+
+### "The Pragmatic Programmer" by David Thomas & Andrew Hunt
+
+**Category**: Programming  
+**Rating**: ⭐⭐⭐⭐⭐  
+**Completion Date**: February 2024
+
+#### Key Concepts
+
+**DRY (Don't Repeat Yourself)**:
+- Every piece of knowledge should have a single representation
+- Eliminate duplication in code, documentation, and processes
+
+**Automation**:
+- Automate repetitive tasks
+- Use scripts for build, test, and deployment
+- Invest in tools that save time
+
+**Code Example**:
+```python
+# Automation example: Build script
+#!/usr/bin/env python3
+import subprocess
+import sys
+
+def run_tests():
+    """Run all tests and return success status"""
+    result = subprocess.run(['python', '-m', 'pytest'], capture_output=True)
+    return result.returncode == 0
+
+def build_project():
+    """Build the project"""
+    subprocess.run(['python', 'setup.py', 'build'])
+
+def main():
+    print("Running tests...")
+    if not run_tests():
+        print("Tests failed!")
+        sys.exit(1)
+    
+    print("Building project...")
+    build_project()
+    print("Build complete!")
+
+if __name__ == "__main__":
+    main()
+```
+
+#### Best Practices
+
+**Orthogonality**:
+- Keep components independent
+- Changes in one component shouldn't affect others
+- Use loose coupling and high cohesion
+
+**Prototyping**:
+- Build prototypes to explore ideas
+- Use prototypes to validate assumptions
+- Throw away prototypes, don't evolve them into production
+
+**Testing**:
+- Test early, test often, test automatically
+- Write tests for your code
+- Use test-driven development (TDD)
+
+## Reading Notes Template
+
+### Standard Note Format
+
+```markdown
+## Book: [Title]
+**Author**: [Author Name]  
+**Category**: [DSA/System Design/Programming/etc.]  
+**Status**: [Reading/Completed/Planned]  
+**Rating**: [1-5 stars]
+
+### Summary
+[2-3 sentence overview of the book]
+
+### Key Concepts
+- [Concept 1 with explanation]
+- [Concept 2 with explanation]
+- [Concept 3 with explanation]
+
+### Code Examples
+[Important code snippets and implementations]
+
+### Practical Applications
+[How to apply concepts in real projects]
+
+### Questions & Follow-up
+[Topics to explore further]
+
+### Chapter-by-Chapter Notes
+
+#### Chapter 1: [Title]
+**Key Points**:
+- [Point 1]
+- [Point 2]
+- [Point 3]
+
+**Code Examples**:
+```python
+# Example code here
+```
+
+**Questions**:
+- [Question 1]
+- [Question 2]
+```
+
+### Note-Taking Tips
+
+::: {.callout-tip}
+## Effective Note-Taking
+- **Be Selective**: Focus on key concepts and insights
+- **Use Your Own Words**: Don't just copy, understand and rephrase
+- **Include Examples**: Code snippets and practical applications
+- **Ask Questions**: Note areas that need further exploration
+- **Connect Ideas**: Link concepts to other books and experiences
+:::
+
+::: {.callout-warning}
+## Common Mistakes
+- **Passive Copying**: Just copying text without understanding
+- **Too Much Detail**: Getting lost in minutiae
+- **No Review**: Writing notes but never revisiting them
+- **No Application**: Not connecting theory to practice
+::: 

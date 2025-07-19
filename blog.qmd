@@ -1,28 +1,196 @@
 ---
-listing:
-  contents: blog  
-  sort: "date desc"
-  type: default
-  categories: true
-  sort-ui: true
-  filter-ui: true
-  fields: [date, title, reading-time, categories]
-  feed: true
-page-layout: full
-title-block-banner: false
-css: css/blog.css
+title: "Blog"
 ---
 
-:::{.callout-note appearance="simple" icon=false}
-## Ernest Hemingway
-_Real seriousness in regard to writing is one of two absolute necessities. The other, unfortunately, is talent._
+# Blog
+
+Welcome to my blog! Here I share insights from my learning journey, technical discoveries, and thoughts on software development.
+
+## Recent Posts
+
+### Learning Journey Updates
+
+#### [My System Design Learning Path](/blog/system-design-learning-path)
+**Date**: March 2024  
+**Category**: System Design
+
+I've been diving deep into system design concepts and wanted to share my structured learning approach. From basic scalability patterns to complex distributed systems, here's how I'm building my knowledge systematically.
+
+#### [DSA Problem-Solving Techniques](/blog/dsa-problem-solving)
+**Date**: February 2024  
+**Category**: DSA
+
+After solving 100+ LeetCode problems, I've identified common patterns and techniques that make problem-solving more systematic. This post covers my approach to tackling different types of algorithmic challenges.
+
+#### [Technical Blog Analysis: Netflix's Chaos Engineering](/blog/netflix-chaos-engineering)
+**Date**: January 2024  
+**Category**: Technical Blogs
+
+A deep dive into Netflix's chaos engineering practices and how they ensure system resilience. I break down the key concepts and show how to apply these principles to your own systems.
+
+## Blog Categories
+
+### 🧮 **DSA & Algorithms**
+- Problem-solving techniques and strategies
+- Algorithm analysis and optimization
+- Interview preparation tips and experiences
+- Competitive programming insights
+
+### 🏗️ **System Design**
+- Architecture patterns and best practices
+- Scalability and performance optimization
+- Distributed systems concepts
+- Real-world system design case studies
+
+### 📝 **Technical Blog Breakdowns**
+- Analysis of engineering blog posts
+- Key insights from industry leaders
+- Practical applications of concepts
+- Learning resources and recommendations
+
+### 📚 **Book Reviews & Notes**
+- Detailed book summaries and takeaways
+- Reading progress and recommendations
+- Implementation of book concepts
+- Learning strategies and tips
+
+### 💻 **Programming & Development**
+- Language-specific tips and tricks
+- Best practices and code quality
+- Development tools and workflows
+- Project experiences and lessons learned
+
+### 🔧 **DevOps & Infrastructure**
+- Containerization and orchestration
+- Cloud platforms and services
+- CI/CD pipelines and automation
+- Monitoring and observability
+
+## Writing Style
+
+### **Educational Focus**
+- Clear explanations of complex concepts
+- Practical examples and code snippets
+- Step-by-step tutorials and guides
+- Real-world applications and case studies
+
+### **Personal Perspective**
+- My learning journey and experiences
+- Challenges faced and solutions found
+- Mistakes made and lessons learned
+- Growth and progress over time
+
+### **Community-Oriented**
+- Sharing knowledge with others
+- Encouraging discussion and feedback
+- Building connections with fellow developers
+- Contributing to the broader tech community
+
+## Upcoming Posts
+
+### **Planned Content**
+- [ ] "Building a Scalable Web Application: Lessons Learned"
+- [ ] "My Kubernetes Learning Journey: From Docker to Orchestration"
+- [ ] "Technical Blog Analysis: Uber's Real-time Data Platform"
+- [ ] "Book Review: Designing Data-Intensive Applications"
+- [ ] "DSA Interview Preparation: My 3-Month Plan"
+
+### **Series Ideas**
+- **"System Design Deep Dive"**: Multi-part series on scalable architecture
+- **"DSA Problem Patterns"**: Common algorithmic patterns and solutions
+- **"Technical Blog Analysis"**: Regular breakdowns of engineering articles
+- **"Learning Path Guides"**: Structured learning recommendations
+
+## Guest Posts & Collaboration
+
+### **Contributing**
+I welcome guest posts from other developers and learners. If you'd like to contribute:
+
+- **Topic Ideas**: Share your expertise and experiences
+- **Technical Tutorials**: Step-by-step guides and walkthroughs
+- **Case Studies**: Real-world project experiences
+- **Learning Journeys**: Your own path to mastering concepts
+
+### **Collaboration Opportunities**
+- **Joint Posts**: Co-author articles on complex topics
+- **Interview Series**: Q&A with experienced developers
+- **Study Groups**: Collaborative learning content
+- **Project Showcases**: Highlighting community projects
+
+## Blog Statistics
+
+### **Content Metrics**
+- **Total Posts**: 15+ articles
+- **Monthly Views**: Growing steadily
+- **Engagement**: Active discussions in comments
+- **Topics Covered**: DSA, System Design, Technical Blogs, Books
+
+### **Reader Engagement**
+- **Comments**: Thoughtful discussions on technical topics
+- **Social Shares**: Content shared across developer communities
+- **Feedback**: Valuable insights from readers
+- **Questions**: Technical questions and clarifications
+
+## Reading Recommendations
+
+### **For Beginners**
+- Start with the "Learning Path Guides" series
+- Focus on fundamental DSA concepts
+- Build a strong foundation before diving into advanced topics
+
+### **For Intermediate Developers**
+- Explore system design patterns and case studies
+- Practice with the provided code examples
+- Engage in discussions and share your experiences
+
+### **For Advanced Developers**
+- Contribute guest posts and share your expertise
+- Provide feedback and suggestions for improvement
+- Mentor others in their learning journey
+
+## Stay Connected
+
+### **Newsletter**
+Subscribe to get notified about new posts and learning updates:
+
+[Subscribe to Newsletter](#)
+
+### **Social Media**
+- **Twitter**: [@yourhandle](#) - Quick thoughts and updates
+- **LinkedIn**: [Your Profile](#) - Professional insights
+- **GitHub**: [Your Profile](#) - Code examples and projects
+
+### **RSS Feed**
+Get updates via RSS: [RSS Feed](blog.xml)
+
+## Blogging Goals
+
+### **2024 Objectives**
+- **Publish Frequency**: 2-3 posts per month
+- **Content Quality**: In-depth, well-researched articles
+- **Community Engagement**: Active discussions and feedback
+- **Skill Development**: Improve writing and communication
+
+### **Long-term Vision**
+- **Thought Leadership**: Establish expertise in key areas
+- **Community Building**: Create a learning-focused community
+- **Knowledge Sharing**: Help others in their learning journey
+- **Professional Growth**: Build a strong personal brand
+
+::: {.callout-tip}
+## Writing Tips for Developers
+- **Start with an outline**: Plan your post structure before writing
+- **Include code examples**: Show, don't just tell
+- **Use clear explanations**: Break down complex concepts
+- **Engage with readers**: Encourage comments and discussion
+- **Be consistent**: Regular posting builds audience
 :::
 
-Heads up: I write with both prerequisites unfulfiled. Proceed with caution.
-
-<p>&nbsp;</p>
-
-<style type="text/css">
-  #custom-footer, #hyvor-talk-view{display:none;}
-</style>
+::: {.callout-warning}
+## Common Blogging Mistakes
+- **Too much theory**: Balance with practical examples
+- **Poor formatting**: Use headers, lists, and code blocks
+- **No engagement**: Respond to comments and questions
+- **Inconsistent posting**: Maintain regular schedule
+:::
 

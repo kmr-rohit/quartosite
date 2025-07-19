@@ -9,8 +9,8 @@ listing:
   - id: latest-blog
     contents: blog  
     sort: "date desc"
-    page-size: 7
-    max-items: 7
+    page-size: 5
+    max-items: 5
     date-format: DD MMM, YYYY
     template: homepage-blog.ejs
     type: custom
@@ -19,47 +19,47 @@ listing:
     filter-ui: false
     fields: [date, title, categories]
     feed: false
-  - id: latest-news
-    contents: news  
-    sort: "date desc"
-    max-items: 7
-    page-size: 7
-    type: custom
-    categories: false
-    sort-ui: false
-    filter-ui: false
-    fields: [date, title, categories]
-    feed: false
-    template: news.ejs
 ---
 
 :::{.column-body-outset}
 ::: {layout="[[42,8,50]]"}
 
 <div>
-[![Visualizing Baranyai's theorem for the case when n=2.](/images/home.png){.rounded-corners .baranyai}
-[Visualizing Baranyai’s theorem for the case when n=2.]{.small-text}]{.centered-text}
+[![Developer Learning Journey](/images/home.png){.rounded-corners .developer}
+[Your journey to becoming a better software developer]{.small-text}]{.centered-text}
 </div>
 
 <div>
 </div>
 
 <div>
-# Neeldhara Misra
+# Developer Learning Wiki
 
-[Smt. Amba and Sri. V S Sastry Chair Associate Professor]{.small-text}<br>[Computer Science and Engineering at IIT Gandhinagar]{.small-text}<br>[(she/her)]{.small-text}
-
-<p>&nbsp;</p>
-
-[Blog](/blog.qmd) ⸱ [Mastodon](https://neeldhara.online) ⸱ [DBLP](https://dblp.org/pid/85/6789.html) ⸱ <a href="contact.html">Contact</a>
+[Software Developer]{.small-text}<br>[Learning Journey & Knowledge Base]{.small-text}<br>[Continuous Growth]{.small-text}
 
 <p>&nbsp;</p>
 
-My broad research interests include — in no particular order: algorithm design, computational social choice, combinatorial games. You can find out more about my work [here](research/overview.qmd).
+[Blog](/blog.qmd) ⸱ [GitHub](https://github.com/your-username) ⸱ [LinkedIn](https://linkedin.com/in/your-profile) ⸱ <a href="about.html">About</a>
 
 <p>&nbsp;</p>
 
-Recent PCs: FSTTCS 2024 (also co-organizing), Compute 2024 (also co-organizing), IJCAI 2024, ADT 2024, CALDAM 2024, FUN 2024, IWOCA 2024, IJCAI 2024, AAMAS 2023, CALDAM 2023, FSTTCS 2023, FUN 2022, MFCS 2022, IPEC 2022, IJCAI 2022, Compute 2022, CALDAM 2023, IPEC 2023 (co-chair with [Magnus Wahlström](https://pure.royalholloway.ac.uk/en/persons/magnus-wahlström))
+Welcome to my learning journey as a software developer. This wiki serves as my personal knowledge base covering four main areas: **Data Structures & Algorithms**, **System Design**, **Technical Blog Breakdowns**, and **Book Notes**. 
+
+<p>&nbsp;</p>
+
+## Learning Areas
+
+### 🧮 [Data Structures & Algorithms](/dsa/index.qmd)
+Core computer science fundamentals, problem-solving techniques, and algorithmic thinking.
+
+### 🏗️ [System Design](/system-design/index.qmd)
+Scalable architecture patterns, distributed systems, and real-world system design challenges.
+
+### 📝 [Technical Blogs](/technical-blogs/index.qmd)
+Breakdowns and notes from technical articles, engineering blogs, and industry insights.
+
+### 📚 [Books](/books/index.qmd)
+Reading notes, summaries, and key takeaways from technical books and resources.
 
 <p>&nbsp;</p>
 
@@ -70,18 +70,7 @@ Recent PCs: FSTTCS 2024 (also co-organizing), Compute 2024 (also co-organizing),
 
 :::{.column-body-outset}
 
-## Latest News
-
-::: {#latest-news}
-:::
-
-*[All News](news.qmd)*
-
-:::
-
-:::{.column-body-outset}
-
-## Latest Posts
+## Latest Blog Posts
 
 ::: {#latest-blog}
 :::
@@ -90,23 +79,22 @@ Recent PCs: FSTTCS 2024 (also co-organizing), Compute 2024 (also co-organizing),
 
 :::
 
-
 :::{.column-body-outset}
 
-#### In case you care for (sporadic) updates by email.
+#### Stay Updated
 
-I mostly plan to write some notes to self: I can’t imagine that you’d be interested, but if, for some reason, you are, you are welcome.
+Get notified about new learning notes and technical insights.
 
 <form
-  action="https://buttondown.email/api/emails/embed-subscribe/neeldhara"
+  action="https://buttondown.email/api/emails/embed-subscribe/your-newsletter"
   method="post"
   target="popupwindow"
-  onsubmit="window.open('https://buttondown.email/neeldhara', 'popupwindow')"
+  onsubmit="window.open('https://buttondown.email/your-newsletter', 'popupwindow')"
   class="embeddable-buttondown-form"
 >
   <div class="form-group">
   <input type="email" class="form-control" aria-describedby="emailHelp"  name="email" id="bd-email" placeholder="Enter your email."/>
-  <small id="emailHelp" class="form-text text-muted">I would (obviously!) never share your email with anyone else.</small>
+  <small id="emailHelp" class="form-text text-muted">I'll never share your email with anyone else.</small>
   </div>
   <p>&nbsp;</p>
   <div class="form-group">

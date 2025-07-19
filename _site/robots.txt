@@ -1,1 +1,1 @@
-Sitemap: https://www.neeldhara.com/sitemap.xml
+Sitemap: https://your-username.github.io/your-repo-name/sitemap.xml

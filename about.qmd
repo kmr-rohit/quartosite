@@ -1,103 +1,201 @@
 ---
 title: "About"
-sidebar: false
-toc: false
-css: css/about.css
 ---
 
-:::{.column-body-outset}
+# About This Wiki
 
+Welcome to my Developer Learning Wiki! This is my personal knowledge base and learning journey as a software developer.
 
-::: {layout="[[46,14,40]]"}
+## Who I Am
 
-<div>
+I'm a software developer passionate about continuous learning and sharing knowledge. This wiki serves as my digital garden where I document my learning journey, organize technical knowledge, and share insights with the developer community.
 
-# Background
+## What This Wiki Is
 
-<p>&nbsp;</p>
+### 🎯 **Learning Journey**
+This wiki tracks my progress through four main areas of software development:
+- **Data Structures & Algorithms**: Core computer science fundamentals
+- **System Design**: Scalable architecture and distributed systems
+- **Technical Blogs**: Analysis of engineering articles and insights
+- **Books**: Reading notes and summaries from technical literature
 
-👋 My name is Neeldhara Misra. I am a faculty member with the discipline of Computer Science and Engineering at IIT Gandhinagar. My research interests include the interplay of structural graph theory and graph algorithms; tools and techniques in parameterized complexity; computational perspectives on combinatorial games; voting mechanisms, with a special focus on strategic behaviour; fair allocations of resources.
+### 📚 **Knowledge Base**
+A comprehensive collection of:
+- **Code Examples**: Practical implementations and solutions
+- **Architecture Patterns**: System design principles and trade-offs
+- **Best Practices**: Industry standards and proven approaches
+- **Learning Resources**: Curated materials and references
 
-I am also keen on understanding means of bringing computational thinking to school education, and using visual tools and narratives for exposition in general.
+### 🌱 **Digital Garden**
+A living document that:
+- **Grows Over Time**: New content added regularly
+- **Connects Ideas**: Links between related concepts
+- **Evolves**: Content updated as my understanding deepens
+- **Shares Knowledge**: Open for others to learn from
 
-In 2007, I finished a Bachelors in Science in three majors — Computer Science, Mathematics, and Statistics, from Mount Carmel College (Bangalore). The Joint Entrance Screening Test (JEST) was one of the very few national exams that I was eligible to write at this point, and this eventually led me to graduate school — specifically an integrated PhD program — at the Institute for Mathematical Sciences (IMSc).
+## My Learning Philosophy
 
-After graduating from IMSc in 2012, I spent the next three years at the Department of Computer Science and Automation (CSA) at the Indian Institute of Science (IISc).
+### **Continuous Improvement**
+- Never stop learning and growing
+- Embrace new technologies and approaches
+- Learn from both successes and failures
+- Share knowledge with the community
 
-One of the things I enjoy most about my work is the opportunities that it brings to connect with others, so in case you feel similarly and would like to exchange notes, give me a heads up! I am moving from Twitter to [Mastodon](https://mathstodon.xyz/@neeldhara) and am trying to get better at email, so I’ll look forward to hearing from you 🙌
+### **Practical Application**
+- Theory is important, but practice is essential
+- Build real projects to solidify understanding
+- Apply concepts to solve actual problems
+- Learn by doing, not just reading
+
+### **Systematic Approach**
+- Organize knowledge in a structured way
+- Connect related concepts and patterns
+- Document learnings for future reference
+- Review and refine understanding regularly
+
+## Learning Goals
+
+### **Short-term (Next 6 months)**
+- Master fundamental DSA concepts and problem-solving
+- Understand scalable system design patterns
+- Analyze 20+ technical articles and blogs
+- Complete 6 technical books with detailed notes
+
+### **Medium-term (6-12 months)**
+- Build and deploy scalable applications
+- Contribute to open source projects
+- Share knowledge through blog posts and presentations
+- Mentor other developers in their learning journey
+
+### **Long-term (1+ years)**
+- Develop expertise in distributed systems
+- Create comprehensive learning resources
+- Build a strong professional network
+- Contribute to the broader developer community
+
+## How I Learn
+
+### **Reading Strategy**
+1. **Active Reading**: Take notes, ask questions, make connections
+2. **Implementation**: Build examples and practice exercises
+3. **Reflection**: Connect concepts to real-world applications
+4. **Sharing**: Write summaries and discuss with others
+
+### **Practice Approach**
+1. **LeetCode/HackerRank**: Regular problem-solving practice
+2. **Personal Projects**: Build applications using learned concepts
+3. **Code Reviews**: Learn from others and improve code quality
+4. **Teaching**: Explain concepts to reinforce understanding
+
+### **Community Engagement**
+1. **Study Groups**: Join learning communities and discussions
+2. **Open Source**: Contribute to projects and learn from codebases
+3. **Conferences**: Attend events and network with other developers
+4. **Mentorship**: Both giving and receiving guidance
+
+## Technology Stack
+
+### **Languages & Frameworks**
+- **Python**: Primary language for algorithms and data science
+- **JavaScript/TypeScript**: Web development and full-stack applications
+- **Go**: Systems programming and microservices
+- **SQL**: Database design and optimization
+
+### **Tools & Platforms**
+- **Git**: Version control and collaboration
+- **Docker**: Containerization and deployment
+- **AWS/GCP**: Cloud platforms and services
+- **Kubernetes**: Container orchestration
+
+### **Areas of Focus**
+- **Backend Development**: APIs, databases, server-side logic
+- **System Design**: Scalable architecture and distributed systems
+- **DevOps**: CI/CD, monitoring, infrastructure as code
+- **Data Engineering**: ETL pipelines, analytics, machine learning
+
+## Why I Built This Wiki
+
+### **Personal Growth**
+- **Track Progress**: Document my learning journey
+- **Retain Knowledge**: Create a searchable knowledge base
+- **Identify Gaps**: Understand areas that need improvement
+- **Stay Motivated**: Visualize progress and achievements
+
+### **Community Contribution**
+- **Share Knowledge**: Help others learn and grow
+- **Get Feedback**: Learn from community insights
+- **Build Network**: Connect with like-minded developers
+- **Give Back**: Contribute to the developer ecosystem
+
+### **Professional Development**
+- **Portfolio**: Showcase skills and knowledge
+- **Interview Prep**: Organize knowledge for technical interviews
+- **Career Growth**: Demonstrate continuous learning
+- **Thought Leadership**: Share insights and perspectives
+
+## How to Use This Wiki
+
+### **For Learners**
+- **Browse by Topic**: Explore specific areas of interest
+- **Follow the Journey**: See how concepts build upon each other
+- **Practice Examples**: Use code examples and exercises
+- **Ask Questions**: Reach out for clarification or discussion
+
+### **For Developers**
+- **Reference Material**: Use as a quick reference guide
+- **Learning Path**: Follow structured learning paths
+- **Code Examples**: Copy and adapt code for your projects
+- **Best Practices**: Learn from documented patterns and approaches
+
+### **For Contributors**
+- **Suggest Improvements**: Point out errors or areas for enhancement
+- **Share Resources**: Recommend additional learning materials
+- **Collaborate**: Work together on projects or learning goals
+- **Mentor**: Help guide others in their learning journey
+
+## Get in Touch
+
+I'm always interested in connecting with other developers and learners. Here are some ways to reach out:
+
+### **Social Media**
+- **GitHub**: [Your GitHub Profile]
+- **LinkedIn**: [Your LinkedIn Profile]
+- **Twitter**: [Your Twitter Handle]
+
+### **Contact**
+- **Email**: [Your Email]
+- **Discord**: [Your Discord Handle]
+- **Slack**: [Your Slack Workspace]
+
+### **Collaboration**
+- **Study Groups**: Join or form learning communities
+- **Open Source**: Contribute to projects together
+- **Blog Posts**: Guest write or collaborate on content
+- **Presentations**: Speak at meetups or conferences
+
+## Acknowledgments
+
+### **Inspiration**
+- **Digital Garden Movement**: Inspired by the concept of digital gardens
+- **Developer Communities**: Learning from the broader developer ecosystem
+- **Open Source**: Building on the work of countless contributors
+- **Mentors**: Those who have guided my learning journey
+
+### **Resources**
+- **Quarto**: The amazing tool that powers this wiki
+- **GitHub**: Platform for hosting and collaboration
+- **Learning Platforms**: LeetCode, HackerRank, Coursera, etc.
+- **Technical Blogs**: Countless engineers sharing their knowledge
 
 ---
 
-<!-- Trigger/Open The Modal -->
-<a data-target="myModal" data-toggle="modal">Click here for a short bio, suitable for introductions.</a>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
+*This wiki is a work in progress, constantly evolving as I learn and grow. Thank you for being part of this journey!*
 
-</div>
-
-<div>
-</div>
-
-<div>
-![](/images/profile.jpeg){.rounded-corners .profilepic}
-
-##### 2021 — Present
-
-Smt. Amba and Sri. V S Sastry Chair Associate Professor
-Computer Science and Engineering
-Indian Institute of Technology, Gandhinagar
-
-##### 2016 — 2022
-
-Associate Dean
-External Communications[,](/blog/comms/)
-Indian Institute of Technology, Gandhinagar
-
-##### 2015 — 2021
-
-Assistant Professor, Computer Science and Engineering
-Indian Institute of Technology, Gandhinagar
-
-##### 2012 — 2015
-
-
-**2012.** Research Associate<br><br>
-**2013.** DST-INSPIRE Fellow<br>
-Computer Science & Automation<br>
-Indian Institute of Science
-
----
-
-##### Earlier
-
-**2012.** Integrated PhD,<br>
-Institute for Mathematical Sciences<br>
-(Theoretical Computer Science)<br><br>
-**2007.** BSc, Mount Carmel College
-(Computer Science, Mathematics, and Statistics)
-
-
----
-
-{{< bi download >}} [CV](CV.pdf) (Last Updated: ~mid-2022)
-
-</div>
-
+::: {.callout-tip}
+## Start Your Own Learning Journey
+- **Choose a Focus**: Pick an area that interests you
+- **Set Goals**: Define what you want to achieve
+- **Create Structure**: Organize your learning systematically
+- **Share Progress**: Document and share your journey
+- **Stay Consistent**: Make learning a regular habit
 :::
-:::
-
-
-
-
-
-
-<!-- The Modal -->
-<div id="myModal" class="modal">
-<!-- Modal content -->
-<div class="modal-content">
-<p>&nbsp;</p>
-<span class="close" data-dismiss="modal">×</span>
-<p>Neeldhara Misra is a Smt. Amba and Sri. V S Sastry Chair Associate Professor of Computer Science and Engineering at the Indian Institute of Technology, Gandhinagar. She completed her PhD from the Institute for Mathematical Sciences in 2012 in Theoretical Computer Science. Her research interests include the design and analysis of algorithms and computational social choice. She is also interested in visualizations and other methods to communicate computational thinking at an elementary level. She also enjoys learning about new card tricks, especially self-working ones --- even though she can't remember any!</p>
-</div>
-
-</div>

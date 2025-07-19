@@ -1,0 +1,181 @@
+---
+title: "Data Structures"
+order: 2
+---
+
+# Data Structures
+
+A comprehensive guide to fundamental data structures with implementations and use cases.
+
+## Linear Data Structures
+
+### Arrays
+- **Description**: Contiguous memory allocation for elements
+- **Time Complexity**: Access O(1), Search O(n), Insert/Delete O(n)
+- **Use Cases**: When you need random access, fixed size collections
+
+```python
+# Basic array operations
+arr = [1, 2, 3, 4, 5]
+arr.append(6)      # O(1) amortized
+arr.insert(0, 0)   # O(n)
+arr.pop()          # O(1)
+arr[2]             # O(1) access
+```
+
+### Linked Lists
+- **Description**: Nodes connected by pointers
+- **Time Complexity**: Access O(n), Search O(n), Insert/Delete O(1) at head/tail
+- **Use Cases**: Dynamic size, frequent insertions/deletions
+
+```python
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+# Common operations
+def reverse_list(head):
+    prev = None
+    curr = head
+    while curr:
+        next_temp = curr.next
+        curr.next = prev
+        prev = curr
+        curr = next_temp
+    return prev
+```
+
+### Stacks
+- **Description**: LIFO (Last In, First Out) structure
+- **Time Complexity**: Push/Pop O(1), Search O(n)
+- **Use Cases**: Function call stack, undo operations, parentheses matching
+
+```python
+# Stack implementation
+stack = []
+stack.append(1)    # Push
+stack.append(2)
+stack.append(3)
+top = stack.pop()  # Pop - returns 3
+```
+
+### Queues
+- **Description**: FIFO (First In, First Out) structure
+- **Time Complexity**: Enqueue/Dequeue O(1), Search O(n)
+- **Use Cases**: BFS, task scheduling, print queues
+
+```python
+from collections import deque
+
+queue = deque()
+queue.append(1)    # Enqueue
+queue.append(2)
+queue.append(3)
+first = queue.popleft()  # Dequeue - returns 1
+```
+
+## Tree-based Data Structures
+
+### Binary Trees
+- **Description**: Each node has at most two children
+- **Use Cases**: Expression trees, file systems, decision trees
+
+```python
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+# Tree traversal
+def inorder_traversal(root):
+    if not root:
+        return []
+    return inorder_traversal(root.left) + [root.val] + inorder_traversal(root.right)
+```
+
+### Binary Search Trees (BST)
+- **Description**: Ordered binary tree where left < root < right
+- **Time Complexity**: Search/Insert/Delete O(log n) average, O(n) worst
+- **Use Cases**: Symbol tables, ordered data storage
+
+### Heaps
+- **Description**: Complete binary tree with heap property
+- **Time Complexity**: Insert/Delete O(log n), Get min/max O(1)
+- **Use Cases**: Priority queues, heap sort, top-k elements
+
+```python
+import heapq
+
+# Min heap
+heap = []
+heapq.heappush(heap, 3)
+heapq.heappush(heap, 1)
+heapq.heappush(heap, 2)
+min_val = heapq.heappop(heap)  # Returns 1
+```
+
+## Hash-based Data Structures
+
+### Hash Tables
+- **Description**: Key-value pairs with O(1) average access
+- **Time Complexity**: Insert/Delete/Search O(1) average, O(n) worst
+- **Use Cases**: Caching, symbol tables, duplicate detection
+
+```python
+# Dictionary in Python
+hash_table = {}
+hash_table['key'] = 'value'    # Insert
+value = hash_table['key']      # Access
+hash_table.pop('key')          # Delete
+```
+
+## Graph Data Structures
+
+### Adjacency List
+- **Description**: List of lists representing graph edges
+- **Space Complexity**: O(V + E)
+- **Use Cases**: Sparse graphs, most graph algorithms
+
+```python
+# Adjacency list representation
+graph = {
+    0: [1, 2],
+    1: [0, 2],
+    2: [0, 1, 3],
+    3: [2]
+}
+```
+
+### Adjacency Matrix
+- **Description**: 2D matrix representing graph edges
+- **Space Complexity**: O(V²)
+- **Use Cases**: Dense graphs, quick edge existence check
+
+## Advanced Data Structures
+
+### Tries (Prefix Trees)
+- **Description**: Tree for storing strings with common prefixes
+- **Use Cases**: Autocomplete, spell checkers, IP routing
+
+### Segment Trees
+- **Description**: Tree for range queries and updates
+- **Time Complexity**: Query/Update O(log n)
+- **Use Cases**: Range sum/min/max queries
+
+## Implementation Tips
+
+::: {.callout-tip}
+## Memory Management
+- Consider space complexity alongside time complexity
+- Be aware of language-specific optimizations
+- Use appropriate data structures for your use case
+:::
+
+::: {.callout-warning}
+## Common Pitfalls
+- Not considering edge cases (empty structures, single elements)
+- Forgetting to handle memory leaks in manual implementations
+- Choosing wrong data structure for the problem
+::: 

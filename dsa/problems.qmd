@@ -1,0 +1,293 @@
+---
+title: "Practice Problems"
+order: 4
+---
+
+# Practice Problems
+
+A collection of DSA problems with solutions and explanations.
+
+## Easy Problems
+
+### 1. Two Sum
+**Problem**: Given an array of integers `nums` and an integer `target`, return indices of the two numbers such that they add up to `target`.
+
+```python
+def two_sum(nums, target):
+    seen = {}
+    for i, num in enumerate(nums):
+        complement = target - num
+        if complement in seen:
+            return [seen[complement], i]
+        seen[num] = i
+    return []
+
+# Example
+nums = [2, 7, 11, 15]
+target = 9
+print(two_sum(nums, target))  # [0, 1]
+```
+
+**Time Complexity**: O(n)  
+**Space Complexity**: O(n)
+
+### 2. Valid Parentheses
+**Problem**: Given a string `s` containing just the characters `'('`, `')'`, `'{'`, `'}'`, `'['` and `']'`, determine if the input string is valid.
+
+```python
+def is_valid(s):
+    stack = []
+    brackets = {')': '(', '}': '{', ']': '['}
+    
+    for char in s:
+        if char in '({[':
+            stack.append(char)
+        elif char in ')}]':
+            if not stack or stack.pop() != brackets[char]:
+                return False
+    
+    return len(stack) == 0
+
+# Example
+print(is_valid("()[]{}"))  # True
+print(is_valid("([)]"))    # False
+```
+
+**Time Complexity**: O(n)  
+**Space Complexity**: O(n)
+
+## Medium Problems
+
+### 3. Longest Substring Without Repeating Characters
+**Problem**: Given a string `s`, find the length of the longest substring without repeating characters.
+
+```python
+def length_of_longest_substring(s):
+    char_map = {}
+    left = 0
+    max_length = 0
+    
+    for right, char in enumerate(s):
+        if char in char_map and char_map[char] >= left:
+            left = char_map[char] + 1
+        char_map[char] = right
+        max_length = max(max_length, right - left + 1)
+    
+    return max_length
+
+# Example
+print(length_of_longest_substring("abcabcbb"))  # 3
+```
+
+**Time Complexity**: O(n)  
+**Space Complexity**: O(min(m, n)) where m is charset size
+
+### 4. Merge Two Sorted Lists
+**Problem**: Merge two sorted linked lists and return it as a sorted list.
+
+```python
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+def merge_two_lists(l1, l2):
+    dummy = ListNode(0)
+    current = dummy
+    
+    while l1 and l2:
+        if l1.val <= l2.val:
+            current.next = l1
+            l1 = l1.next
+        else:
+            current.next = l2
+            l2 = l2.next
+        current = current.next
+    
+    current.next = l1 if l1 else l2
+    return dummy.next
+```
+
+**Time Complexity**: O(n + m)  
+**Space Complexity**: O(1)
+
+## Hard Problems
+
+### 5. Median of Two Sorted Arrays
+**Problem**: Find the median of two sorted arrays `nums1` and `nums2`.
+
+```python
+def find_median_sorted_arrays(nums1, nums2):
+    # Ensure nums1 is the smaller array
+    if len(nums1) > len(nums2):
+        nums1, nums2 = nums2, nums1
+    
+    x, y = len(nums1), len(nums2)
+    low, high = 0, x
+    
+    while low <= high:
+        partitionX = (low + high) // 2
+        partitionY = (x + y + 1) // 2 - partitionX
+        
+        # Find the elements around the partition
+        maxLeftX = float('-inf') if partitionX == 0 else nums1[partitionX - 1]
+        minRightX = float('inf') if partitionX == x else nums1[partitionX]
+        
+        maxLeftY = float('-inf') if partitionY == 0 else nums2[partitionY - 1]
+        minRightY = float('inf') if partitionY == y else nums2[partitionY]
+        
+        # Check if we found the correct partition
+        if maxLeftX <= minRightY and maxLeftY <= minRightX:
+            # Found the correct partition
+            if (x + y) % 2 == 0:
+                return (max(maxLeftX, maxLeftY) + min(minRightX, minRightY)) / 2
+            else:
+                return max(maxLeftX, maxLeftY)
+        elif maxLeftX > minRightY:
+            high = partitionX - 1
+        else:
+            low = partitionX + 1
+    
+    raise ValueError("Input arrays are not sorted")
+```
+
+**Time Complexity**: O(log(min(m, n)))  
+**Space Complexity**: O(1)
+
+## Dynamic Programming Problems
+
+### 6. Climbing Stairs
+**Problem**: You are climbing a staircase. It takes `n` steps to reach the top. Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?
+
+```python
+def climb_stairs(n):
+    if n <= 2:
+        return n
+    
+    dp = [0] * (n + 1)
+    dp[1] = 1
+    dp[2] = 2
+    
+    for i in range(3, n + 1):
+        dp[i] = dp[i-1] + dp[i-2]
+    
+    return dp[n]
+
+# Space optimized version
+def climb_stairs_optimized(n):
+    if n <= 2:
+        return n
+    
+    prev, curr = 1, 2
+    for i in range(3, n + 1):
+        prev, curr = curr, prev + curr
+    
+    return curr
+```
+
+**Time Complexity**: O(n)  
+**Space Complexity**: O(1) for optimized version
+
+### 7. Longest Increasing Subsequence
+**Problem**: Given an integer array `nums`, return the length of the longest strictly increasing subsequence.
+
+```python
+def length_of_lis(nums):
+    if not nums:
+        return 0
+    
+    dp = [1] * len(nums)
+    
+    for i in range(1, len(nums)):
+        for j in range(i):
+            if nums[i] > nums[j]:
+                dp[i] = max(dp[i], dp[j] + 1)
+    
+    return max(dp)
+
+# Binary search approach (more efficient)
+def length_of_lis_binary(nums):
+    sub = []
+    
+    for num in nums:
+        i = bisect_left(sub, num)
+        if i == len(sub):
+            sub.append(num)
+        else:
+            sub[i] = num
+    
+    return len(sub)
+```
+
+**Time Complexity**: O(n²) for DP, O(n log n) for binary search  
+**Space Complexity**: O(n)
+
+## Graph Problems
+
+### 8. Number of Islands
+**Problem**: Given an `m x n` 2D binary grid `grid` which represents a map of `'1'`s (land) and `'0'`s (water), return the number of islands.
+
+```python
+def num_islands(grid):
+    if not grid:
+        return 0
+    
+    def dfs(i, j):
+        if (i < 0 or i >= len(grid) or 
+            j < 0 or j >= len(grid[0]) or 
+            grid[i][j] == '0'):
+            return
+        
+        grid[i][j] = '0'  # Mark as visited
+        dfs(i+1, j)
+        dfs(i-1, j)
+        dfs(i, j+1)
+        dfs(i, j-1)
+    
+    count = 0
+    for i in range(len(grid)):
+        for j in range(len(grid[0])):
+            if grid[i][j] == '1':
+                dfs(i, j)
+                count += 1
+    
+    return count
+```
+
+**Time Complexity**: O(m × n)  
+**Space Complexity**: O(m × n) in worst case
+
+## Problem-Solving Tips
+
+::: {.callout-tip}
+## Before Starting
+1. **Understand the problem**: Read carefully, identify inputs/outputs
+2. **Consider examples**: Work through small examples manually
+3. **Identify patterns**: Look for common algorithmic patterns
+4. **Plan your approach**: Choose appropriate data structures
+5. **Consider edge cases**: Empty inputs, single elements, etc.
+:::
+
+::: {.callout-warning}
+## Common Mistakes
+- Not handling edge cases
+- Incorrect time/space complexity analysis
+- Not optimizing for the specific constraints
+- Overcomplicating simple problems
+:::
+
+## Practice Resources
+
+### Online Platforms
+- **LeetCode**: 2000+ problems with varying difficulty
+- **HackerRank**: Good for beginners, company-specific problems
+- **Codeforces**: Competitive programming, regular contests
+- **AtCoder**: Japanese platform, good for learning
+
+### Problem Categories to Master
+1. **Arrays & Strings**: Two pointers, sliding window, prefix sums
+2. **Linked Lists**: Fast/slow pointers, reversing, merging
+3. **Trees**: DFS/BFS, recursion, tree construction
+4. **Graphs**: DFS/BFS, shortest paths, topological sort
+5. **Dynamic Programming**: Memoization, tabulation, state transitions
+6. **Binary Search**: Finding boundaries, optimization problems 

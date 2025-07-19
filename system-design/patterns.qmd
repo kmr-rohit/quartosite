@@ -1,0 +1,353 @@
+---
+title: "Design Patterns"
+order: 2
+---
+
+# System Design Patterns
+
+Common architectural patterns and their applications in building scalable systems.
+
+## Architectural Patterns
+
+### Monolithic Architecture
+- **Description**: Single application containing all functionality
+- **Pros**: Simple to develop, deploy, and test
+- **Cons**: Difficult to scale, technology lock-in, deployment risk
+- **Use Cases**: Small applications, MVPs, simple business logic
+
+```
+┌─────────────────────────────────────┐
+│           Monolithic App            │
+│  ┌─────────┐ ┌─────────┐ ┌─────────┐ │
+│  │  Auth   │ │  User   │ │ Payment │ │
+│  └─────────┘ └─────────┘ └─────────┘ │
+│  ┌─────────┐ ┌─────────┐ ┌─────────┐ │
+│  │  Order  │ │ Product │ │  Email  │ │
+│  └─────────┘ └─────────┘ └─────────┘ │
+└─────────────────────────────────────┘
+```
+
+### Microservices Architecture
+- **Description**: Application split into small, independent services
+- **Pros**: Independent deployment, technology diversity, fault isolation
+- **Cons**: Distributed system complexity, network overhead, data consistency
+- **Use Cases**: Large applications, team autonomy, complex domains
+
+```
+┌─────────┐ ┌─────────┐ ┌─────────┐ ┌─────────┐
+│  Auth   │ │  User   │ │ Payment │ │  Order  │
+│ Service │ │ Service │ │ Service │ │ Service │
+└─────────┘ └─────────┘ └─────────┘ └─────────┘
+     │           │           │           │
+     └───────────┼───────────┼───────────┘
+                 │           │
+         ┌───────▼───────┐   │
+         │   API Gateway │   │
+         └───────────────┘   │
+                 │           │
+         ┌───────▼───────┐   │
+         │   Load Balancer   │
+         └───────────────┘
+```
+
+### Event-Driven Architecture
+- **Description**: Services communicate through events
+- **Pros**: Loose coupling, scalability, real-time processing
+- **Cons**: Event ordering, debugging complexity, eventual consistency
+- **Use Cases**: Real-time systems, IoT, analytics pipelines
+
+```
+┌─────────┐    ┌─────────┐    ┌─────────┐
+│ Service │───▶│ Event   │───▶│ Service │
+│    A    │    │  Bus    │    │    B    │
+└─────────┘    └─────────┘    └─────────┘
+     │              │              │
+     └──────────────┼──────────────┘
+                    │
+              ┌─────▼─────┐
+              │ Service C │
+              └───────────┘
+```
+
+## Data Patterns
+
+### Database Per Service
+- **Description**: Each microservice has its own database
+- **Pros**: Data isolation, independent scaling, technology choice
+- **Cons**: Data consistency challenges, distributed transactions
+- **Use Cases**: Microservices, bounded contexts
+
+```
+┌─────────┐ ┌─────────┐ ┌─────────┐
+│ Service │ │ Service │ │ Service │
+│    A    │ │    B    │ │    C    │
+└─────────┘ └─────────┘ └─────────┘
+     │           │           │
+┌─────────┐ ┌─────────┐ ┌─────────┐
+│   DB    │ │   DB    │ │   DB    │
+│    A    │ │    B    │ │    C    │
+└─────────┘ └─────────┘ └─────────┘
+```
+
+### Shared Database
+- **Description**: Multiple services share a single database
+- **Pros**: ACID transactions, data consistency, simpler queries
+- **Cons**: Tight coupling, scaling challenges, technology lock-in
+- **Use Cases**: Legacy systems, simple applications
+
+### CQRS (Command Query Responsibility Segregation)
+- **Description**: Separate read and write models
+- **Pros**: Optimized for read/write operations, scalability
+- **Cons**: Complexity, eventual consistency, data synchronization
+- **Use Cases**: High-read applications, complex domains
+
+```
+┌─────────┐    ┌─────────┐    ┌─────────┐
+│ Command │───▶│  Event  │───▶│  Query  │
+│  Model  │    │  Store  │    │  Model  │
+└─────────┘    └─────────┘    └─────────┘
+     │              │              │
+┌─────────┐    ┌─────────┐    ┌─────────┐
+│ Write   │    │  Event  │    │  Read   │
+│   DB    │    │  Bus    │    │   DB    │
+└─────────┘    └─────────┘    └─────────┘
+```
+
+## Communication Patterns
+
+### Synchronous Communication
+- **Description**: Direct service-to-service calls
+- **Pros**: Simple, immediate response, error handling
+- **Cons**: Tight coupling, cascading failures, latency
+- **Use Cases**: Critical operations, real-time requirements
+
+```python
+# REST API call
+import requests
+
+def get_user_data(user_id):
+    response = requests.get(f"http://user-service/users/{user_id}")
+    return response.json()
+
+# gRPC call
+import grpc
+
+def get_user_data_grpc(user_id):
+    with grpc.insecure_channel('localhost:50051') as channel:
+        stub = user_pb2_grpc.UserServiceStub(channel)
+        response = stub.GetUser(user_pb2.UserRequest(id=user_id))
+        return response
+```
+
+### Asynchronous Communication
+- **Description**: Communication through message queues
+- **Pros**: Loose coupling, fault tolerance, scalability
+- **Cons**: Eventual consistency, debugging complexity
+- **Use Cases**: Background processing, event-driven systems
+
+```python
+# Using RabbitMQ
+import pika
+
+def send_message(message):
+    connection = pika.BlockingConnection(pika.ConnectionParameters('localhost'))
+    channel = connection.channel()
+    channel.queue_declare(queue='task_queue')
+    channel.basic_publish(exchange='', routing_key='task_queue', body=message)
+    connection.close()
+
+# Using Apache Kafka
+from kafka import KafkaProducer
+import json
+
+def send_kafka_message(topic, message):
+    producer = KafkaProducer(bootstrap_servers=['localhost:9092'])
+    producer.send(topic, json.dumps(message).encode('utf-8'))
+    producer.flush()
+```
+
+## Scalability Patterns
+
+### Load Balancing
+- **Description**: Distributing traffic across multiple servers
+- **Types**: Round-robin, least connections, IP hash, weighted
+- **Use Cases**: High availability, horizontal scaling
+
+```
+┌─────────┐
+│  Client │
+└────┬────┘
+     │
+┌────▼────┐
+│   Load  │
+│Balancer │
+└────┬────┘
+     │
+┌────┴────┐
+│ Server1 │
+└─────────┘
+     │
+┌────┴────┐
+│ Server2 │
+└─────────┘
+     │
+┌────┴────┐
+│ Server3 │
+└─────────┘
+```
+
+### Caching Patterns
+
+#### Cache-Aside (Lazy Loading)
+- **Description**: Application manages cache directly
+- **Pros**: Simple, flexible, cache control
+- **Cons**: Cache miss penalty, cache invalidation complexity
+
+```python
+def get_user_data(user_id):
+    # Try cache first
+    user_data = cache.get(f"user:{user_id}")
+    if user_data:
+        return user_data
+    
+    # Cache miss - fetch from database
+    user_data = database.get_user(user_id)
+    if user_data:
+        cache.set(f"user:{user_id}", user_data, ttl=3600)
+    
+    return user_data
+```
+
+#### Write-Through
+- **Description**: Write to cache and database simultaneously
+- **Pros**: Data consistency, read performance
+- **Cons**: Write latency, cache space usage
+
+```python
+def update_user_data(user_id, user_data):
+    # Update database
+    database.update_user(user_id, user_data)
+    # Update cache
+    cache.set(f"user:{user_id}", user_data, ttl=3600)
+```
+
+#### Write-Behind (Write-Back)
+- **Description**: Write to cache first, database later
+- **Pros**: Write performance, reduced database load
+- **Cons**: Data loss risk, complexity
+
+### Database Patterns
+
+#### Read Replicas
+- **Description**: Multiple read-only copies of database
+- **Pros**: Read scalability, reduced load on primary
+- **Cons**: Eventual consistency, replication lag
+
+```
+┌─────────┐    ┌─────────┐
+│ Primary │───▶│ Replica │
+│   DB    │    │   1     │
+└─────────┘    └─────────┘
+     │              │
+     └──────────────┼─────┐
+                    │     │
+              ┌─────▼─┐   │
+              │Replica│   │
+              │   2   │   │
+              └───────┘   │
+                          │
+                    ┌─────▼─┐
+                    │Replica│
+                    │   3   │
+                    └───────┘
+```
+
+#### Sharding
+- **Description**: Partitioning data across multiple databases
+- **Pros**: Horizontal scaling, improved performance
+- **Cons**: Complexity, cross-shard queries, rebalancing
+
+```python
+def get_shard_key(user_id):
+    return user_id % 4  # 4 shards
+
+def get_user_data(user_id):
+    shard_id = get_shard_key(user_id)
+    shard_connection = get_shard_connection(shard_id)
+    return shard_connection.execute("SELECT * FROM users WHERE id = ?", user_id)
+```
+
+## Security Patterns
+
+### API Gateway
+- **Description**: Single entry point for all client requests
+- **Pros**: Centralized security, rate limiting, monitoring
+- **Cons**: Single point of failure, complexity
+
+```
+┌─────────┐    ┌─────────────┐    ┌─────────┐
+│  Client │───▶│     API     │───▶│ Service │
+│         │    │   Gateway   │    │    A    │
+└─────────┘    └─────────────┘    └─────────┘
+                      │
+                      ▼
+                ┌─────────┐
+                │ Service │
+                │    B    │
+                └─────────┘
+```
+
+### Circuit Breaker
+- **Description**: Prevents cascading failures
+- **States**: Closed, Open, Half-Open
+- **Use Cases**: External service calls, fault tolerance
+
+```python
+class CircuitBreaker:
+    def __init__(self, failure_threshold=5, timeout=60):
+        self.failure_threshold = failure_threshold
+        self.timeout = timeout
+        self.failure_count = 0
+        self.last_failure_time = None
+        self.state = 'CLOSED'  # CLOSED, OPEN, HALF_OPEN
+    
+    def call(self, func, *args, **kwargs):
+        if self.state == 'OPEN':
+            if time.time() - self.last_failure_time > self.timeout:
+                self.state = 'HALF_OPEN'
+            else:
+                raise Exception("Circuit breaker is OPEN")
+        
+        try:
+            result = func(*args, **kwargs)
+            if self.state == 'HALF_OPEN':
+                self.state = 'CLOSED'
+                self.failure_count = 0
+            return result
+        except Exception as e:
+            self.failure_count += 1
+            self.last_failure_time = time.time()
+            
+            if self.failure_count >= self.failure_threshold:
+                self.state = 'OPEN'
+            
+            raise e
+```
+
+## Best Practices
+
+::: {.callout-tip}
+## Pattern Selection
+- Choose patterns based on requirements, not trends
+- Consider team expertise and maintenance capabilities
+- Start simple and evolve as needed
+- Document trade-offs and decisions
+:::
+
+::: {.callout-warning}
+## Common Anti-Patterns
+- Over-engineering with unnecessary complexity
+- Ignoring data consistency requirements
+- Not considering failure scenarios
+- Tight coupling between services
+::: 

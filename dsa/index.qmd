@@ -1,0 +1,60 @@
+---
+title: "Data Structures & Algorithms"
+order: 1
+---
+
+# Data Structures & Algorithms
+
+Welcome to my DSA learning journey! This section covers fundamental computer science concepts, problem-solving techniques, and algorithmic thinking.
+
+## Quick Navigation
+
+- **[Data Structures](/dsa/data-structures.qmd)** - Arrays, Linked Lists, Trees, Graphs, Hash Tables, etc.
+- **[Algorithms](/dsa/algorithms.qmd)** - Sorting, Searching, Dynamic Programming, Greedy, etc.
+- **[Problems](/dsa/problems.qmd)** - Practice problems and solutions
+
+## Learning Resources
+
+### Books
+- "Introduction to Algorithms" (CLRS)
+- "Cracking the Coding Interview"
+- "Algorithms" by Robert Sedgewick
+
+### Online Platforms
+- LeetCode
+- HackerRank
+- Codeforces
+- AtCoder
+
+### Key Concepts to Master
+
+#### Data Structures
+- **Linear**: Arrays, Linked Lists, Stacks, Queues
+- **Tree-based**: Binary Trees, BST, AVL, Red-Black Trees
+- **Graph-based**: Adjacency Matrix/List, BFS/DFS
+- **Hash-based**: Hash Tables, Hash Sets
+- **Advanced**: Heaps, Tries, Segment Trees
+
+#### Algorithm Paradigms
+- **Brute Force**: Complete search, backtracking
+- **Divide & Conquer**: Merge sort, quick sort, binary search
+- **Dynamic Programming**: Memoization, tabulation
+- **Greedy**: Local optimal choices
+- **Two Pointers**: Sliding window, fast/slow pointers
+
+#### Time Complexity Analysis
+- Big O notation
+- Space complexity
+- Best/worst/average case analysis
+
+## Recent Learning Notes
+
+::: {.callout-note}
+## Current Focus
+Working on dynamic programming problems and advanced tree algorithms.
+:::
+
+::: {.callout-tip}
+## Pro Tip
+Practice implementing data structures from scratch to truly understand their internals.
+::: 
