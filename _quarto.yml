@@ -25,39 +25,29 @@ website:
           - text: Overview
             href: dsa/index.qmd
           - text: Data Structures
-            href: dsa/data-structures.qmd
+            href: dsa/data-structures/index.qmd
           - text: Algorithms
-            href: dsa/algorithms.qmd
+            href: dsa/algorithms/index.md
           - text: Problems
             href: dsa/problems/index.qmd
       - text: System Design
         menu:
           - text: Overview
             href: system-design/index.qmd
-          - text: Patterns
-            href: system-design/patterns/index.qmd
-          - text: Case Studies
-            href: system-design/case-studies.qmd
-          - text: Scalability
-            href: system-design/scalability.qmd
       - text: Technical Blogs
         menu:
           - text: Overview
             href: technical-blogs/index.qmd
-          - text: Breakdowns
-            href: technical-blogs/breakdowns/index.qmd
-          - text: Notes
-            href: technical-blogs/notes.qmd
-      - text: Books
-        menu:
-          - text: Overview
-            href: books/index.qmd
-          - text: Reading List
-            href: books/reading-list/index.qmd
-          - text: Notes
-            href: books/notes.qmd
-      - href: blog.qmd
-        text: Blog
+      # - text: Books
+      #   menu:
+      #     - text: Overview
+      #       href: books/index.qmd
+      #     - text: Reading List
+      #       href: books/reading-list/index.qmd
+      #     - text: Notes
+      #       href: books/notes.qmd
+      # - href: blog.qmd
+      #   text: Blog
   sidebar:
       - id: dsa-sidebar
         style: docked

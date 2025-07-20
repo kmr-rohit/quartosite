@@ -1,0 +1,33 @@
+---
+title: "Kadane's Algorithm"
+order: 1
+---
+
+# Kadane's Algorithm
+
+Kadane's Algorithm is a dynamic programming algorithm to find the maximum sum of a contiguous subarray in an array.
+
+## Explanation
+
+Kadane's Algorithm is a dynamic programming algorithm to find the maximum sum of a contiguous subarray in an array.
+
+```cpp
+int kadane(int arr[], int n) {
+    int max_current = 0;
+    int max_global = 0;
+    for (int i = 0; i < n; i++) {
+        max_current = max(arr[i], max_current + arr[i]);
+        max_global = max(max_global, max_current);
+    }
+    return max_global;
+}
+```
+
+## Time Complexity
+
+- `kadane` is O(n) operation.
+
+## Space Complexity
+
+- `kadane` is O(1) operation.
+

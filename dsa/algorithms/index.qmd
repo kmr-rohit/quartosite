@@ -1,0 +1,12 @@
+---
+title: "Algorithms"
+order: 2
+---
+
+# Algorithms
+
+This section covers the fundamental algorithms used in algorithms and programming.
+
+## Quick Navigation
+
+- [Kadane's Algorithm](kadane.qmd)

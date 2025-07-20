@@ -7,28 +7,26 @@ order: 1
 
 A collection of DSA problems with solutions and explanations.
 
-## Easy Problems
+## We will be following on some list of problems from : 
+1. [Neetcode 150](https://neetcode.io/practice)
+<!-- 2. [CCPD Problems List](https://ccpd.io/problems) -->
+2. Some Leetcode Lists : 
+    - [Graphs List](https://leetcode.com/problem-list/r3wkcrvh/)
+    - [Recursion List](https://leetcode.com/problem-list/pvzikqdr/)
+    - [Trees List](https://leetcode.com/problem-list/pvzsm5jg/)
+    - Dynamic Programming List
+      - [Classic DP](https://leetcode.com/problem-list/9cgl8v8c/)
+      - [Linear DP](https://leetcode.com/problem-list/9cglvrfs/)
+      - [Knapsack DP](https://leetcode.com/problem-list/9cgll6z7/)
+      - [DP on Grids](https://leetcode.com/problem-list/9cgl3ati/)
+      - [DP on Digits](https://leetcode.com/problem-list/9cgl69lg/)
+      - [DP on Maths](https://leetcode.com/problem-list/9cglt0q2/)
+      - [DP on Strings](https://leetcode.com/problem-list/9cgldby3/) 
+      - [DP on Trees & Graphs](https://leetcode.com/problem-list/9cgl011m/)
+      - [DP on Bit Manipulation](https://leetcode.com/problem-list/9cglui66/)
+    - [Binary Search List](https://leetcode.com/problem-list/pvzlmu3g/)
+    - [Heaps, Array, String List](https://leetcode.com/problem-list/pvz3oar6/)
 
-- [Two Sum](two-sum.qmd) - Find two numbers that add up to target
-- [Valid Parentheses](valid-parentheses.qmd) - Check if parentheses are valid
-
-## Medium Problems
-
-- [Longest Substring Without Repeating Characters](longest-substring.qmd) - Find longest unique substring
-- [Merge Two Sorted Lists](merge-sorted-lists.qmd) - Merge sorted linked lists
-
-## Hard Problems
-
-- [Median of Two Sorted Arrays](median-sorted-arrays.qmd) - Find median of two sorted arrays
-
-## Dynamic Programming Problems
-
-- [Climbing Stairs](climbing-stairs.qmd) - Count ways to climb stairs
-- [Longest Increasing Subsequence](longest-increasing-subsequence.qmd) - Find longest increasing subsequence
-
-## Graph Problems
-
-- [Number of Islands](number-of-islands.qmd) - Count connected components in grid
 
 ## Problem-Solving Tips
 

@@ -2,16 +2,20 @@
 title: "About"
 ---
 
-# About This Wiki
+# About Me 👨‍💻
 
-Welcome to my Developer Learning Wiki! This is my personal knowledge base and learning journey as a software developer.
+::: {.profile-header}
+![](images/profile.jpg){.profile-image}
+
+Hello 👋 I'm **Rohit Kumar**, a technology enthusiast with a deep love for programming and a passion for continuous learning. I've recently discovered my interest in tech blogging and writing, and I'm enthusiastic about sharing insights and knowledge from the ever-evolving world of technology.
+:::
 
 ## Who I Am
 
 I'm a software developer passionate about continuous learning and sharing knowledge. This wiki serves as my digital garden where I document my learning journey, organize technical knowledge, and share insights with the developer community.
 
 ## What This Wiki Is
-
+ 
 ### 🎯 **Learning Journey**
 This wiki tracks my progress through four main areas of software development:
 - **Data Structures & Algorithms**: Core computer science fundamentals
@@ -33,161 +37,62 @@ A living document that:
 - **Evolves**: Content updated as my understanding deepens
 - **Shares Knowledge**: Open for others to learn from
 
-## My Learning Philosophy
+## Education 🎓
 
-### **Continuous Improvement**
-- Never stop learning and growing
-- Embrace new technologies and approaches
-- Learn from both successes and failures
-- Share knowledge with the community
+**Bachelors in Mechanical Engineering** - [2020 - 2024]  
+*National Institute of Technology, Warangal, India*  
+**CGPA**: 7.34 / 10
 
-### **Practical Application**
-- Theory is important, but practice is essential
-- Build real projects to solidify understanding
-- Apply concepts to solve actual problems
-- Learn by doing, not just reading
+### Coursework includes:
+- Object-Oriented Programming using Java
+- Data Structure and Algorithms
+- Numerical and Statistical Methods
+- Linear Algebra & Calculus
 
-### **Systematic Approach**
-- Organize knowledge in a structured way
-- Connect related concepts and patterns
-- Document learnings for future reference
-- Review and refine understanding regularly
+## Work Experience 🧑‍💻
 
-## Learning Goals
+### **Application Developer Intern, Oracle**
+- Developed and implemented a "Copy Data" button using JavaScript, Oracle JavaScript Extension Toolkit (OJET), and Visual Builder Cloud Service (VBCS). The button facilitated the copying of data for lead time columns, streamlining the process for the Supply Planning Team.
+- Utilized ElasticSearch REST endpoints to efficiently bind data to tables, ensuring seamless data retrieval and display in the application.
+- Implemented data update functionality using PATCH requests, enabling real-time and incremental updates for changed data in the application.
+- Demonstrated proficiency in data analysis and visualization by incorporating Trendline functionality in OJET charts using Linear Regression. This addition allowed for trend identification and better data-driven decision-making.
 
-### **Short-term (Next 6 months)**
-- Master fundamental DSA concepts and problem-solving
-- Understand scalable system design patterns
-- Analyze 20+ technical articles and blogs
-- Complete 6 technical books with detailed notes
+## Achievements 🏅
 
-### **Medium-term (6-12 months)**
-- Build and deploy scalable applications
-- Contribute to open source projects
-- Share knowledge through blog posts and presentations
-- Mentor other developers in their learning journey
-
-### **Long-term (1+ years)**
-- Develop expertise in distributed systems
-- Create comprehensive learning resources
-- Build a strong professional network
-- Contribute to the broader developer community
-
-## How I Learn
-
-### **Reading Strategy**
-1. **Active Reading**: Take notes, ask questions, make connections
-2. **Implementation**: Build examples and practice exercises
-3. **Reflection**: Connect concepts to real-world applications
-4. **Sharing**: Write summaries and discuss with others
-
-### **Practice Approach**
-1. **LeetCode/HackerRank**: Regular problem-solving practice
-2. **Personal Projects**: Build applications using learned concepts
-3. **Code Reviews**: Learn from others and improve code quality
-4. **Teaching**: Explain concepts to reinforce understanding
-
-### **Community Engagement**
-1. **Study Groups**: Join learning communities and discussions
-2. **Open Source**: Contribute to projects and learn from codebases
-3. **Conferences**: Attend events and network with other developers
-4. **Mentorship**: Both giving and receiving guidance
+- **Conducted 15+ Competitive Programming Contests** for Students along with Discussions
+- **Qualified Internal Round** for Smart India Hackathon 2022
+- **600+ problems solved** on LeetCode, Geeks for Geeks, CodeChef, CodeForces etc.
 
 ## Technology Stack
 
 ### **Languages & Frameworks**
-- **Python**: Primary language for algorithms and data science
-- **JavaScript/TypeScript**: Web development and full-stack applications
-- **Go**: Systems programming and microservices
+- **Java**: Object-Oriented Programming and backend development
+- **JavaScript**: Web development and Oracle VBCS
+- **Python**: Algorithms, data science, and machine learning
+- **React/NextJS**: Currently learning modern web development
 - **SQL**: Database design and optimization
 
 ### **Tools & Platforms**
 - **Git**: Version control and collaboration
-- **Docker**: Containerization and deployment
-- **AWS/GCP**: Cloud platforms and services
-- **Kubernetes**: Container orchestration
+- **Oracle VBCS**: Cloud application development
+- **ElasticSearch**: Data search and analytics
+- **OJET**: Oracle JavaScript Extension Toolkit
 
 ### **Areas of Focus**
-- **Backend Development**: APIs, databases, server-side logic
-- **System Design**: Scalable architecture and distributed systems
-- **DevOps**: CI/CD, monitoring, infrastructure as code
-- **Data Engineering**: ETL pipelines, analytics, machine learning
+- **Competitive Programming**: 600+ problems solved across platforms
+- **Web Development**: Learning React and NextJS
+- **Open Source**: Exploring and contributing to projects
+- **Machine Learning**: Exploring AI/ML technologies
 
-## Why I Built This Wiki
-
-### **Personal Growth**
-- **Track Progress**: Document my learning journey
-- **Retain Knowledge**: Create a searchable knowledge base
-- **Identify Gaps**: Understand areas that need improvement
-- **Stay Motivated**: Visualize progress and achievements
-
-### **Community Contribution**
-- **Share Knowledge**: Help others learn and grow
-- **Get Feedback**: Learn from community insights
-- **Build Network**: Connect with like-minded developers
-- **Give Back**: Contribute to the developer ecosystem
-
-### **Professional Development**
-- **Portfolio**: Showcase skills and knowledge
-- **Interview Prep**: Organize knowledge for technical interviews
-- **Career Growth**: Demonstrate continuous learning
-- **Thought Leadership**: Share insights and perspectives
-
-## How to Use This Wiki
-
-### **For Learners**
-- **Browse by Topic**: Explore specific areas of interest
-- **Follow the Journey**: See how concepts build upon each other
-- **Practice Examples**: Use code examples and exercises
-- **Ask Questions**: Reach out for clarification or discussion
-
-### **For Developers**
-- **Reference Material**: Use as a quick reference guide
-- **Learning Path**: Follow structured learning paths
-- **Code Examples**: Copy and adapt code for your projects
-- **Best Practices**: Learn from documented patterns and approaches
-
-### **For Contributors**
-- **Suggest Improvements**: Point out errors or areas for enhancement
-- **Share Resources**: Recommend additional learning materials
-- **Collaborate**: Work together on projects or learning goals
-- **Mentor**: Help guide others in their learning journey
 
 ## Get in Touch
 
 I'm always interested in connecting with other developers and learners. Here are some ways to reach out:
 
 ### **Social Media**
-- **GitHub**: [Your GitHub Profile]
-- **LinkedIn**: [Your LinkedIn Profile]
-- **Twitter**: [Your Twitter Handle]
-
-### **Contact**
-- **Email**: [Your Email]
-- **Discord**: [Your Discord Handle]
-- **Slack**: [Your Slack Workspace]
-
-### **Collaboration**
-- **Study Groups**: Join or form learning communities
-- **Open Source**: Contribute to projects together
-- **Blog Posts**: Guest write or collaborate on content
-- **Presentations**: Speak at meetups or conferences
-
-## Acknowledgments
-
-### **Inspiration**
-- **Digital Garden Movement**: Inspired by the concept of digital gardens
-- **Developer Communities**: Learning from the broader developer ecosystem
-- **Open Source**: Building on the work of countless contributors
-- **Mentors**: Those who have guided my learning journey
-
-### **Resources**
-- **Quarto**: The amazing tool that powers this wiki
-- **GitHub**: Platform for hosting and collaboration
-- **Learning Platforms**: LeetCode, HackerRank, Coursera, etc.
-- **Technical Blogs**: Countless engineers sharing their knowledge
-
----
+- **GitHub**: [kmr-rohit](https://github.com/kmr-rohit)
+- **LinkedIn**: [Rohit Kumar](https://linkedin.com/in/rr7433446)
+- **LeetCode**: [Rohit Kumar](https://leetcode.com/kmr-rohit)
 
 *This wiki is a work in progress, constantly evolving as I learn and grow. Thank you for being part of this journey!*
 

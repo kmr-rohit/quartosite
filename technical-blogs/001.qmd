@@ -1,0 +1,121 @@
+--- 
+title: "1.5+ million Pdfs in 25 mins"
+tags: ["system-design", "distributed-systems", "cloud-native", "batch-processing"]  
+order: 1
+---
+
+[Check the blog here](https://zerodha.tech/blog/1-5-million-pdfs-in-25-minutes/)
+
+## Overview
+
+This analysis discusses Zerodha’s overhaul of their PDF contract note generation and delivery system, which transformed a legacy workflow from an 8-hour batch process into a horizontally scalable, event-driven architecture that produces and sends 1.5+ million digital contract notes within 25 minutes. The process leverages cloud-native design principles, distributed job orchestration, and high-throughput storage solutions to meet regulatory deadlines and volatile, scale-driven demand[1].
+
+## Legacy System Challenges
+
+- **Monolithic, Vertically Scaled Architecture**: The original design was a large, single-server setup that sequentially processed each step, resulting in 7-8 hour runtimes.
+- **Process Pipeline**:
+  - Python-generated HTML contract notes from CSV EOD dumps.
+  - HTML-to-PDF via Chrome (Puppeteer).
+  - PDF digital signature with a Java CLI.
+  - Email delivery via a self-hosted SMTP server.
+- **Bottlenecks**:
+  - Long execution times (risking regulatory non-compliance).
+  - SMTP server throughput limitations.
+  - Scalability ceiling due to single-machine design.
+  - Resource waste on spikes due to vertically scaling for peak demand.
+
+## New System Architecture
+
+### Design Principles
+
+- **Horizontal Scalability**: Processes are distributed across ephemeral EC2 instances, saturating all available cores for short-lived, high-throughput processing.
+- **Job Chaining/Orchestration**: The system decomposes the workflow into independent jobs handled by specialized workers, managed by a custom Go-based messaging library (Tasqueue).
+- **Cloud-Native Choices**: Leverages stateless compute, object storage (S3), and a job state backend (Redis).
+
+### Workflow Overview
+
+1. **Data Processing Worker**: Parses exchange data and prepares template-ready input.
+2. **PDF Generation Worker**: Converts templates to PDFs.
+3. **PDF Signing Worker**: Digitally signs, encrypts PDFs.
+4. **Email Worker**: Delivers signed PDFs to users[1].
+
+*Each stage writes outputs to S3, which serves as the shared scratch space for the next.*
+
+#### Distributed Job Chaining Example
+
+- Each contract note passes through four jobs: data processing → PDF generation → PDF signing → email, with outputs (e.g., PDFs) exchanged via S3.
+
+## Core Components and Technical Decisions
+
+### 1. Worker Implementation
+
+- **Language Shift**: Workers were rewritten from Python to Go, yielding significant speed and efficiency gains.
+- **Task Distribution**: Custom “Tasqueue” job library coordinates which worker does what. Redis tracks job states and triggers targeted retries for failed jobs.
+
+### 2. PDF Generation Pipeline
+
+| Generation Mode    | Performance Impact                                 | Problems                                                      |
+|--------------------|---------------------------------------------------|---------------------------------------------------------------|
+| HTML (Puppeteer)   | Baseline, but slow and resource-intensive         | High resource usage, slow for scale                            |
+| LaTeX (pdflatex)   | 10x faster than Puppeteer                         | Static memory limits (fails for large files)                   |
+| LaTeX (lualatex)   | Dynamic memory allocation, handles large PDFs     | Occasional failures, difficult stack traces, large Docker images|
+| Typst              | 2–3x faster for small; 18x for massive PDFs       | None significant; much leaner Docker images                    |
+
+- **Modernization**: The switch to Typst, a Rust-based typesetting system, resulted in substantial performance boosts (e.g., 2,000-page PDF in Typst = 1 minute vs. 18 minutes in lualatex), with smaller Docker images and simpler debugging.
+
+### 3. Digital PDF Signing
+
+- **Java OpenPDF**: No open-source tool existed to batch sign PDFs efficiently. Zerodha built a lightweight HTTP wrapper over Java’s OpenPDF library, allowing concurrent signing in a JVM running as a sidecar for each worker container.
+
+### 4. Storage and File Exchange
+
+| Storage Option  | Read/Write Perf. (10,000 files) | Bottlenecks / Suitability                       |
+|-----------------|----------------------------------|-------------------------------------------------|
+| EFS (GP mode)   | 4–5 seconds                      | Hit operations per second limits, unsuitable    |
+| EFS (Max I/O)   | 17–18 seconds                    | High latency, worse than GP, unsuitable         |
+| EBS             | 400 ms                           | Fast but used only for local ephemeral storage  |
+| S3              | 4–5 seconds                      | Chosen for low cost, acceptable burst, easy ops |
+
+- **S3 Chosen**: After tests, S3 was selected for its cost and manageability, despite needing to engineer around its per-prefix rate limits (3,500 write/5,500 read requests per second per prefix).
+- **Key Management**: Initially used KSUIDs with natural prefix collisions (“hot prefixes”); refactored to maximize key space diversity and avoid rate limiting.
+
+### 5. Scaling and Throughput
+
+- **Ephemeral Computing**: Instantiates large EC2 fleets dynamically, saturates CPUs, spins down instantly post-batch.
+- **File and Worker Pooling**: Maximizes concurrency, efficiently balances variable job sizes (e.g., users with 2- vs. 2,000-page reports).
+
+### 6. Monitoring and Reliability
+
+- **Redis State Store**: Tracks job progress, identifies and triggers retries for failed jobs.
+- **Graceful Failure Handling**: Intelligent retry policies, due to fail-fast, distributed design.
+
+## Key System Design Insights
+
+- **Distributed Batching** works best under bursty, high-throughput workloads—design so each worker can independently process units of work with minimal coordination.
+- **Toolchain Choices** matter: Moving from interpreted (Python) to compiled languages (Go), and from heavyweight containers (Chrome, LaTeX) to single binaries (Typst) enable massive reductions in resource usage.
+- **Shared Object Storage (S3)** proves practical for high-concurrency workloads if request prefix sharding is handled carefully.
+- **Custom Lightweight Libraries** can outperform generic job brokers when tuned for specific dataflows, especially at extreme scale.
+
+## Quantitative Outcomes
+
+- **End-to-End Performance**: 1.5+ million PDFs generated, signed, and emailed in ~25 minutes.
+- **Resource Efficiency**: Negligible incremental costs due to ephemeral compute and optimal containerization.
+- **Reliability**: Sub-1% error rates for bursty, high-concurrency jobs, with good retry logic.
+
+## Lessons and Trade-offs
+
+- **Pros**:
+  - Order-of-magnitude speedup.
+  - Significant cloud cost reduction.
+  - System adaptivity to daily volume fluctuations.
+  - Simple, maintainable worker design.
+
+- **Cons/Risks**:
+  - Reliance on S3 limits—requires ongoing bucket prefix diversity management.
+  - Digital signing still bottlenecked by FOSS library limitations.
+  - Continuous need for observability and error monitoring.
+
+## Conclusion
+
+The re-architecture demonstrates a highly effective adoption of distributed systems patterns for time-sensitive, large-scale workload automation in the financial sector. Key innovations include aggressively parallelized worker pools, cloud-native storage strategies, and constant toolchain optimization for both speed and maintainability. Zerodha’s experience offers a model for similar large-scale, compliance-driven batch processing systems[1].
+

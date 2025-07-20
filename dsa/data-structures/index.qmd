@@ -1,0 +1,19 @@
+---
+title: "Data Structures"
+order: 2
+---
+
+# Data Structures
+
+This section covers the fundamental data structures used in algorithms and programming.
+
+## Quick Navigation
+
+- [Arrays](arrays.qmd)
+- [Linked Lists](linked-lists.qmd)
+- [Stacks](stacks.qmd)
+- [Queues](queue.qmd)
+- [Heaps](heaps.qmd)
+- [Trees](trees.qmd)
+- [Graphs](graphs.qmd)
+- [Hash Tables](hash-tables.qmd)

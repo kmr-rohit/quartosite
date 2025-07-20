@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Data Structures – Developer Learning Wiki</title>
+<title>Kadane’s Algorithm – Developer Learning Wiki</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -58,23 +58,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-55953aa58b50ad052fe8fa3f35ae395a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-8c35b76dbb8e7ff2e4658a06d7508b67.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -105,7 +105,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <style>html{ scroll-behavior: smooth; }</style>
 
 
-<link rel="stylesheet" href="../css/styles.css">
+<link rel="stylesheet" href="../../css/styles.css">
 </head>
 
 <body class="nav-sidebar docked nav-fixed quarto-light">
@@ -115,7 +115,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Developer Learning Wiki</span>
     </a>
   </div>
@@ -126,7 +126,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../about.html"> 
+    <a class="nav-link" href="../../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -135,19 +135,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-dsa">    
         <li>
-    <a class="dropdown-item" href="../dsa/index.html">
+    <a class="dropdown-item" href="../../dsa/index.html">
  <span class="dropdown-text">Overview</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../dsa/data-structures.html">
+    <a class="dropdown-item" href="../../dsa/data-structures/index.html">
  <span class="dropdown-text">Data Structures</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../dsa/algorithms.html">
+    <a class="dropdown-item" href="../../dsa/algorithms/index.md">
  <span class="dropdown-text">Algorithms</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../dsa/problems/index.html">
+    <a class="dropdown-item" href="../../dsa/problems/index.html">
  <span class="dropdown-text">Problems</span></a>
   </li>  
     </ul>
@@ -158,20 +158,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-system-design">    
         <li>
-    <a class="dropdown-item" href="../system-design/index.html">
+    <a class="dropdown-item" href="../../system-design/index.html">
  <span class="dropdown-text">Overview</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../system-design/patterns/index.html">
- <span class="dropdown-text">Patterns</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../system-design/case-studies.html">
- <span class="dropdown-text">Case Studies</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../system-design/scalability.html">
- <span class="dropdown-text">Scalability</span></a>
   </li>  
     </ul>
   </li>
@@ -181,42 +169,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-technical-blogs">    
         <li>
-    <a class="dropdown-item" href="../technical-blogs/index.html">
+    <a class="dropdown-item" href="../../technical-blogs/index.html">
  <span class="dropdown-text">Overview</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../technical-blogs/breakdowns/index.html">
- <span class="dropdown-text">Breakdowns</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../technical-blogs/notes.html">
- <span class="dropdown-text">Notes</span></a>
   </li>  
     </ul>
   </li>
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-books" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Books</span>
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-books">    
-        <li>
-    <a class="dropdown-item" href="../books/index.html">
- <span class="dropdown-text">Overview</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../books/reading-list/index.html">
- <span class="dropdown-text">Reading List</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../books/notes.html">
- <span class="dropdown-text">Notes</span></a>
-  </li>  
-    </ul>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="../blog.html"> 
-<span class="menu-text">Blog</span></a>
-  </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
@@ -230,7 +187,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="../blog.xml"> <i class="bi bi-rss" role="img">
+    <a class="nav-link" href="../../blog.xml"> <i class="bi bi-rss" role="img">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
@@ -245,7 +202,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../dsa/index.html">Data Structures &amp; Algorithms</a></li><li class="breadcrumb-item"><a href="../dsa/data-structures.html">Data Structures</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../dsa/index.html">Data Structures &amp; Algorithms</a></li><li class="breadcrumb-item"><a href="../../dsa/algorithms/index.html">Algorithms</a></li><li class="breadcrumb-item"><a href="../../dsa/algorithms/kadane.html">Kadane’s Algorithm</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -267,7 +224,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../dsa/index.html" class="sidebar-item-text sidebar-link">
+            <a href="../../dsa/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Data Structures &amp; Algorithms</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -276,7 +233,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../dsa/problems/index.html" class="sidebar-item-text sidebar-link">
+            <a href="../../dsa/problems/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Practice Problems</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -285,42 +242,64 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../dsa/problems/two-sum.html" class="sidebar-item-text sidebar-link">
+  <a href="../../dsa/problems/two-sum.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Two Sum</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../dsa/problems/valid-parentheses.html" class="sidebar-item-text sidebar-link">
+  <a href="../../dsa/problems/valid-parentheses.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Valid Parentheses</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../dsa/problems/climbing-stairs.html" class="sidebar-item-text sidebar-link">
+  <a href="../../dsa/problems/climbing-stairs.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Climbing Stairs</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../dsa/problems/longest-substring.html" class="sidebar-item-text sidebar-link">
+  <a href="../../dsa/problems/longest-substring.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Longest Substring Without Repeating Characters</span></a>
   </div>
 </li>
       </ul>
   </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../dsa/data-structures.html" class="sidebar-item-text sidebar-link active">
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../dsa/data-structures/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Data Structures</span></a>
-  </div>
-</li>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../dsa/algorithms.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Algorithms</span></a>
+  <a href="../../dsa/data-structures/queue.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Queue</span></a>
   </div>
 </li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../dsa/algorithms/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Algorithms</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../dsa/algorithms/kadane.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Kadane’s Algorithm</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
       </ul>
   </li>
     </ul>
@@ -333,36 +312,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#data-structures" id="toc-data-structures" class="nav-link active" data-scroll-target="#data-structures">Data Structures</a>
+  <li><a href="#kadanes-algorithm" id="toc-kadanes-algorithm" class="nav-link active" data-scroll-target="#kadanes-algorithm">Kadane’s Algorithm</a>
   <ul class="collapse">
-  <li><a href="#linear-data-structures" id="toc-linear-data-structures" class="nav-link" data-scroll-target="#linear-data-structures">Linear Data Structures</a>
-  <ul class="collapse">
-  <li><a href="#arrays" id="toc-arrays" class="nav-link" data-scroll-target="#arrays">Arrays</a></li>
-  <li><a href="#linked-lists" id="toc-linked-lists" class="nav-link" data-scroll-target="#linked-lists">Linked Lists</a></li>
-  <li><a href="#stacks" id="toc-stacks" class="nav-link" data-scroll-target="#stacks">Stacks</a></li>
-  <li><a href="#queues" id="toc-queues" class="nav-link" data-scroll-target="#queues">Queues</a></li>
-  </ul></li>
-  <li><a href="#tree-based-data-structures" id="toc-tree-based-data-structures" class="nav-link" data-scroll-target="#tree-based-data-structures">Tree-based Data Structures</a>
-  <ul class="collapse">
-  <li><a href="#binary-trees" id="toc-binary-trees" class="nav-link" data-scroll-target="#binary-trees">Binary Trees</a></li>
-  <li><a href="#binary-search-trees-bst" id="toc-binary-search-trees-bst" class="nav-link" data-scroll-target="#binary-search-trees-bst">Binary Search Trees (BST)</a></li>
-  <li><a href="#heaps" id="toc-heaps" class="nav-link" data-scroll-target="#heaps">Heaps</a></li>
-  </ul></li>
-  <li><a href="#hash-based-data-structures" id="toc-hash-based-data-structures" class="nav-link" data-scroll-target="#hash-based-data-structures">Hash-based Data Structures</a>
-  <ul class="collapse">
-  <li><a href="#hash-tables" id="toc-hash-tables" class="nav-link" data-scroll-target="#hash-tables">Hash Tables</a></li>
-  </ul></li>
-  <li><a href="#graph-data-structures" id="toc-graph-data-structures" class="nav-link" data-scroll-target="#graph-data-structures">Graph Data Structures</a>
-  <ul class="collapse">
-  <li><a href="#adjacency-list" id="toc-adjacency-list" class="nav-link" data-scroll-target="#adjacency-list">Adjacency List</a></li>
-  <li><a href="#adjacency-matrix" id="toc-adjacency-matrix" class="nav-link" data-scroll-target="#adjacency-matrix">Adjacency Matrix</a></li>
-  </ul></li>
-  <li><a href="#advanced-data-structures" id="toc-advanced-data-structures" class="nav-link" data-scroll-target="#advanced-data-structures">Advanced Data Structures</a>
-  <ul class="collapse">
-  <li><a href="#tries-prefix-trees" id="toc-tries-prefix-trees" class="nav-link" data-scroll-target="#tries-prefix-trees">Tries (Prefix Trees)</a></li>
-  <li><a href="#segment-trees" id="toc-segment-trees" class="nav-link" data-scroll-target="#segment-trees">Segment Trees</a></li>
-  </ul></li>
-  <li><a href="#implementation-tips" id="toc-implementation-tips" class="nav-link" data-scroll-target="#implementation-tips">Implementation Tips</a></li>
+  <li><a href="#explanation" id="toc-explanation" class="nav-link" data-scroll-target="#explanation">Explanation</a></li>
+  <li><a href="#time-complexity" id="toc-time-complexity" class="nav-link" data-scroll-target="#time-complexity">Time Complexity</a></li>
+  <li><a href="#space-complexity" id="toc-space-complexity" class="nav-link" data-scroll-target="#space-complexity">Space Complexity</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -370,9 +324,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content column-body" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../dsa/index.html">Data Structures &amp; Algorithms</a></li><li class="breadcrumb-item"><a href="../dsa/data-structures.html">Data Structures</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../dsa/index.html">Data Structures &amp; Algorithms</a></li><li class="breadcrumb-item"><a href="../../dsa/algorithms/index.html">Algorithms</a></li><li class="breadcrumb-item"><a href="../../dsa/algorithms/kadane.html">Kadane’s Algorithm</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Data Structures</h1>
+<h1 class="title">Kadane’s Algorithm</h1>
 </div>
 
 
@@ -389,219 +343,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="data-structures" class="level1">
-<h1>Data Structures</h1>
-<p>A comprehensive guide to fundamental data structures with implementations and use cases.</p>
-<section id="linear-data-structures" class="level2">
-<h2 class="anchored" data-anchor-id="linear-data-structures">Linear Data Structures</h2>
-<section id="arrays" class="level3">
-<h3 class="anchored" data-anchor-id="arrays">Arrays</h3>
-<ul>
-<li><strong>Description</strong>: Contiguous memory allocation for elements</li>
-<li><strong>Time Complexity</strong>: Access O(1), Search O(n), Insert/Delete O(n)</li>
-<li><strong>Use Cases</strong>: When you need random access, fixed size collections</li>
-</ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Basic array operations</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>arr <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>arr.append(<span class="dv">6</span>)      <span class="co"># O(1) amortized</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>arr.insert(<span class="dv">0</span>, <span class="dv">0</span>)   <span class="co"># O(n)</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>arr.pop()          <span class="co"># O(1)</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>arr[<span class="dv">2</span>]             <span class="co"># O(1) access</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="kadanes-algorithm" class="level1">
+<h1>Kadane’s Algorithm</h1>
+<p>Kadane’s Algorithm is a dynamic programming algorithm to find the maximum sum of a contiguous subarray in an array.</p>
+<section id="explanation" class="level2">
+<h2 class="anchored" data-anchor-id="explanation">Explanation</h2>
+<p>Kadane’s Algorithm is a dynamic programming algorithm to find the maximum sum of a contiguous subarray in an array.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> kadane<span class="op">(</span><span class="dt">int</span> arr<span class="op">[],</span> <span class="dt">int</span> n<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> max_current <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> max_global <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> n<span class="op">;</span> i<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>        max_current <span class="op">=</span> max<span class="op">(</span>arr<span class="op">[</span>i<span class="op">],</span> max_current <span class="op">+</span> arr<span class="op">[</span>i<span class="op">]);</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        max_global <span class="op">=</span> max<span class="op">(</span>max_global<span class="op">,</span> max_current<span class="op">);</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> max_global<span class="op">;</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="linked-lists" class="level3">
-<h3 class="anchored" data-anchor-id="linked-lists">Linked Lists</h3>
+<section id="time-complexity" class="level2">
+<h2 class="anchored" data-anchor-id="time-complexity">Time Complexity</h2>
 <ul>
-<li><strong>Description</strong>: Nodes connected by pointers</li>
-<li><strong>Time Complexity</strong>: Access O(n), Search O(n), Insert/Delete O(1) at head/tail</li>
-<li><strong>Use Cases</strong>: Dynamic size, frequent insertions/deletions</li>
-</ul>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> ListNode:</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, val<span class="op">=</span><span class="dv">0</span>, <span class="bu">next</span><span class="op">=</span><span class="va">None</span>):</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.val <span class="op">=</span> val</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.<span class="bu">next</span> <span class="op">=</span> <span class="bu">next</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Common operations</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> reverse_list(head):</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    prev <span class="op">=</span> <span class="va">None</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    curr <span class="op">=</span> head</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> curr:</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>        next_temp <span class="op">=</span> curr.<span class="bu">next</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>        curr.<span class="bu">next</span> <span class="op">=</span> prev</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>        prev <span class="op">=</span> curr</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>        curr <span class="op">=</span> next_temp</span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> prev</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="stacks" class="level3">
-<h3 class="anchored" data-anchor-id="stacks">Stacks</h3>
-<ul>
-<li><strong>Description</strong>: LIFO (Last In, First Out) structure</li>
-<li><strong>Time Complexity</strong>: Push/Pop O(1), Search O(n)</li>
-<li><strong>Use Cases</strong>: Function call stack, undo operations, parentheses matching</li>
-</ul>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Stack implementation</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>stack <span class="op">=</span> []</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>stack.append(<span class="dv">1</span>)    <span class="co"># Push</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>stack.append(<span class="dv">2</span>)</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>stack.append(<span class="dv">3</span>)</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>top <span class="op">=</span> stack.pop()  <span class="co"># Pop - returns 3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="queues" class="level3">
-<h3 class="anchored" data-anchor-id="queues">Queues</h3>
-<ul>
-<li><strong>Description</strong>: FIFO (First In, First Out) structure</li>
-<li><strong>Time Complexity</strong>: Enqueue/Dequeue O(1), Search O(n)</li>
-<li><strong>Use Cases</strong>: BFS, task scheduling, print queues</li>
-</ul>
-<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> collections <span class="im">import</span> deque</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>queue <span class="op">=</span> deque()</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>queue.append(<span class="dv">1</span>)    <span class="co"># Enqueue</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>queue.append(<span class="dv">2</span>)</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>queue.append(<span class="dv">3</span>)</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>first <span class="op">=</span> queue.popleft()  <span class="co"># Dequeue - returns 1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-</section>
-<section id="tree-based-data-structures" class="level2">
-<h2 class="anchored" data-anchor-id="tree-based-data-structures">Tree-based Data Structures</h2>
-<section id="binary-trees" class="level3">
-<h3 class="anchored" data-anchor-id="binary-trees">Binary Trees</h3>
-<ul>
-<li><strong>Description</strong>: Each node has at most two children</li>
-<li><strong>Use Cases</strong>: Expression trees, file systems, decision trees</li>
-</ul>
-<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> TreeNode:</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, val<span class="op">=</span><span class="dv">0</span>, left<span class="op">=</span><span class="va">None</span>, right<span class="op">=</span><span class="va">None</span>):</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.val <span class="op">=</span> val</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.left <span class="op">=</span> left</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.right <span class="op">=</span> right</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Tree traversal</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> inorder_traversal(root):</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> root:</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> []</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> inorder_traversal(root.left) <span class="op">+</span> [root.val] <span class="op">+</span> inorder_traversal(root.right)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="binary-search-trees-bst" class="level3">
-<h3 class="anchored" data-anchor-id="binary-search-trees-bst">Binary Search Trees (BST)</h3>
-<ul>
-<li><strong>Description</strong>: Ordered binary tree where left &lt; root &lt; right</li>
-<li><strong>Time Complexity</strong>: Search/Insert/Delete O(log n) average, O(n) worst</li>
-<li><strong>Use Cases</strong>: Symbol tables, ordered data storage</li>
+<li><code>kadane</code> is O(n) operation.</li>
 </ul>
 </section>
-<section id="heaps" class="level3">
-<h3 class="anchored" data-anchor-id="heaps">Heaps</h3>
+<section id="space-complexity" class="level2">
+<h2 class="anchored" data-anchor-id="space-complexity">Space Complexity</h2>
 <ul>
-<li><strong>Description</strong>: Complete binary tree with heap property</li>
-<li><strong>Time Complexity</strong>: Insert/Delete O(log n), Get min/max O(1)</li>
-<li><strong>Use Cases</strong>: Priority queues, heap sort, top-k elements</li>
+<li><code>kadane</code> is O(1) operation.</li>
 </ul>
-<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> heapq</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Min heap</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>heap <span class="op">=</span> []</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>heapq.heappush(heap, <span class="dv">3</span>)</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>heapq.heappush(heap, <span class="dv">1</span>)</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>heapq.heappush(heap, <span class="dv">2</span>)</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>min_val <span class="op">=</span> heapq.heappop(heap)  <span class="co"># Returns 1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-</section>
-<section id="hash-based-data-structures" class="level2">
-<h2 class="anchored" data-anchor-id="hash-based-data-structures">Hash-based Data Structures</h2>
-<section id="hash-tables" class="level3">
-<h3 class="anchored" data-anchor-id="hash-tables">Hash Tables</h3>
-<ul>
-<li><strong>Description</strong>: Key-value pairs with O(1) average access</li>
-<li><strong>Time Complexity</strong>: Insert/Delete/Search O(1) average, O(n) worst</li>
-<li><strong>Use Cases</strong>: Caching, symbol tables, duplicate detection</li>
-</ul>
-<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Dictionary in Python</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>hash_table <span class="op">=</span> {}</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>hash_table[<span class="st">'key'</span>] <span class="op">=</span> <span class="st">'value'</span>    <span class="co"># Insert</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>value <span class="op">=</span> hash_table[<span class="st">'key'</span>]      <span class="co"># Access</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>hash_table.pop(<span class="st">'key'</span>)          <span class="co"># Delete</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-</section>
-<section id="graph-data-structures" class="level2">
-<h2 class="anchored" data-anchor-id="graph-data-structures">Graph Data Structures</h2>
-<section id="adjacency-list" class="level3">
-<h3 class="anchored" data-anchor-id="adjacency-list">Adjacency List</h3>
-<ul>
-<li><strong>Description</strong>: List of lists representing graph edges</li>
-<li><strong>Space Complexity</strong>: O(V + E)</li>
-<li><strong>Use Cases</strong>: Sparse graphs, most graph algorithms</li>
-</ul>
-<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Adjacency list representation</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>graph <span class="op">=</span> {</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="dv">0</span>: [<span class="dv">1</span>, <span class="dv">2</span>],</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="dv">1</span>: [<span class="dv">0</span>, <span class="dv">2</span>],</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="dv">2</span>: [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">3</span>],</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="dv">3</span>: [<span class="dv">2</span>]</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="adjacency-matrix" class="level3">
-<h3 class="anchored" data-anchor-id="adjacency-matrix">Adjacency Matrix</h3>
-<ul>
-<li><strong>Description</strong>: 2D matrix representing graph edges</li>
-<li><strong>Space Complexity</strong>: O(V²)</li>
-<li><strong>Use Cases</strong>: Dense graphs, quick edge existence check</li>
-</ul>
-</section>
-</section>
-<section id="advanced-data-structures" class="level2">
-<h2 class="anchored" data-anchor-id="advanced-data-structures">Advanced Data Structures</h2>
-<section id="tries-prefix-trees" class="level3">
-<h3 class="anchored" data-anchor-id="tries-prefix-trees">Tries (Prefix Trees)</h3>
-<ul>
-<li><strong>Description</strong>: Tree for storing strings with common prefixes</li>
-<li><strong>Use Cases</strong>: Autocomplete, spell checkers, IP routing</li>
-</ul>
-</section>
-<section id="segment-trees" class="level3">
-<h3 class="anchored" data-anchor-id="segment-trees">Segment Trees</h3>
-<ul>
-<li><strong>Description</strong>: Tree for range queries and updates</li>
-<li><strong>Time Complexity</strong>: Query/Update O(log n)</li>
-<li><strong>Use Cases</strong>: Range sum/min/max queries</li>
-</ul>
-</section>
-</section>
-<section id="implementation-tips" class="level2">
-<h2 class="anchored" data-anchor-id="implementation-tips">Implementation Tips</h2>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Memory Management
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ul>
-<li>Consider space complexity alongside time complexity</li>
-<li>Be aware of language-specific optimizations</li>
-<li>Use appropriate data structures for your use case</li>
-</ul>
-</div>
-</div>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Common Pitfalls
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ul>
-<li>Not considering edge cases (empty structures, single elements)</li>
-<li>Forgetting to handle memory leaks in manual implementations</li>
-<li>Choosing wrong data structure for the problem</li>
-</ul>
-</div>
-</div>
 
 
 </section>
@@ -630,7 +398,7 @@ Common Pitfalls
 <div class="column-screen-inset">
     <hr class="about-sep">
     <div class="quarto-about-jolla column-body" style="margin-top:52px;">
-        <p> © 2024 • Developer Learning Wiki • <a href="../about.html">About</a> • <i data-target="calvinmodal" data-toggle="modal" class="bi bi-emoji-smile-upside-down"></i>
+        <p> © 2024 • Developer Learning Wiki • <a href="../../about.html">About</a> • <i data-target="calvinmodal" data-toggle="modal" class="bi bi-emoji-smile-upside-down"></i>
             </p>
     
         <p> Found an error? Please leave a comment here or submit a PR <a href="https://github.com/kmr-rohit/quartosite">in this repository</a>, thanks!</p>
@@ -682,7 +450,7 @@ Common Pitfalls
     <p style="text-align: center; font-size: 18px; margin: 20px;">🚀 Happy Coding!</p>
 </div>
 
-<script type="text/javascript" src="../scripts.js"></script>
+<script type="text/javascript" src="../../scripts.js"></script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -1087,5 +855,5 @@ Common Pitfalls
 
 
 
-</div><script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</div><script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

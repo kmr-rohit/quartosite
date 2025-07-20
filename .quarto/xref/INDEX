@@ -2611,5 +2611,20 @@
   },
   "system-design/patterns/consistent-hashing.qmd": {
     "consistent-hashing.html": "922f9c5f"
+  },
+  "dsa/data-structures/index.qmd": {
+    "index.html": "4b70bdcf"
+  },
+  "dsa/algorithms/index.qmd": {
+    "index.html": "f887c9d7"
+  },
+  "dsa/data-structures/queue.qmd": {
+    "queue.html": "c89e13fe"
+  },
+  "dsa/algorithms/kadane.qmd": {
+    "kadane.html": "9a970637"
+  },
+  "technical-blogs/001.qmd": {
+    "001.html": "50a31421"
   }
 }
