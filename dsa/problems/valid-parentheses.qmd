@@ -1,0 +1,54 @@
+---
+title: "Valid Parentheses"
+order: 3
+---
+
+# Valid Parentheses
+
+**Problem**: Given a string `s` containing just the characters `'('`, `')'`, `'{'`, `'}'`, `'['` and `']'`, determine if the input string is valid.
+
+## Solution
+
+```python
+def is_valid(s):
+    stack = []
+    brackets = {')': '(', '}': '{', ']': '['}
+    
+    for char in s:
+        if char in '({[':
+            stack.append(char)
+        elif char in ')}]':
+            if not stack or stack.pop() != brackets[char]:
+                return False
+    
+    return len(stack) == 0
+
+# Example
+print(is_valid("()[]{}"))  # True
+print(is_valid("([)]"))    # False
+```
+
+## Analysis
+
+**Time Complexity**: O(n)  
+**Space Complexity**: O(n)
+
+## Approach
+
+1. **Stack Approach**: Use a stack to keep track of opening brackets
+2. **Matching Pairs**: For each closing bracket, check if it matches the top of stack
+3. **Validation**: Ensure stack is empty at the end
+
+## Edge Cases
+
+- Empty string
+- Single character
+- Unmatched opening brackets
+- Unmatched closing brackets
+- Mixed bracket types
+
+## Variations
+
+- **Generate Parentheses**: Generate all valid combinations
+- **Longest Valid Parentheses**: Find longest valid substring
+- **Remove Invalid Parentheses**: Remove minimum characters to make valid 

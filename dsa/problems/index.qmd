@@ -1,0 +1,66 @@
+---
+title: "Practice Problems"
+order: 1
+---
+
+# Practice Problems
+
+A collection of DSA problems with solutions and explanations.
+
+## Easy Problems
+
+- [Two Sum](two-sum.qmd) - Find two numbers that add up to target
+- [Valid Parentheses](valid-parentheses.qmd) - Check if parentheses are valid
+
+## Medium Problems
+
+- [Longest Substring Without Repeating Characters](longest-substring.qmd) - Find longest unique substring
+- [Merge Two Sorted Lists](merge-sorted-lists.qmd) - Merge sorted linked lists
+
+## Hard Problems
+
+- [Median of Two Sorted Arrays](median-sorted-arrays.qmd) - Find median of two sorted arrays
+
+## Dynamic Programming Problems
+
+- [Climbing Stairs](climbing-stairs.qmd) - Count ways to climb stairs
+- [Longest Increasing Subsequence](longest-increasing-subsequence.qmd) - Find longest increasing subsequence
+
+## Graph Problems
+
+- [Number of Islands](number-of-islands.qmd) - Count connected components in grid
+
+## Problem-Solving Tips
+
+::: {.callout-tip}
+## Before Starting
+1. **Understand the problem**: Read carefully, identify inputs/outputs
+2. **Consider examples**: Work through small examples manually
+3. **Identify patterns**: Look for common algorithmic patterns
+4. **Plan your approach**: Choose appropriate data structures
+5. **Consider edge cases**: Empty inputs, single elements, etc.
+:::
+
+::: {.callout-warning}
+## Common Mistakes
+- Not handling edge cases
+- Incorrect time/space complexity analysis
+- Not optimizing for the specific constraints
+- Overcomplicating simple problems
+:::
+
+## Practice Resources
+
+### Online Platforms
+- **LeetCode**: 2000+ problems with varying difficulty
+- **HackerRank**: Good for beginners, company-specific problems
+- **Codeforces**: Competitive programming, regular contests
+- **AtCoder**: Japanese platform, good for learning
+
+### Problem Categories to Master
+1. **Arrays & Strings**: Two pointers, sliding window, prefix sums
+2. **Linked Lists**: Fast/slow pointers, reversing, merging
+3. **Trees**: DFS/BFS, recursion, tree construction
+4. **Graphs**: DFS/BFS, shortest paths, topological sort
+5. **Dynamic Programming**: Memoization, tabulation, state transitions
+6. **Binary Search**: Finding boundaries, optimization problems 

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Data Structures &amp; Algorithms – Developer Learning Wiki</title>
+<title>Designing Data-Intensive Applications – Developer Learning Wiki</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,26 +20,61 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-55953aa58b50ad052fe8fa3f35ae395a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-55953aa58b50ad052fe8fa3f35ae395a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -70,7 +105,7 @@ ul.task-list li input[type="checkbox"] {
 <style>html{ scroll-behavior: smooth; }</style>
 
 
-<link rel="stylesheet" href="../css/styles.css">
+<link rel="stylesheet" href="../../css/styles.css">
 </head>
 
 <body class="nav-sidebar docked nav-fixed quarto-light">
@@ -80,7 +115,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Developer Learning Wiki</span>
     </a>
   </div>
@@ -91,7 +126,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../about.html"> 
+    <a class="nav-link" href="../../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -100,19 +135,19 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-dsa">    
         <li>
-    <a class="dropdown-item" href="../dsa/index.html">
+    <a class="dropdown-item" href="../../dsa/index.html">
  <span class="dropdown-text">Overview</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../dsa/data-structures.html">
+    <a class="dropdown-item" href="../../dsa/data-structures.html">
  <span class="dropdown-text">Data Structures</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../dsa/algorithms.html">
+    <a class="dropdown-item" href="../../dsa/algorithms.html">
  <span class="dropdown-text">Algorithms</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../dsa/problems/index.html">
+    <a class="dropdown-item" href="../../dsa/problems/index.html">
  <span class="dropdown-text">Problems</span></a>
   </li>  
     </ul>
@@ -123,19 +158,19 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-system-design">    
         <li>
-    <a class="dropdown-item" href="../system-design/index.html">
+    <a class="dropdown-item" href="../../system-design/index.html">
  <span class="dropdown-text">Overview</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../system-design/patterns/index.html">
+    <a class="dropdown-item" href="../../system-design/patterns/index.html">
  <span class="dropdown-text">Patterns</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../system-design/case-studies.html">
+    <a class="dropdown-item" href="../../system-design/case-studies.html">
  <span class="dropdown-text">Case Studies</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../system-design/scalability.html">
+    <a class="dropdown-item" href="../../system-design/scalability.html">
  <span class="dropdown-text">Scalability</span></a>
   </li>  
     </ul>
@@ -146,15 +181,15 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-technical-blogs">    
         <li>
-    <a class="dropdown-item" href="../technical-blogs/index.html">
+    <a class="dropdown-item" href="../../technical-blogs/index.html">
  <span class="dropdown-text">Overview</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../technical-blogs/breakdowns/index.html">
+    <a class="dropdown-item" href="../../technical-blogs/breakdowns/index.html">
  <span class="dropdown-text">Breakdowns</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../technical-blogs/notes.html">
+    <a class="dropdown-item" href="../../technical-blogs/notes.html">
  <span class="dropdown-text">Notes</span></a>
   </li>  
     </ul>
@@ -165,21 +200,21 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-books">    
         <li>
-    <a class="dropdown-item" href="../books/index.html">
+    <a class="dropdown-item" href="../../books/index.html">
  <span class="dropdown-text">Overview</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../books/reading-list/index.html">
+    <a class="dropdown-item" href="../../books/reading-list/index.html">
  <span class="dropdown-text">Reading List</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../books/notes.html">
+    <a class="dropdown-item" href="../../books/notes.html">
  <span class="dropdown-text">Notes</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="../blog.html"> 
+    <a class="nav-link" href="../../blog.html"> 
 <span class="menu-text">Blog</span></a>
   </li>  
 </ul>
@@ -195,7 +230,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="../blog.xml"> <i class="bi bi-rss" role="img">
+    <a class="nav-link" href="../../blog.xml"> <i class="bi bi-rss" role="img">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
@@ -210,7 +245,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../dsa/index.html">Data Structures &amp; Algorithms</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../books/index.html">Books</a></li><li class="breadcrumb-item"><a href="../../books/reading-list/index.html">Reading List</a></li><li class="breadcrumb-item"><a href="../../books/reading-list/designing-data-intensive.html">Designing Data-Intensive Applications</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -232,8 +267,8 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../dsa/index.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Data Structures &amp; Algorithms</span></a>
+            <a href="../../books/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Books</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -241,49 +276,31 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../dsa/problems/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Practice Problems</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <a href="../../books/reading-list/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Reading List</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../dsa/problems/two-sum.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Two Sum</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../dsa/problems/valid-parentheses.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Valid Parentheses</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../dsa/problems/climbing-stairs.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Climbing Stairs</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../dsa/problems/longest-substring.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Longest Substring Without Repeating Characters</span></a>
+  <a href="../../books/reading-list/designing-data-intensive.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Designing Data-Intensive Applications</span></a>
   </div>
 </li>
       </ul>
   </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../dsa/data-structures.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Data Structures</span></a>
+  <a href="../../books/reading-list.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Reading List</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../dsa/algorithms.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Algorithms</span></a>
+  <a href="../../books/notes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Book Notes</span></a>
   </div>
 </li>
       </ul>
@@ -298,16 +315,44 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#data-structures-algorithms" id="toc-data-structures-algorithms" class="nav-link active" data-scroll-target="#data-structures-algorithms">Data Structures &amp; Algorithms</a>
+  <li><a href="#designing-data-intensive-applications" id="toc-designing-data-intensive-applications" class="nav-link active" data-scroll-target="#designing-data-intensive-applications">Designing Data-Intensive Applications</a>
   <ul class="collapse">
-  <li><a href="#quick-navigation" id="toc-quick-navigation" class="nav-link" data-scroll-target="#quick-navigation">Quick Navigation</a></li>
-  <li><a href="#learning-resources" id="toc-learning-resources" class="nav-link" data-scroll-target="#learning-resources">Learning Resources</a>
+  <li><a href="#overview" id="toc-overview" class="nav-link" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#key-topics-covered" id="toc-key-topics-covered" class="nav-link" data-scroll-target="#key-topics-covered">Key Topics Covered</a>
   <ul class="collapse">
-  <li><a href="#books" id="toc-books" class="nav-link" data-scroll-target="#books">Books</a></li>
-  <li><a href="#online-platforms" id="toc-online-platforms" class="nav-link" data-scroll-target="#online-platforms">Online Platforms</a></li>
-  <li><a href="#key-concepts-to-master" id="toc-key-concepts-to-master" class="nav-link" data-scroll-target="#key-concepts-to-master">Key Concepts to Master</a></li>
+  <li><a href="#part-i-foundations-of-data-systems" id="toc-part-i-foundations-of-data-systems" class="nav-link" data-scroll-target="#part-i-foundations-of-data-systems">Part I: Foundations of Data Systems</a></li>
+  <li><a href="#part-ii-distributed-data" id="toc-part-ii-distributed-data" class="nav-link" data-scroll-target="#part-ii-distributed-data">Part II: Distributed Data</a></li>
+  <li><a href="#part-iii-derived-data" id="toc-part-iii-derived-data" class="nav-link" data-scroll-target="#part-iii-derived-data">Part III: Derived Data</a></li>
   </ul></li>
-  <li><a href="#recent-learning-notes" id="toc-recent-learning-notes" class="nav-link" data-scroll-target="#recent-learning-notes">Recent Learning Notes</a></li>
+  <li><a href="#key-insights" id="toc-key-insights" class="nav-link" data-scroll-target="#key-insights">Key Insights</a>
+  <ul class="collapse">
+  <li><a href="#the-unreasonable-effectiveness-of-data" id="toc-the-unreasonable-effectiveness-of-data" class="nav-link" data-scroll-target="#the-unreasonable-effectiveness-of-data">1. The Unreasonable Effectiveness of Data</a></li>
+  <li><a href="#trade-offs-in-distributed-systems" id="toc-trade-offs-in-distributed-systems" class="nav-link" data-scroll-target="#trade-offs-in-distributed-systems">2. Trade-offs in Distributed Systems</a></li>
+  <li><a href="#evolution-of-data-systems" id="toc-evolution-of-data-systems" class="nav-link" data-scroll-target="#evolution-of-data-systems">3. Evolution of Data Systems</a></li>
+  </ul></li>
+  <li><a href="#practical-applications" id="toc-practical-applications" class="nav-link" data-scroll-target="#practical-applications">Practical Applications</a>
+  <ul class="collapse">
+  <li><a href="#database-selection" id="toc-database-selection" class="nav-link" data-scroll-target="#database-selection">Database Selection</a></li>
+  <li><a href="#replication-strategies" id="toc-replication-strategies" class="nav-link" data-scroll-target="#replication-strategies">Replication Strategies</a></li>
+  <li><a href="#partitioning-approaches" id="toc-partitioning-approaches" class="nav-link" data-scroll-target="#partitioning-approaches">Partitioning Approaches</a></li>
+  </ul></li>
+  <li><a href="#code-examples" id="toc-code-examples" class="nav-link" data-scroll-target="#code-examples">Code Examples</a>
+  <ul class="collapse">
+  <li><a href="#event-sourcing-pattern" id="toc-event-sourcing-pattern" class="nav-link" data-scroll-target="#event-sourcing-pattern">Event Sourcing Pattern</a></li>
+  <li><a href="#cqrs-pattern" id="toc-cqrs-pattern" class="nav-link" data-scroll-target="#cqrs-pattern">CQRS Pattern</a></li>
+  </ul></li>
+  <li><a href="#critical-analysis" id="toc-critical-analysis" class="nav-link" data-scroll-target="#critical-analysis">Critical Analysis</a>
+  <ul class="collapse">
+  <li><a href="#strengths" id="toc-strengths" class="nav-link" data-scroll-target="#strengths">Strengths</a></li>
+  <li><a href="#limitations" id="toc-limitations" class="nav-link" data-scroll-target="#limitations">Limitations</a></li>
+  </ul></li>
+  <li><a href="#related-books" id="toc-related-books" class="nav-link" data-scroll-target="#related-books">Related Books</a></li>
+  <li><a href="#reading-notes" id="toc-reading-notes" class="nav-link" data-scroll-target="#reading-notes">Reading Notes</a>
+  <ul class="collapse">
+  <li><a href="#chapter-1-reliable-scalable-and-maintainable-applications" id="toc-chapter-1-reliable-scalable-and-maintainable-applications" class="nav-link" data-scroll-target="#chapter-1-reliable-scalable-and-maintainable-applications">Chapter 1: Reliable, Scalable, and Maintainable Applications</a></li>
+  <li><a href="#chapter-2-data-models-and-query-languages" id="toc-chapter-2-data-models-and-query-languages" class="nav-link" data-scroll-target="#chapter-2-data-models-and-query-languages">Chapter 2: Data Models and Query Languages</a></li>
+  <li><a href="#chapter-3-storage-and-retrieval" id="toc-chapter-3-storage-and-retrieval" class="nav-link" data-scroll-target="#chapter-3-storage-and-retrieval">Chapter 3: Storage and Retrieval</a></li>
+  </ul></li>
   </ul></li>
   </ul>
 </nav>
@@ -315,9 +360,9 @@ ul.task-list li input[type="checkbox"] {
 <!-- main -->
 <main class="content column-body" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../books/index.html">Books</a></li><li class="breadcrumb-item"><a href="../../books/reading-list/index.html">Reading List</a></li><li class="breadcrumb-item"><a href="../../books/reading-list/designing-data-intensive.html">Designing Data-Intensive Applications</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Data Structures &amp; Algorithms</h1>
+<h1 class="title">Designing Data-Intensive Applications</h1>
 </div>
 
 
@@ -334,98 +379,217 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="data-structures-algorithms" class="level1">
-<h1>Data Structures &amp; Algorithms</h1>
-<p>Welcome to my DSA learning journey! This section covers fundamental computer science concepts, problem-solving techniques, and algorithmic thinking.</p>
-<section id="quick-navigation" class="level2">
-<h2 class="anchored" data-anchor-id="quick-navigation">Quick Navigation</h2>
+<section id="designing-data-intensive-applications" class="level1">
+<h1>Designing Data-Intensive Applications</h1>
+<p><strong>Author</strong>: Martin Kleppmann<br>
+<strong>Published</strong>: 2017<br>
+<strong>Pages</strong>: 616<br>
+<strong>Rating</strong>: ⭐⭐⭐⭐⭐</p>
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<p>A comprehensive guide to designing large-scale data systems, covering the principles behind reliable, scalable, and maintainable applications.</p>
+</section>
+<section id="key-topics-covered" class="level2">
+<h2 class="anchored" data-anchor-id="key-topics-covered">Key Topics Covered</h2>
+<section id="part-i-foundations-of-data-systems" class="level3">
+<h3 class="anchored" data-anchor-id="part-i-foundations-of-data-systems">Part I: Foundations of Data Systems</h3>
 <ul>
-<li><strong><a href="../dsa/data-structures.html">Data Structures</a></strong> - Arrays, Linked Lists, Trees, Graphs, Hash Tables, etc.</li>
-<li><strong><a href="../dsa/algorithms.html">Algorithms</a></strong> - Sorting, Searching, Dynamic Programming, Greedy, etc.</li>
-<li><strong><a href="../dsa/problems.qmd">Problems</a></strong> - Practice problems and solutions</li>
+<li><strong>Reliability</strong>: Fault tolerance and fault prevention</li>
+<li><strong>Scalability</strong>: Performance under load</li>
+<li><strong>Maintainability</strong>: Operability, simplicity, and evolvability</li>
 </ul>
 </section>
-<section id="learning-resources" class="level2">
-<h2 class="anchored" data-anchor-id="learning-resources">Learning Resources</h2>
-<section id="books" class="level3">
-<h3 class="anchored" data-anchor-id="books">Books</h3>
+<section id="part-ii-distributed-data" class="level3">
+<h3 class="anchored" data-anchor-id="part-ii-distributed-data">Part II: Distributed Data</h3>
 <ul>
-<li>“Introduction to Algorithms” (CLRS)</li>
-<li>“Cracking the Coding Interview”</li>
-<li>“Algorithms” by Robert Sedgewick</li>
+<li><strong>Replication</strong>: Leader-follower, multi-leader, leaderless</li>
+<li><strong>Partitioning</strong>: Horizontal and vertical partitioning</li>
+<li><strong>Transactions</strong>: ACID properties and isolation levels</li>
 </ul>
 </section>
-<section id="online-platforms" class="level3">
-<h3 class="anchored" data-anchor-id="online-platforms">Online Platforms</h3>
+<section id="part-iii-derived-data" class="level3">
+<h3 class="anchored" data-anchor-id="part-iii-derived-data">Part III: Derived Data</h3>
 <ul>
-<li>LeetCode</li>
-<li>HackerRank</li>
-<li>Codeforces</li>
-<li>AtCoder</li>
-</ul>
-</section>
-<section id="key-concepts-to-master" class="level3">
-<h3 class="anchored" data-anchor-id="key-concepts-to-master">Key Concepts to Master</h3>
-<section id="data-structures" class="level4">
-<h4 class="anchored" data-anchor-id="data-structures">Data Structures</h4>
-<ul>
-<li><strong>Linear</strong>: Arrays, Linked Lists, Stacks, Queues</li>
-<li><strong>Tree-based</strong>: Binary Trees, BST, AVL, Red-Black Trees</li>
-<li><strong>Graph-based</strong>: Adjacency Matrix/List, BFS/DFS</li>
-<li><strong>Hash-based</strong>: Hash Tables, Hash Sets</li>
-<li><strong>Advanced</strong>: Heaps, Tries, Segment Trees</li>
-</ul>
-</section>
-<section id="algorithm-paradigms" class="level4">
-<h4 class="anchored" data-anchor-id="algorithm-paradigms">Algorithm Paradigms</h4>
-<ul>
-<li><strong>Brute Force</strong>: Complete search, backtracking</li>
-<li><strong>Divide &amp; Conquer</strong>: Merge sort, quick sort, binary search</li>
-<li><strong>Dynamic Programming</strong>: Memoization, tabulation</li>
-<li><strong>Greedy</strong>: Local optimal choices</li>
-<li><strong>Two Pointers</strong>: Sliding window, fast/slow pointers</li>
-</ul>
-</section>
-<section id="time-complexity-analysis" class="level4">
-<h4 class="anchored" data-anchor-id="time-complexity-analysis">Time Complexity Analysis</h4>
-<ul>
-<li>Big O notation</li>
-<li>Space complexity</li>
-<li>Best/worst/average case analysis</li>
+<li><strong>Batch Processing</strong>: MapReduce and data warehouses</li>
+<li><strong>Stream Processing</strong>: Event streams and stream processing</li>
+<li><strong>Future of Data Systems</strong>: Unifying batch and stream processing</li>
 </ul>
 </section>
 </section>
+<section id="key-insights" class="level2">
+<h2 class="anchored" data-anchor-id="key-insights">Key Insights</h2>
+<section id="the-unreasonable-effectiveness-of-data" class="level3">
+<h3 class="anchored" data-anchor-id="the-unreasonable-effectiveness-of-data">1. The Unreasonable Effectiveness of Data</h3>
+<ul>
+<li>Data is more important than code</li>
+<li>Data outlives applications</li>
+<li>Data is the source of truth</li>
+</ul>
 </section>
-<section id="recent-learning-notes" class="level2">
-<h2 class="anchored" data-anchor-id="recent-learning-notes">Recent Learning Notes</h2>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Current Focus
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Working on dynamic programming problems and advanced tree algorithms.</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Pro Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Practice implementing data structures from scratch to truly understand their internals.</p>
-</div>
-</div>
+<section id="trade-offs-in-distributed-systems" class="level3">
+<h3 class="anchored" data-anchor-id="trade-offs-in-distributed-systems">2. Trade-offs in Distributed Systems</h3>
+<ul>
+<li><strong>Consistency vs.&nbsp;Availability</strong>: CAP theorem</li>
+<li><strong>Latency vs.&nbsp;Throughput</strong>: Performance trade-offs</li>
+<li><strong>Simplicity vs.&nbsp;Functionality</strong>: Complexity management</li>
+</ul>
+</section>
+<section id="evolution-of-data-systems" class="level3">
+<h3 class="anchored" data-anchor-id="evolution-of-data-systems">3. Evolution of Data Systems</h3>
+<ul>
+<li>From monolithic to microservices</li>
+<li>From batch to real-time processing</li>
+<li>From relational to polyglot persistence</li>
+</ul>
+</section>
+</section>
+<section id="practical-applications" class="level2">
+<h2 class="anchored" data-anchor-id="practical-applications">Practical Applications</h2>
+<section id="database-selection" class="level3">
+<h3 class="anchored" data-anchor-id="database-selection">Database Selection</h3>
+<ul>
+<li><strong>Relational</strong>: ACID transactions, complex queries</li>
+<li><strong>Document</strong>: Schema flexibility, hierarchical data</li>
+<li><strong>Graph</strong>: Complex relationships, graph algorithms</li>
+<li><strong>Key-Value</strong>: Simple queries, high performance</li>
+</ul>
+</section>
+<section id="replication-strategies" class="level3">
+<h3 class="anchored" data-anchor-id="replication-strategies">Replication Strategies</h3>
+<ul>
+<li><strong>Synchronous</strong>: Strong consistency, higher latency</li>
+<li><strong>Asynchronous</strong>: Better performance, eventual consistency</li>
+<li><strong>Semi-synchronous</strong>: Balance between consistency and performance</li>
+</ul>
+</section>
+<section id="partitioning-approaches" class="level3">
+<h3 class="anchored" data-anchor-id="partitioning-approaches">Partitioning Approaches</h3>
+<ul>
+<li><strong>Hash-based</strong>: Even distribution, no range queries</li>
+<li><strong>Range-based</strong>: Range queries, potential hotspots</li>
+<li><strong>Composite</strong>: Best of both worlds, more complex</li>
+</ul>
+</section>
+</section>
+<section id="code-examples" class="level2">
+<h2 class="anchored" data-anchor-id="code-examples">Code Examples</h2>
+<section id="event-sourcing-pattern" class="level3">
+<h3 class="anchored" data-anchor-id="event-sourcing-pattern">Event Sourcing Pattern</h3>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> EventStore:</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.events <span class="op">=</span> []</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> append_event(<span class="va">self</span>, event):</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.events.append(event)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> get_events(<span class="va">self</span>, aggregate_id):</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> [e <span class="cf">for</span> e <span class="kw">in</span> <span class="va">self</span>.events <span class="cf">if</span> e.aggregate_id <span class="op">==</span> aggregate_id]</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> get_aggregate(<span class="va">self</span>, aggregate_id):</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>        events <span class="op">=</span> <span class="va">self</span>.get_events(aggregate_id)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>        aggregate <span class="op">=</span> Aggregate()</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> event <span class="kw">in</span> events:</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>            aggregate.<span class="bu">apply</span>(event)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> aggregate</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Order:</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.<span class="bu">id</span> <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.items <span class="op">=</span> []</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.status <span class="op">=</span> <span class="st">"created"</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="bu">apply</span>(<span class="va">self</span>, event):</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">isinstance</span>(event, OrderCreated):</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.<span class="bu">id</span> <span class="op">=</span> event.order_id</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> <span class="bu">isinstance</span>(event, ItemAdded):</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.items.append(event.item)</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> <span class="bu">isinstance</span>(event, OrderConfirmed):</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.status <span class="op">=</span> <span class="st">"confirmed"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="cqrs-pattern" class="level3">
+<h3 class="anchored" data-anchor-id="cqrs-pattern">CQRS Pattern</h3>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> CommandHandler:</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> handle_create_order(<span class="va">self</span>, command):</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Write side - update write model</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>        order <span class="op">=</span> Order(command.order_id, command.items)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.order_repository.save(order)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Publish event</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>        event <span class="op">=</span> OrderCreated(command.order_id, command.items)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.event_bus.publish(event)</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> QueryHandler:</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> get_order_summary(<span class="va">self</span>, order_id):</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Read side - query read model</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.order_summary_repository.find_by_id(order_id)</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> handle_order_created(<span class="va">self</span>, event):</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Update read model</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>        summary <span class="op">=</span> OrderSummary(</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>            event.order_id,</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>            <span class="bu">len</span>(event.items),</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>            <span class="bu">sum</span>(item.price <span class="cf">for</span> item <span class="kw">in</span> event.items)</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.order_summary_repository.save(summary)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="critical-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="critical-analysis">Critical Analysis</h2>
+<section id="strengths" class="level3">
+<h3 class="anchored" data-anchor-id="strengths">Strengths</h3>
+<ul>
+<li><strong>Comprehensive Coverage</strong>: Covers all aspects of data-intensive systems</li>
+<li><strong>Practical Examples</strong>: Real-world case studies and code examples</li>
+<li><strong>Balanced Perspective</strong>: Discusses trade-offs without being dogmatic</li>
+<li><strong>Future-Oriented</strong>: Covers emerging trends and technologies</li>
+</ul>
+</section>
+<section id="limitations" class="level3">
+<h3 class="anchored" data-anchor-id="limitations">Limitations</h3>
+<ul>
+<li><strong>Complexity</strong>: Can be overwhelming for beginners</li>
+<li><strong>Rapid Evolution</strong>: Some technologies mentioned may be outdated</li>
+<li><strong>Depth vs.&nbsp;Breadth</strong>: Some topics could use more detailed coverage</li>
+</ul>
+</section>
+</section>
+<section id="related-books" class="level2">
+<h2 class="anchored" data-anchor-id="related-books">Related Books</h2>
+<ul>
+<li><strong>Database Internals</strong> by Alex Petrov</li>
+<li><strong>Building Microservices</strong> by Sam Newman</li>
+<li><strong>Domain-Driven Design</strong> by Eric Evans</li>
+<li><strong>Site Reliability Engineering</strong> by Google</li>
+</ul>
+</section>
+<section id="reading-notes" class="level2">
+<h2 class="anchored" data-anchor-id="reading-notes">Reading Notes</h2>
+<section id="chapter-1-reliable-scalable-and-maintainable-applications" class="level3">
+<h3 class="anchored" data-anchor-id="chapter-1-reliable-scalable-and-maintainable-applications">Chapter 1: Reliable, Scalable, and Maintainable Applications</h3>
+<ul>
+<li><strong>Reliability</strong>: System continues to work correctly even when things go wrong</li>
+<li><strong>Scalability</strong>: System’s ability to cope with increased load</li>
+<li><strong>Maintainability</strong>: System’s ability to be modified and maintained</li>
+</ul>
+</section>
+<section id="chapter-2-data-models-and-query-languages" class="level3">
+<h3 class="anchored" data-anchor-id="chapter-2-data-models-and-query-languages">Chapter 2: Data Models and Query Languages</h3>
+<ul>
+<li><strong>Relational Model</strong>: Tables, rows, columns, relationships</li>
+<li><strong>Document Model</strong>: Self-contained documents, schema flexibility</li>
+<li><strong>Graph Model</strong>: Vertices, edges, complex relationships</li>
+</ul>
+</section>
+<section id="chapter-3-storage-and-retrieval" class="level3">
+<h3 class="anchored" data-anchor-id="chapter-3-storage-and-retrieval">Chapter 3: Storage and Retrieval</h3>
+<ul>
+<li><strong>Log-structured Storage</strong>: Append-only logs for write performance</li>
+<li><strong>B-tree Storage</strong>: Balanced trees for read performance</li>
+<li><strong>Column-oriented Storage</strong>: Optimized for analytical queries</li>
+</ul>
 
 
+</section>
 </section>
 </section>
 
@@ -452,7 +616,7 @@ Pro Tip
 <div class="column-screen-inset">
     <hr class="about-sep">
     <div class="quarto-about-jolla column-body" style="margin-top:52px;">
-        <p> © 2024 • Developer Learning Wiki • <a href="../about.html">About</a> • <i data-target="calvinmodal" data-toggle="modal" class="bi bi-emoji-smile-upside-down"></i>
+        <p> © 2024 • Developer Learning Wiki • <a href="../../about.html">About</a> • <i data-target="calvinmodal" data-toggle="modal" class="bi bi-emoji-smile-upside-down"></i>
             </p>
     
         <p> Found an error? Please leave a comment here or submit a PR <a href="https://github.com/kmr-rohit/quartosite">in this repository</a>, thanks!</p>
@@ -504,7 +668,7 @@ Pro Tip
     <p style="text-align: center; font-size: 18px; margin: 20px;">🚀 Happy Coding!</p>
 </div>
 
-<script type="text/javascript" src="../scripts.js"></script>
+<script type="text/javascript" src="../../scripts.js"></script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -909,5 +1073,5 @@ Pro Tip
 
 
 
-</div><script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</div><script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

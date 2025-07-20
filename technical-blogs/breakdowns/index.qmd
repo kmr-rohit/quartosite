@@ -1,0 +1,69 @@
+---
+title: "Blog Breakdowns"
+order: 1
+---
+
+# Technical Blog Breakdowns
+
+Detailed analysis and breakdowns of technical blog posts, papers, and articles.
+
+## System Design Breakdowns
+
+- [Designing Data-Intensive Applications](designing-data-intensive.qmd) - Martin Kleppmann's book breakdown
+- [System Design Primer](system-design-primer.qmd) - GitHub's system design guide
+- [High Scalability](high-scalability.qmd) - Real-world system architectures
+
+## Architecture Breakdowns
+
+- [Microservices Patterns](microservices-patterns.qmd) - Chris Richardson's patterns
+- [Event-Driven Architecture](event-driven-architecture.qmd) - Event sourcing and CQRS
+- [Domain-Driven Design](domain-driven-design.qmd) - Eric Evans' DDD concepts
+
+## Database Breakdowns
+
+- [Database Internals](database-internals.qmd) - Alex Petrov's book analysis
+- [NoSQL Distilled](nosql-distilled.qmd) - Martin Fowler's NoSQL guide
+- [Database Design](database-design.qmd) - Relational and NoSQL design patterns
+
+## Performance Breakdowns
+
+- [High Performance MySQL](high-performance-mysql.qmd) - MySQL optimization techniques
+- [Redis in Action](redis-in-action.qmd) - Redis patterns and use cases
+- [Performance Engineering](performance-engineering.qmd) - Brendan Gregg's methodologies
+
+## Cloud & DevOps Breakdowns
+
+- [Site Reliability Engineering](sre.qmd) - Google's SRE practices
+- [Kubernetes in Action](kubernetes-in-action.qmd) - Container orchestration
+- [Infrastructure as Code](infrastructure-as-code.qmd) - Terraform and CloudFormation
+
+## Security Breakdowns
+
+- [Web Application Security](web-security.qmd) - OWASP guidelines
+- [Cryptography Engineering](cryptography.qmd) - Applied cryptography
+- [Security Engineering](security-engineering.qmd) - Ross Anderson's book
+
+## Machine Learning Breakdowns
+
+- [Designing Machine Learning Systems](ml-systems.qmd) - Chip Huyen's book
+- [Building Machine Learning Pipelines](ml-pipelines.qmd) - ML engineering practices
+- [Feature Engineering](feature-engineering.qmd) - Data preprocessing techniques
+
+## How to Read Technical Content
+
+### Before Reading
+1. **Understand the Context**: What problem is being solved?
+2. **Identify the Audience**: Who is this written for?
+3. **Check Prerequisites**: What background knowledge is needed?
+
+### During Reading
+1. **Take Notes**: Write down key concepts and insights
+2. **Draw Diagrams**: Visualize the concepts
+3. **Ask Questions**: Challenge assumptions and claims
+4. **Code Examples**: Implement the concepts
+
+### After Reading
+1. **Summarize**: Write your own summary
+2. **Apply**: Use the concepts in your own projects
+3. **Share**: Discuss with others to reinforce learning
+4. **Follow Up**: Read related articles and papers 

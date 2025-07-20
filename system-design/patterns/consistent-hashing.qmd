@@ -1,0 +1,122 @@
+---
+title: "Consistent Hashing"
+order: 2
+---
+
+# Consistent Hashing
+
+A distributed hashing scheme that minimizes reorganization when nodes are added or removed from the system.
+
+## Overview
+
+Consistent hashing is a technique used in distributed systems to distribute data across multiple nodes while minimizing the amount of data that needs to be moved when nodes are added or removed.
+
+## How It Works
+
+```python
+import hashlib
+
+class ConsistentHash:
+    def __init__(self, nodes, replicas=3):
+        self.replicas = replicas
+        self.ring = {}
+        self.sorted_keys = []
+        
+        for node in nodes:
+            self.add_node(node)
+    
+    def add_node(self, node):
+        for i in range(self.replicas):
+            key = self.hash(f"{node}:{i}")
+            self.ring[key] = node
+            self.sorted_keys.append(key)
+        
+        self.sorted_keys.sort()
+    
+    def remove_node(self, node):
+        for i in range(self.replicas):
+            key = self.hash(f"{node}:{i}")
+            del self.ring[key]
+            self.sorted_keys.remove(key)
+    
+    def get_node(self, key):
+        if not self.ring:
+            return None
+        
+        hash_key = self.hash(key)
+        
+        # Find the first node with hash >= hash_key
+        for ring_key in self.sorted_keys:
+            if ring_key >= hash_key:
+                return self.ring[ring_key]
+        
+        # Wrap around to the first node
+        return self.ring[self.sorted_keys[0]]
+    
+    def hash(self, key):
+        return int(hashlib.md5(key.encode()).hexdigest(), 16)
+```
+
+## Benefits
+
+1. **Minimal Data Movement**: Only a fraction of data needs to be redistributed when nodes change
+2. **Load Distribution**: Even distribution of data across nodes
+3. **Scalability**: Easy to add/remove nodes without major reorganization
+4. **Fault Tolerance**: Replicas provide redundancy
+
+## Use Cases
+
+- **Distributed Caching**: Redis, Memcached
+- **Load Balancing**: Nginx, HAProxy
+- **Distributed Databases**: DynamoDB, Cassandra
+- **CDN**: Content distribution networks
+
+## Implementation Considerations
+
+### Virtual Nodes
+- Use virtual nodes (replicas) to improve load distribution
+- Each physical node maps to multiple virtual nodes on the ring
+- Helps balance load when nodes have different capacities
+
+### Hash Function
+- Choose a good hash function (MD5, SHA-1, SHA-256)
+- Should provide uniform distribution
+- Consider performance vs. quality trade-offs
+
+### Replication Factor
+- Higher replication improves availability
+- Increases storage overhead
+- Typical values: 3-5 replicas
+
+## Example: Distributed Cache
+
+```python
+# Initialize with 3 nodes
+cache_nodes = ['node1', 'node2', 'node3']
+consistent_hash = ConsistentHash(cache_nodes, replicas=3)
+
+# Store data
+data_key = "user:123"
+target_node = consistent_hash.get_node(data_key)
+print(f"Store {data_key} on {target_node}")
+
+# Add new node
+consistent_hash.add_node('node4')
+
+# Check if data needs to be moved
+new_target = consistent_hash.get_node(data_key)
+if new_target != target_node:
+    print(f"Move {data_key} from {target_node} to {new_target}")
+```
+
+## Trade-offs
+
+### Pros
+- Minimal data movement on node changes
+- Good load distribution
+- Scalable and fault-tolerant
+
+### Cons
+- More complex than simple hashing
+- Potential for uneven load distribution
+- Requires coordination for node changes 

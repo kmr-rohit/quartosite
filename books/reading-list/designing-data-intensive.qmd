@@ -1,0 +1,166 @@
+---
+title: "Designing Data-Intensive Applications"
+order: 2
+---
+
+# Designing Data-Intensive Applications
+
+**Author**: Martin Kleppmann  
+**Published**: 2017  
+**Pages**: 616  
+**Rating**: ⭐⭐⭐⭐⭐
+
+## Overview
+
+A comprehensive guide to designing large-scale data systems, covering the principles behind reliable, scalable, and maintainable applications.
+
+## Key Topics Covered
+
+### Part I: Foundations of Data Systems
+- **Reliability**: Fault tolerance and fault prevention
+- **Scalability**: Performance under load
+- **Maintainability**: Operability, simplicity, and evolvability
+
+### Part II: Distributed Data
+- **Replication**: Leader-follower, multi-leader, leaderless
+- **Partitioning**: Horizontal and vertical partitioning
+- **Transactions**: ACID properties and isolation levels
+
+### Part III: Derived Data
+- **Batch Processing**: MapReduce and data warehouses
+- **Stream Processing**: Event streams and stream processing
+- **Future of Data Systems**: Unifying batch and stream processing
+
+## Key Insights
+
+### 1. The Unreasonable Effectiveness of Data
+- Data is more important than code
+- Data outlives applications
+- Data is the source of truth
+
+### 2. Trade-offs in Distributed Systems
+- **Consistency vs. Availability**: CAP theorem
+- **Latency vs. Throughput**: Performance trade-offs
+- **Simplicity vs. Functionality**: Complexity management
+
+### 3. Evolution of Data Systems
+- From monolithic to microservices
+- From batch to real-time processing
+- From relational to polyglot persistence
+
+## Practical Applications
+
+### Database Selection
+- **Relational**: ACID transactions, complex queries
+- **Document**: Schema flexibility, hierarchical data
+- **Graph**: Complex relationships, graph algorithms
+- **Key-Value**: Simple queries, high performance
+
+### Replication Strategies
+- **Synchronous**: Strong consistency, higher latency
+- **Asynchronous**: Better performance, eventual consistency
+- **Semi-synchronous**: Balance between consistency and performance
+
+### Partitioning Approaches
+- **Hash-based**: Even distribution, no range queries
+- **Range-based**: Range queries, potential hotspots
+- **Composite**: Best of both worlds, more complex
+
+## Code Examples
+
+### Event Sourcing Pattern
+```python
+class EventStore:
+    def __init__(self):
+        self.events = []
+    
+    def append_event(self, event):
+        self.events.append(event)
+    
+    def get_events(self, aggregate_id):
+        return [e for e in self.events if e.aggregate_id == aggregate_id]
+    
+    def get_aggregate(self, aggregate_id):
+        events = self.get_events(aggregate_id)
+        aggregate = Aggregate()
+        for event in events:
+            aggregate.apply(event)
+        return aggregate
+
+class Order:
+    def __init__(self):
+        self.id = None
+        self.items = []
+        self.status = "created"
+    
+    def apply(self, event):
+        if isinstance(event, OrderCreated):
+            self.id = event.order_id
+        elif isinstance(event, ItemAdded):
+            self.items.append(event.item)
+        elif isinstance(event, OrderConfirmed):
+            self.status = "confirmed"
+```
+
+### CQRS Pattern
+```python
+class CommandHandler:
+    def handle_create_order(self, command):
+        # Write side - update write model
+        order = Order(command.order_id, command.items)
+        self.order_repository.save(order)
+        
+        # Publish event
+        event = OrderCreated(command.order_id, command.items)
+        self.event_bus.publish(event)
+
+class QueryHandler:
+    def get_order_summary(self, order_id):
+        # Read side - query read model
+        return self.order_summary_repository.find_by_id(order_id)
+    
+    def handle_order_created(self, event):
+        # Update read model
+        summary = OrderSummary(
+            event.order_id,
+            len(event.items),
+            sum(item.price for item in event.items)
+        )
+        self.order_summary_repository.save(summary)
+```
+
+## Critical Analysis
+
+### Strengths
+- **Comprehensive Coverage**: Covers all aspects of data-intensive systems
+- **Practical Examples**: Real-world case studies and code examples
+- **Balanced Perspective**: Discusses trade-offs without being dogmatic
+- **Future-Oriented**: Covers emerging trends and technologies
+
+### Limitations
+- **Complexity**: Can be overwhelming for beginners
+- **Rapid Evolution**: Some technologies mentioned may be outdated
+- **Depth vs. Breadth**: Some topics could use more detailed coverage
+
+## Related Books
+- **Database Internals** by Alex Petrov
+- **Building Microservices** by Sam Newman
+- **Domain-Driven Design** by Eric Evans
+- **Site Reliability Engineering** by Google
+
+## Reading Notes
+
+### Chapter 1: Reliable, Scalable, and Maintainable Applications
+- **Reliability**: System continues to work correctly even when things go wrong
+- **Scalability**: System's ability to cope with increased load
+- **Maintainability**: System's ability to be modified and maintained
+
+### Chapter 2: Data Models and Query Languages
+- **Relational Model**: Tables, rows, columns, relationships
+- **Document Model**: Self-contained documents, schema flexibility
+- **Graph Model**: Vertices, edges, complex relationships
+
+### Chapter 3: Storage and Retrieval
+- **Log-structured Storage**: Append-only logs for write performance
+- **B-tree Storage**: Balanced trees for read performance
+- **Column-oriented Storage**: Optimized for analytical queries 

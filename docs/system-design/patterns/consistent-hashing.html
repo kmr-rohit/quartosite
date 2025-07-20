@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Data Structures &amp; Algorithms – Developer Learning Wiki</title>
+<title>Consistent Hashing – Developer Learning Wiki</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,26 +20,61 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-55953aa58b50ad052fe8fa3f35ae395a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-55953aa58b50ad052fe8fa3f35ae395a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -70,7 +105,7 @@ ul.task-list li input[type="checkbox"] {
 <style>html{ scroll-behavior: smooth; }</style>
 
 
-<link rel="stylesheet" href="../css/styles.css">
+<link rel="stylesheet" href="../../css/styles.css">
 </head>
 
 <body class="nav-sidebar docked nav-fixed quarto-light">
@@ -80,7 +115,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Developer Learning Wiki</span>
     </a>
   </div>
@@ -91,7 +126,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../about.html"> 
+    <a class="nav-link" href="../../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -100,19 +135,19 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-dsa">    
         <li>
-    <a class="dropdown-item" href="../dsa/index.html">
+    <a class="dropdown-item" href="../../dsa/index.html">
  <span class="dropdown-text">Overview</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../dsa/data-structures.html">
+    <a class="dropdown-item" href="../../dsa/data-structures.html">
  <span class="dropdown-text">Data Structures</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../dsa/algorithms.html">
+    <a class="dropdown-item" href="../../dsa/algorithms.html">
  <span class="dropdown-text">Algorithms</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../dsa/problems/index.html">
+    <a class="dropdown-item" href="../../dsa/problems/index.html">
  <span class="dropdown-text">Problems</span></a>
   </li>  
     </ul>
@@ -123,19 +158,19 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-system-design">    
         <li>
-    <a class="dropdown-item" href="../system-design/index.html">
+    <a class="dropdown-item" href="../../system-design/index.html">
  <span class="dropdown-text">Overview</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../system-design/patterns/index.html">
+    <a class="dropdown-item" href="../../system-design/patterns/index.html">
  <span class="dropdown-text">Patterns</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../system-design/case-studies.html">
+    <a class="dropdown-item" href="../../system-design/case-studies.html">
  <span class="dropdown-text">Case Studies</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../system-design/scalability.html">
+    <a class="dropdown-item" href="../../system-design/scalability.html">
  <span class="dropdown-text">Scalability</span></a>
   </li>  
     </ul>
@@ -146,15 +181,15 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-technical-blogs">    
         <li>
-    <a class="dropdown-item" href="../technical-blogs/index.html">
+    <a class="dropdown-item" href="../../technical-blogs/index.html">
  <span class="dropdown-text">Overview</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../technical-blogs/breakdowns/index.html">
+    <a class="dropdown-item" href="../../technical-blogs/breakdowns/index.html">
  <span class="dropdown-text">Breakdowns</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../technical-blogs/notes.html">
+    <a class="dropdown-item" href="../../technical-blogs/notes.html">
  <span class="dropdown-text">Notes</span></a>
   </li>  
     </ul>
@@ -165,21 +200,21 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-books">    
         <li>
-    <a class="dropdown-item" href="../books/index.html">
+    <a class="dropdown-item" href="../../books/index.html">
  <span class="dropdown-text">Overview</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../books/reading-list/index.html">
+    <a class="dropdown-item" href="../../books/reading-list/index.html">
  <span class="dropdown-text">Reading List</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../books/notes.html">
+    <a class="dropdown-item" href="../../books/notes.html">
  <span class="dropdown-text">Notes</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="../blog.html"> 
+    <a class="nav-link" href="../../blog.html"> 
 <span class="menu-text">Blog</span></a>
   </li>  
 </ul>
@@ -195,7 +230,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="../blog.xml"> <i class="bi bi-rss" role="img">
+    <a class="nav-link" href="../../blog.xml"> <i class="bi bi-rss" role="img">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
@@ -210,7 +245,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../dsa/index.html">Data Structures &amp; Algorithms</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../system-design/index.html">System Design</a></li><li class="breadcrumb-item"><a href="../../system-design/patterns/index.html">Design Patterns</a></li><li class="breadcrumb-item"><a href="../../system-design/patterns/consistent-hashing.html">Consistent Hashing</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -232,8 +267,8 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../dsa/index.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Data Structures &amp; Algorithms</span></a>
+            <a href="../../system-design/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">System Design</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -241,49 +276,31 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../dsa/problems/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Practice Problems</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <a href="../../system-design/patterns/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Design Patterns</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../dsa/problems/two-sum.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Two Sum</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../dsa/problems/valid-parentheses.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Valid Parentheses</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../dsa/problems/climbing-stairs.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Climbing Stairs</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../dsa/problems/longest-substring.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Longest Substring Without Repeating Characters</span></a>
+  <a href="../../system-design/patterns/consistent-hashing.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Consistent Hashing</span></a>
   </div>
 </li>
       </ul>
   </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../dsa/data-structures.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Data Structures</span></a>
+  <a href="../../system-design/case-studies.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Case Studies</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../dsa/algorithms.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Algorithms</span></a>
+  <a href="../../system-design/scalability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Scalability</span></a>
   </div>
 </li>
       </ul>
@@ -298,16 +315,24 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#data-structures-algorithms" id="toc-data-structures-algorithms" class="nav-link active" data-scroll-target="#data-structures-algorithms">Data Structures &amp; Algorithms</a>
+  <li><a href="#consistent-hashing" id="toc-consistent-hashing" class="nav-link active" data-scroll-target="#consistent-hashing">Consistent Hashing</a>
   <ul class="collapse">
-  <li><a href="#quick-navigation" id="toc-quick-navigation" class="nav-link" data-scroll-target="#quick-navigation">Quick Navigation</a></li>
-  <li><a href="#learning-resources" id="toc-learning-resources" class="nav-link" data-scroll-target="#learning-resources">Learning Resources</a>
+  <li><a href="#overview" id="toc-overview" class="nav-link" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#how-it-works" id="toc-how-it-works" class="nav-link" data-scroll-target="#how-it-works">How It Works</a></li>
+  <li><a href="#benefits" id="toc-benefits" class="nav-link" data-scroll-target="#benefits">Benefits</a></li>
+  <li><a href="#use-cases" id="toc-use-cases" class="nav-link" data-scroll-target="#use-cases">Use Cases</a></li>
+  <li><a href="#implementation-considerations" id="toc-implementation-considerations" class="nav-link" data-scroll-target="#implementation-considerations">Implementation Considerations</a>
   <ul class="collapse">
-  <li><a href="#books" id="toc-books" class="nav-link" data-scroll-target="#books">Books</a></li>
-  <li><a href="#online-platforms" id="toc-online-platforms" class="nav-link" data-scroll-target="#online-platforms">Online Platforms</a></li>
-  <li><a href="#key-concepts-to-master" id="toc-key-concepts-to-master" class="nav-link" data-scroll-target="#key-concepts-to-master">Key Concepts to Master</a></li>
+  <li><a href="#virtual-nodes" id="toc-virtual-nodes" class="nav-link" data-scroll-target="#virtual-nodes">Virtual Nodes</a></li>
+  <li><a href="#hash-function" id="toc-hash-function" class="nav-link" data-scroll-target="#hash-function">Hash Function</a></li>
+  <li><a href="#replication-factor" id="toc-replication-factor" class="nav-link" data-scroll-target="#replication-factor">Replication Factor</a></li>
   </ul></li>
-  <li><a href="#recent-learning-notes" id="toc-recent-learning-notes" class="nav-link" data-scroll-target="#recent-learning-notes">Recent Learning Notes</a></li>
+  <li><a href="#example-distributed-cache" id="toc-example-distributed-cache" class="nav-link" data-scroll-target="#example-distributed-cache">Example: Distributed Cache</a></li>
+  <li><a href="#trade-offs" id="toc-trade-offs" class="nav-link" data-scroll-target="#trade-offs">Trade-offs</a>
+  <ul class="collapse">
+  <li><a href="#pros" id="toc-pros" class="nav-link" data-scroll-target="#pros">Pros</a></li>
+  <li><a href="#cons" id="toc-cons" class="nav-link" data-scroll-target="#cons">Cons</a></li>
+  </ul></li>
   </ul></li>
   </ul>
 </nav>
@@ -315,9 +340,9 @@ ul.task-list li input[type="checkbox"] {
 <!-- main -->
 <main class="content column-body" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../system-design/index.html">System Design</a></li><li class="breadcrumb-item"><a href="../../system-design/patterns/index.html">Design Patterns</a></li><li class="breadcrumb-item"><a href="../../system-design/patterns/consistent-hashing.html">Consistent Hashing</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Data Structures &amp; Algorithms</h1>
+<h1 class="title">Consistent Hashing</h1>
 </div>
 
 
@@ -334,98 +359,141 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="data-structures-algorithms" class="level1">
-<h1>Data Structures &amp; Algorithms</h1>
-<p>Welcome to my DSA learning journey! This section covers fundamental computer science concepts, problem-solving techniques, and algorithmic thinking.</p>
-<section id="quick-navigation" class="level2">
-<h2 class="anchored" data-anchor-id="quick-navigation">Quick Navigation</h2>
+<section id="consistent-hashing" class="level1">
+<h1>Consistent Hashing</h1>
+<p>A distributed hashing scheme that minimizes reorganization when nodes are added or removed from the system.</p>
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<p>Consistent hashing is a technique used in distributed systems to distribute data across multiple nodes while minimizing the amount of data that needs to be moved when nodes are added or removed.</p>
+</section>
+<section id="how-it-works" class="level2">
+<h2 class="anchored" data-anchor-id="how-it-works">How It Works</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> hashlib</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> ConsistentHash:</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, nodes, replicas<span class="op">=</span><span class="dv">3</span>):</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.replicas <span class="op">=</span> replicas</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.ring <span class="op">=</span> {}</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.sorted_keys <span class="op">=</span> []</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> node <span class="kw">in</span> nodes:</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.add_node(node)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> add_node(<span class="va">self</span>, node):</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="va">self</span>.replicas):</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>            key <span class="op">=</span> <span class="va">self</span>.<span class="bu">hash</span>(<span class="ss">f"</span><span class="sc">{</span>node<span class="sc">}</span><span class="ss">:</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.ring[key] <span class="op">=</span> node</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.sorted_keys.append(key)</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.sorted_keys.sort()</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> remove_node(<span class="va">self</span>, node):</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="va">self</span>.replicas):</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>            key <span class="op">=</span> <span class="va">self</span>.<span class="bu">hash</span>(<span class="ss">f"</span><span class="sc">{</span>node<span class="sc">}</span><span class="ss">:</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>            <span class="kw">del</span> <span class="va">self</span>.ring[key]</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.sorted_keys.remove(key)</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> get_node(<span class="va">self</span>, key):</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">not</span> <span class="va">self</span>.ring:</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="va">None</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>        hash_key <span class="op">=</span> <span class="va">self</span>.<span class="bu">hash</span>(key)</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Find the first node with hash &gt;= hash_key</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> ring_key <span class="kw">in</span> <span class="va">self</span>.sorted_keys:</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> ring_key <span class="op">&gt;=</span> hash_key:</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>                <span class="cf">return</span> <span class="va">self</span>.ring[ring_key]</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Wrap around to the first node</span></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.ring[<span class="va">self</span>.sorted_keys[<span class="dv">0</span>]]</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="bu">hash</span>(<span class="va">self</span>, key):</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="bu">int</span>(hashlib.md5(key.encode()).hexdigest(), <span class="dv">16</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="benefits" class="level2">
+<h2 class="anchored" data-anchor-id="benefits">Benefits</h2>
+<ol type="1">
+<li><strong>Minimal Data Movement</strong>: Only a fraction of data needs to be redistributed when nodes change</li>
+<li><strong>Load Distribution</strong>: Even distribution of data across nodes</li>
+<li><strong>Scalability</strong>: Easy to add/remove nodes without major reorganization</li>
+<li><strong>Fault Tolerance</strong>: Replicas provide redundancy</li>
+</ol>
+</section>
+<section id="use-cases" class="level2">
+<h2 class="anchored" data-anchor-id="use-cases">Use Cases</h2>
 <ul>
-<li><strong><a href="../dsa/data-structures.html">Data Structures</a></strong> - Arrays, Linked Lists, Trees, Graphs, Hash Tables, etc.</li>
-<li><strong><a href="../dsa/algorithms.html">Algorithms</a></strong> - Sorting, Searching, Dynamic Programming, Greedy, etc.</li>
-<li><strong><a href="../dsa/problems.qmd">Problems</a></strong> - Practice problems and solutions</li>
+<li><strong>Distributed Caching</strong>: Redis, Memcached</li>
+<li><strong>Load Balancing</strong>: Nginx, HAProxy</li>
+<li><strong>Distributed Databases</strong>: DynamoDB, Cassandra</li>
+<li><strong>CDN</strong>: Content distribution networks</li>
 </ul>
 </section>
-<section id="learning-resources" class="level2">
-<h2 class="anchored" data-anchor-id="learning-resources">Learning Resources</h2>
-<section id="books" class="level3">
-<h3 class="anchored" data-anchor-id="books">Books</h3>
+<section id="implementation-considerations" class="level2">
+<h2 class="anchored" data-anchor-id="implementation-considerations">Implementation Considerations</h2>
+<section id="virtual-nodes" class="level3">
+<h3 class="anchored" data-anchor-id="virtual-nodes">Virtual Nodes</h3>
 <ul>
-<li>“Introduction to Algorithms” (CLRS)</li>
-<li>“Cracking the Coding Interview”</li>
-<li>“Algorithms” by Robert Sedgewick</li>
+<li>Use virtual nodes (replicas) to improve load distribution</li>
+<li>Each physical node maps to multiple virtual nodes on the ring</li>
+<li>Helps balance load when nodes have different capacities</li>
 </ul>
 </section>
-<section id="online-platforms" class="level3">
-<h3 class="anchored" data-anchor-id="online-platforms">Online Platforms</h3>
+<section id="hash-function" class="level3">
+<h3 class="anchored" data-anchor-id="hash-function">Hash Function</h3>
 <ul>
-<li>LeetCode</li>
-<li>HackerRank</li>
-<li>Codeforces</li>
-<li>AtCoder</li>
+<li>Choose a good hash function (MD5, SHA-1, SHA-256)</li>
+<li>Should provide uniform distribution</li>
+<li>Consider performance vs.&nbsp;quality trade-offs</li>
 </ul>
 </section>
-<section id="key-concepts-to-master" class="level3">
-<h3 class="anchored" data-anchor-id="key-concepts-to-master">Key Concepts to Master</h3>
-<section id="data-structures" class="level4">
-<h4 class="anchored" data-anchor-id="data-structures">Data Structures</h4>
+<section id="replication-factor" class="level3">
+<h3 class="anchored" data-anchor-id="replication-factor">Replication Factor</h3>
 <ul>
-<li><strong>Linear</strong>: Arrays, Linked Lists, Stacks, Queues</li>
-<li><strong>Tree-based</strong>: Binary Trees, BST, AVL, Red-Black Trees</li>
-<li><strong>Graph-based</strong>: Adjacency Matrix/List, BFS/DFS</li>
-<li><strong>Hash-based</strong>: Hash Tables, Hash Sets</li>
-<li><strong>Advanced</strong>: Heaps, Tries, Segment Trees</li>
-</ul>
-</section>
-<section id="algorithm-paradigms" class="level4">
-<h4 class="anchored" data-anchor-id="algorithm-paradigms">Algorithm Paradigms</h4>
-<ul>
-<li><strong>Brute Force</strong>: Complete search, backtracking</li>
-<li><strong>Divide &amp; Conquer</strong>: Merge sort, quick sort, binary search</li>
-<li><strong>Dynamic Programming</strong>: Memoization, tabulation</li>
-<li><strong>Greedy</strong>: Local optimal choices</li>
-<li><strong>Two Pointers</strong>: Sliding window, fast/slow pointers</li>
-</ul>
-</section>
-<section id="time-complexity-analysis" class="level4">
-<h4 class="anchored" data-anchor-id="time-complexity-analysis">Time Complexity Analysis</h4>
-<ul>
-<li>Big O notation</li>
-<li>Space complexity</li>
-<li>Best/worst/average case analysis</li>
+<li>Higher replication improves availability</li>
+<li>Increases storage overhead</li>
+<li>Typical values: 3-5 replicas</li>
 </ul>
 </section>
 </section>
+<section id="example-distributed-cache" class="level2">
+<h2 class="anchored" data-anchor-id="example-distributed-cache">Example: Distributed Cache</h2>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize with 3 nodes</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>cache_nodes <span class="op">=</span> [<span class="st">'node1'</span>, <span class="st">'node2'</span>, <span class="st">'node3'</span>]</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>consistent_hash <span class="op">=</span> ConsistentHash(cache_nodes, replicas<span class="op">=</span><span class="dv">3</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Store data</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>data_key <span class="op">=</span> <span class="st">"user:123"</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>target_node <span class="op">=</span> consistent_hash.get_node(data_key)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Store </span><span class="sc">{</span>data_key<span class="sc">}</span><span class="ss"> on </span><span class="sc">{</span>target_node<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Add new node</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>consistent_hash.add_node(<span class="st">'node4'</span>)</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Check if data needs to be moved</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>new_target <span class="op">=</span> consistent_hash.get_node(data_key)</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> new_target <span class="op">!=</span> target_node:</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Move </span><span class="sc">{</span>data_key<span class="sc">}</span><span class="ss"> from </span><span class="sc">{</span>target_node<span class="sc">}</span><span class="ss"> to </span><span class="sc">{</span>new_target<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="recent-learning-notes" class="level2">
-<h2 class="anchored" data-anchor-id="recent-learning-notes">Recent Learning Notes</h2>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Current Focus
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Working on dynamic programming problems and advanced tree algorithms.</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Pro Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Practice implementing data structures from scratch to truly understand their internals.</p>
-</div>
-</div>
+<section id="trade-offs" class="level2">
+<h2 class="anchored" data-anchor-id="trade-offs">Trade-offs</h2>
+<section id="pros" class="level3">
+<h3 class="anchored" data-anchor-id="pros">Pros</h3>
+<ul>
+<li>Minimal data movement on node changes</li>
+<li>Good load distribution</li>
+<li>Scalable and fault-tolerant</li>
+</ul>
+</section>
+<section id="cons" class="level3">
+<h3 class="anchored" data-anchor-id="cons">Cons</h3>
+<ul>
+<li>More complex than simple hashing</li>
+<li>Potential for uneven load distribution</li>
+<li>Requires coordination for node changes</li>
+</ul>
 
 
+</section>
 </section>
 </section>
 
@@ -452,7 +520,7 @@ Pro Tip
 <div class="column-screen-inset">
     <hr class="about-sep">
     <div class="quarto-about-jolla column-body" style="margin-top:52px;">
-        <p> © 2024 • Developer Learning Wiki • <a href="../about.html">About</a> • <i data-target="calvinmodal" data-toggle="modal" class="bi bi-emoji-smile-upside-down"></i>
+        <p> © 2024 • Developer Learning Wiki • <a href="../../about.html">About</a> • <i data-target="calvinmodal" data-toggle="modal" class="bi bi-emoji-smile-upside-down"></i>
             </p>
     
         <p> Found an error? Please leave a comment here or submit a PR <a href="https://github.com/kmr-rohit/quartosite">in this repository</a>, thanks!</p>
@@ -504,7 +572,7 @@ Pro Tip
     <p style="text-align: center; font-size: 18px; margin: 20px;">🚀 Happy Coding!</p>
 </div>
 
-<script type="text/javascript" src="../scripts.js"></script>
+<script type="text/javascript" src="../../scripts.js"></script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -909,5 +977,5 @@ Pro Tip
 
 
 
-</div><script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</div><script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

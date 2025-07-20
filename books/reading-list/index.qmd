@@ -1,0 +1,95 @@
+---
+title: "Reading List"
+order: 1
+---
+
+# Technical Reading List
+
+A curated collection of essential books for software developers and system designers.
+
+## System Design & Architecture
+
+- [Designing Data-Intensive Applications](designing-data-intensive.qmd) - Martin Kleppmann
+- [System Design Interview](system-design-interview.qmd) - Alex Xu
+- [Building Microservices](building-microservices.qmd) - Sam Newman
+- [Domain-Driven Design](domain-driven-design.qmd) - Eric Evans
+- [Clean Architecture](clean-architecture.qmd) - Robert C. Martin
+
+## Database & Data Engineering
+
+- [Database Internals](database-internals.qmd) - Alex Petrov
+- [Designing Data-Intensive Applications](designing-data-intensive.qmd) - Martin Kleppmann
+- [High Performance MySQL](high-performance-mysql.qmd) - Baron Schwartz
+- [Redis in Action](redis-in-action.qmd) - Josiah L. Carlson
+- [The Data Warehouse Toolkit](data-warehouse.qmd) - Ralph Kimball
+
+## Programming & Software Engineering
+
+- [Clean Code](clean-code.qmd) - Robert C. Martin
+- [Refactoring](refactoring.qmd) - Martin Fowler
+- [Design Patterns](design-patterns.qmd) - Gang of Four
+- [Effective Java](effective-java.qmd) - Joshua Bloch
+- [Python Cookbook](python-cookbook.qmd) - David Beazley
+
+## Algorithms & Data Structures
+
+- [Introduction to Algorithms](introduction-algorithms.qmd) - CLRS
+- [Algorithms](algorithms.qmd) - Robert Sedgewick
+- [Programming Pearls](programming-pearls.qmd) - Jon Bentley
+- [The Algorithm Design Manual](algorithm-design-manual.qmd) - Steven Skiena
+
+## Computer Science Fundamentals
+
+- [Computer Networks](computer-networks.qmd) - Andrew Tanenbaum
+- [Operating Systems](operating-systems.qmd) - Andrew Tanenbaum
+- [Computer Architecture](computer-architecture.qmd) - Hennessy & Patterson
+- [Compilers](compilers.qmd) - Aho, Lam, Sethi, Ullman
+
+## DevOps & Infrastructure
+
+- [Site Reliability Engineering](sre.qmd) - Google
+- [The Phoenix Project](phoenix-project.qmd) - Gene Kim
+- [Kubernetes in Action](kubernetes-in-action.qmd) - Marko Lukša
+- [Infrastructure as Code](infrastructure-as-code.qmd) - Kief Morris
+
+## Security
+
+- [Security Engineering](security-engineering.qmd) - Ross Anderson
+- [Web Application Security](web-security.qmd) - Andrew van der Stock
+- [Cryptography Engineering](cryptography.qmd) - Ferguson, Schneier, Kohno
+- [The Art of Deception](art-of-deception.qmd) - Kevin Mitnick
+
+## Machine Learning & AI
+
+- [Designing Machine Learning Systems](ml-systems.qmd) - Chip Huyen
+- [Hands-On Machine Learning](hands-on-ml.qmd) - Aurélien Géron
+- [Pattern Recognition](pattern-recognition.qmd) - Bishop
+- [Deep Learning](deep-learning.qmd) - Ian Goodfellow
+
+## Career & Soft Skills
+
+- [The Pragmatic Programmer](pragmatic-programmer.qmd) - Hunt & Thomas
+- [Soft Skills](soft-skills.qmd) - John Sonmez
+- [Cracking the Coding Interview](cracking-coding-interview.qmd) - Gayle McDowell
+- [The Manager's Path](managers-path.qmd) - Camille Fournier
+
+## Reading Strategy
+
+### Priority Levels
+1. **Essential** - Must read for every developer
+2. **Important** - Highly recommended for career growth
+3. **Specialized** - Domain-specific knowledge
+4. **Reference** - Keep for consultation
+
+### Reading Order
+1. Start with fundamentals (algorithms, data structures)
+2. Move to software engineering practices
+3. Learn system design and architecture
+4. Specialize in your domain of interest
+
+### Note-Taking Approach
+- Use active reading techniques
+- Take notes in your own words
+- Create summaries and mind maps
+- Implement concepts in code
+- Discuss with peers 

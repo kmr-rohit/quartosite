@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Data Structures &amp; Algorithms – Developer Learning Wiki</title>
+<title>Longest Substring Without Repeating Characters – Developer Learning Wiki</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,26 +20,61 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-55953aa58b50ad052fe8fa3f35ae395a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-55953aa58b50ad052fe8fa3f35ae395a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -70,7 +105,7 @@ ul.task-list li input[type="checkbox"] {
 <style>html{ scroll-behavior: smooth; }</style>
 
 
-<link rel="stylesheet" href="../css/styles.css">
+<link rel="stylesheet" href="../../css/styles.css">
 </head>
 
 <body class="nav-sidebar docked nav-fixed quarto-light">
@@ -80,7 +115,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Developer Learning Wiki</span>
     </a>
   </div>
@@ -91,7 +126,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../about.html"> 
+    <a class="nav-link" href="../../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -100,19 +135,19 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-dsa">    
         <li>
-    <a class="dropdown-item" href="../dsa/index.html">
+    <a class="dropdown-item" href="../../dsa/index.html">
  <span class="dropdown-text">Overview</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../dsa/data-structures.html">
+    <a class="dropdown-item" href="../../dsa/data-structures.html">
  <span class="dropdown-text">Data Structures</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../dsa/algorithms.html">
+    <a class="dropdown-item" href="../../dsa/algorithms.html">
  <span class="dropdown-text">Algorithms</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../dsa/problems/index.html">
+    <a class="dropdown-item" href="../../dsa/problems/index.html">
  <span class="dropdown-text">Problems</span></a>
   </li>  
     </ul>
@@ -123,19 +158,19 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-system-design">    
         <li>
-    <a class="dropdown-item" href="../system-design/index.html">
+    <a class="dropdown-item" href="../../system-design/index.html">
  <span class="dropdown-text">Overview</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../system-design/patterns/index.html">
+    <a class="dropdown-item" href="../../system-design/patterns/index.html">
  <span class="dropdown-text">Patterns</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../system-design/case-studies.html">
+    <a class="dropdown-item" href="../../system-design/case-studies.html">
  <span class="dropdown-text">Case Studies</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../system-design/scalability.html">
+    <a class="dropdown-item" href="../../system-design/scalability.html">
  <span class="dropdown-text">Scalability</span></a>
   </li>  
     </ul>
@@ -146,15 +181,15 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-technical-blogs">    
         <li>
-    <a class="dropdown-item" href="../technical-blogs/index.html">
+    <a class="dropdown-item" href="../../technical-blogs/index.html">
  <span class="dropdown-text">Overview</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../technical-blogs/breakdowns/index.html">
+    <a class="dropdown-item" href="../../technical-blogs/breakdowns/index.html">
  <span class="dropdown-text">Breakdowns</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../technical-blogs/notes.html">
+    <a class="dropdown-item" href="../../technical-blogs/notes.html">
  <span class="dropdown-text">Notes</span></a>
   </li>  
     </ul>
@@ -165,21 +200,21 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-books">    
         <li>
-    <a class="dropdown-item" href="../books/index.html">
+    <a class="dropdown-item" href="../../books/index.html">
  <span class="dropdown-text">Overview</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../books/reading-list/index.html">
+    <a class="dropdown-item" href="../../books/reading-list/index.html">
  <span class="dropdown-text">Reading List</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../books/notes.html">
+    <a class="dropdown-item" href="../../books/notes.html">
  <span class="dropdown-text">Notes</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="../blog.html"> 
+    <a class="nav-link" href="../../blog.html"> 
 <span class="menu-text">Blog</span></a>
   </li>  
 </ul>
@@ -195,7 +230,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="../blog.xml"> <i class="bi bi-rss" role="img">
+    <a class="nav-link" href="../../blog.xml"> <i class="bi bi-rss" role="img">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
@@ -210,7 +245,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../dsa/index.html">Data Structures &amp; Algorithms</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../dsa/index.html">Data Structures &amp; Algorithms</a></li><li class="breadcrumb-item"><a href="../../dsa/problems/index.html">Practice Problems</a></li><li class="breadcrumb-item"><a href="../../dsa/problems/longest-substring.html">Longest Substring Without Repeating Characters</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -232,7 +267,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../dsa/index.html" class="sidebar-item-text sidebar-link active">
+            <a href="../../dsa/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Data Structures &amp; Algorithms</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -241,34 +276,34 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../dsa/problems/index.html" class="sidebar-item-text sidebar-link">
+            <a href="../../dsa/problems/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Practice Problems</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../dsa/problems/two-sum.html" class="sidebar-item-text sidebar-link">
+  <a href="../../dsa/problems/two-sum.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Two Sum</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../dsa/problems/valid-parentheses.html" class="sidebar-item-text sidebar-link">
+  <a href="../../dsa/problems/valid-parentheses.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Valid Parentheses</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../dsa/problems/climbing-stairs.html" class="sidebar-item-text sidebar-link">
+  <a href="../../dsa/problems/climbing-stairs.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Climbing Stairs</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../dsa/problems/longest-substring.html" class="sidebar-item-text sidebar-link">
+  <a href="../../dsa/problems/longest-substring.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Longest Substring Without Repeating Characters</span></a>
   </div>
 </li>
@@ -276,13 +311,13 @@ ul.task-list li input[type="checkbox"] {
   </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../dsa/data-structures.html" class="sidebar-item-text sidebar-link">
+  <a href="../../dsa/data-structures.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Data Structures</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../dsa/algorithms.html" class="sidebar-item-text sidebar-link">
+  <a href="../../dsa/algorithms.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Algorithms</span></a>
   </div>
 </li>
@@ -298,16 +333,13 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#data-structures-algorithms" id="toc-data-structures-algorithms" class="nav-link active" data-scroll-target="#data-structures-algorithms">Data Structures &amp; Algorithms</a>
+  <li><a href="#longest-substring-without-repeating-characters" id="toc-longest-substring-without-repeating-characters" class="nav-link active" data-scroll-target="#longest-substring-without-repeating-characters">Longest Substring Without Repeating Characters</a>
   <ul class="collapse">
-  <li><a href="#quick-navigation" id="toc-quick-navigation" class="nav-link" data-scroll-target="#quick-navigation">Quick Navigation</a></li>
-  <li><a href="#learning-resources" id="toc-learning-resources" class="nav-link" data-scroll-target="#learning-resources">Learning Resources</a>
-  <ul class="collapse">
-  <li><a href="#books" id="toc-books" class="nav-link" data-scroll-target="#books">Books</a></li>
-  <li><a href="#online-platforms" id="toc-online-platforms" class="nav-link" data-scroll-target="#online-platforms">Online Platforms</a></li>
-  <li><a href="#key-concepts-to-master" id="toc-key-concepts-to-master" class="nav-link" data-scroll-target="#key-concepts-to-master">Key Concepts to Master</a></li>
-  </ul></li>
-  <li><a href="#recent-learning-notes" id="toc-recent-learning-notes" class="nav-link" data-scroll-target="#recent-learning-notes">Recent Learning Notes</a></li>
+  <li><a href="#solution" id="toc-solution" class="nav-link" data-scroll-target="#solution">Solution</a></li>
+  <li><a href="#analysis" id="toc-analysis" class="nav-link" data-scroll-target="#analysis">Analysis</a></li>
+  <li><a href="#approach" id="toc-approach" class="nav-link" data-scroll-target="#approach">Approach</a></li>
+  <li><a href="#edge-cases" id="toc-edge-cases" class="nav-link" data-scroll-target="#edge-cases">Edge Cases</a></li>
+  <li><a href="#variations" id="toc-variations" class="nav-link" data-scroll-target="#variations">Variations</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -315,9 +347,9 @@ ul.task-list li input[type="checkbox"] {
 <!-- main -->
 <main class="content column-body" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../dsa/index.html">Data Structures &amp; Algorithms</a></li><li class="breadcrumb-item"><a href="../../dsa/problems/index.html">Practice Problems</a></li><li class="breadcrumb-item"><a href="../../dsa/problems/longest-substring.html">Longest Substring Without Repeating Characters</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Data Structures &amp; Algorithms</h1>
+<h1 class="title">Longest Substring Without Repeating Characters</h1>
 </div>
 
 
@@ -334,96 +366,60 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="data-structures-algorithms" class="level1">
-<h1>Data Structures &amp; Algorithms</h1>
-<p>Welcome to my DSA learning journey! This section covers fundamental computer science concepts, problem-solving techniques, and algorithmic thinking.</p>
-<section id="quick-navigation" class="level2">
-<h2 class="anchored" data-anchor-id="quick-navigation">Quick Navigation</h2>
+<section id="longest-substring-without-repeating-characters" class="level1">
+<h1>Longest Substring Without Repeating Characters</h1>
+<p><strong>Problem</strong>: Given a string <code>s</code>, find the length of the longest substring without repeating characters.</p>
+<section id="solution" class="level2">
+<h2 class="anchored" data-anchor-id="solution">Solution</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> length_of_longest_substring(s):</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    char_map <span class="op">=</span> {}</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    left <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    max_length <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> right, char <span class="kw">in</span> <span class="bu">enumerate</span>(s):</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> char <span class="kw">in</span> char_map <span class="kw">and</span> char_map[char] <span class="op">&gt;=</span> left:</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>            left <span class="op">=</span> char_map[char] <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>        char_map[char] <span class="op">=</span> right</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>        max_length <span class="op">=</span> <span class="bu">max</span>(max_length, right <span class="op">-</span> left <span class="op">+</span> <span class="dv">1</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> max_length</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Example</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(length_of_longest_substring(<span class="st">"abcabcbb"</span>))  <span class="co"># 3</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(length_of_longest_substring(<span class="st">"bbbbb"</span>))     <span class="co"># 1</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(length_of_longest_substring(<span class="st">"pwwkew"</span>))    <span class="co"># 3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="analysis" class="level2">
+<h2 class="anchored" data-anchor-id="analysis">Analysis</h2>
+<p><strong>Time Complexity</strong>: O(n)<br>
+<strong>Space Complexity</strong>: O(min(m, n)) where m is charset size</p>
+</section>
+<section id="approach" class="level2">
+<h2 class="anchored" data-anchor-id="approach">Approach</h2>
+<ol type="1">
+<li><strong>Sliding Window</strong>: Use two pointers to maintain a window</li>
+<li><strong>Hash Map</strong>: Track the last position of each character</li>
+<li><strong>Update Window</strong>: Move left pointer when duplicate is found</li>
+<li><strong>Track Maximum</strong>: Keep track of the longest valid substring</li>
+</ol>
+</section>
+<section id="edge-cases" class="level2">
+<h2 class="anchored" data-anchor-id="edge-cases">Edge Cases</h2>
 <ul>
-<li><strong><a href="../dsa/data-structures.html">Data Structures</a></strong> - Arrays, Linked Lists, Trees, Graphs, Hash Tables, etc.</li>
-<li><strong><a href="../dsa/algorithms.html">Algorithms</a></strong> - Sorting, Searching, Dynamic Programming, Greedy, etc.</li>
-<li><strong><a href="../dsa/problems.qmd">Problems</a></strong> - Practice problems and solutions</li>
+<li>Empty string</li>
+<li>Single character</li>
+<li>All characters are the same</li>
+<li>No repeating characters</li>
+<li>Unicode characters</li>
 </ul>
 </section>
-<section id="learning-resources" class="level2">
-<h2 class="anchored" data-anchor-id="learning-resources">Learning Resources</h2>
-<section id="books" class="level3">
-<h3 class="anchored" data-anchor-id="books">Books</h3>
+<section id="variations" class="level2">
+<h2 class="anchored" data-anchor-id="variations">Variations</h2>
 <ul>
-<li>“Introduction to Algorithms” (CLRS)</li>
-<li>“Cracking the Coding Interview”</li>
-<li>“Algorithms” by Robert Sedgewick</li>
+<li><strong>Longest Substring with At Most K Distinct Characters</strong>: Allow k different characters</li>
+<li><strong>Longest Substring with At Most Two Distinct Characters</strong>: Special case of above</li>
+<li><strong>Minimum Window Substring</strong>: Find shortest substring containing all characters from another string</li>
 </ul>
-</section>
-<section id="online-platforms" class="level3">
-<h3 class="anchored" data-anchor-id="online-platforms">Online Platforms</h3>
-<ul>
-<li>LeetCode</li>
-<li>HackerRank</li>
-<li>Codeforces</li>
-<li>AtCoder</li>
-</ul>
-</section>
-<section id="key-concepts-to-master" class="level3">
-<h3 class="anchored" data-anchor-id="key-concepts-to-master">Key Concepts to Master</h3>
-<section id="data-structures" class="level4">
-<h4 class="anchored" data-anchor-id="data-structures">Data Structures</h4>
-<ul>
-<li><strong>Linear</strong>: Arrays, Linked Lists, Stacks, Queues</li>
-<li><strong>Tree-based</strong>: Binary Trees, BST, AVL, Red-Black Trees</li>
-<li><strong>Graph-based</strong>: Adjacency Matrix/List, BFS/DFS</li>
-<li><strong>Hash-based</strong>: Hash Tables, Hash Sets</li>
-<li><strong>Advanced</strong>: Heaps, Tries, Segment Trees</li>
-</ul>
-</section>
-<section id="algorithm-paradigms" class="level4">
-<h4 class="anchored" data-anchor-id="algorithm-paradigms">Algorithm Paradigms</h4>
-<ul>
-<li><strong>Brute Force</strong>: Complete search, backtracking</li>
-<li><strong>Divide &amp; Conquer</strong>: Merge sort, quick sort, binary search</li>
-<li><strong>Dynamic Programming</strong>: Memoization, tabulation</li>
-<li><strong>Greedy</strong>: Local optimal choices</li>
-<li><strong>Two Pointers</strong>: Sliding window, fast/slow pointers</li>
-</ul>
-</section>
-<section id="time-complexity-analysis" class="level4">
-<h4 class="anchored" data-anchor-id="time-complexity-analysis">Time Complexity Analysis</h4>
-<ul>
-<li>Big O notation</li>
-<li>Space complexity</li>
-<li>Best/worst/average case analysis</li>
-</ul>
-</section>
-</section>
-</section>
-<section id="recent-learning-notes" class="level2">
-<h2 class="anchored" data-anchor-id="recent-learning-notes">Recent Learning Notes</h2>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Current Focus
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Working on dynamic programming problems and advanced tree algorithms.</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Pro Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Practice implementing data structures from scratch to truly understand their internals.</p>
-</div>
-</div>
 
 
 </section>
@@ -452,7 +448,7 @@ Pro Tip
 <div class="column-screen-inset">
     <hr class="about-sep">
     <div class="quarto-about-jolla column-body" style="margin-top:52px;">
-        <p> © 2024 • Developer Learning Wiki • <a href="../about.html">About</a> • <i data-target="calvinmodal" data-toggle="modal" class="bi bi-emoji-smile-upside-down"></i>
+        <p> © 2024 • Developer Learning Wiki • <a href="../../about.html">About</a> • <i data-target="calvinmodal" data-toggle="modal" class="bi bi-emoji-smile-upside-down"></i>
             </p>
     
         <p> Found an error? Please leave a comment here or submit a PR <a href="https://github.com/kmr-rohit/quartosite">in this repository</a>, thanks!</p>
@@ -504,7 +500,7 @@ Pro Tip
     <p style="text-align: center; font-size: 18px; margin: 20px;">🚀 Happy Coding!</p>
 </div>
 
-<script type="text/javascript" src="../scripts.js"></script>
+<script type="text/javascript" src="../../scripts.js"></script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -909,5 +905,5 @@ Pro Tip
 
 
 
-</div><script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</div><script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

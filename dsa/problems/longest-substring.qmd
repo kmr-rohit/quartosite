@@ -1,0 +1,56 @@
+---
+title: "Longest Substring Without Repeating Characters"
+order: 5
+---
+
+# Longest Substring Without Repeating Characters
+
+**Problem**: Given a string `s`, find the length of the longest substring without repeating characters.
+
+## Solution
+
+```python
+def length_of_longest_substring(s):
+    char_map = {}
+    left = 0
+    max_length = 0
+    
+    for right, char in enumerate(s):
+        if char in char_map and char_map[char] >= left:
+            left = char_map[char] + 1
+        char_map[char] = right
+        max_length = max(max_length, right - left + 1)
+    
+    return max_length
+
+# Example
+print(length_of_longest_substring("abcabcbb"))  # 3
+print(length_of_longest_substring("bbbbb"))     # 1
+print(length_of_longest_substring("pwwkew"))    # 3
+```
+
+## Analysis
+
+**Time Complexity**: O(n)  
+**Space Complexity**: O(min(m, n)) where m is charset size
+
+## Approach
+
+1. **Sliding Window**: Use two pointers to maintain a window
+2. **Hash Map**: Track the last position of each character
+3. **Update Window**: Move left pointer when duplicate is found
+4. **Track Maximum**: Keep track of the longest valid substring
+
+## Edge Cases
+
+- Empty string
+- Single character
+- All characters are the same
+- No repeating characters
+- Unicode characters
+
+## Variations
+
+- **Longest Substring with At Most K Distinct Characters**: Allow k different characters
+- **Longest Substring with At Most Two Distinct Characters**: Special case of above
+- **Minimum Window Substring**: Find shortest substring containing all characters from another string 

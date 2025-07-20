@@ -1,0 +1,50 @@
+---
+title: "Two Sum"
+order: 2
+---
+
+# Two Sum
+
+**Problem**: Given an array of integers `nums` and an integer `target`, return indices of the two numbers such that they add up to `target`.
+
+## Solution
+
+```python
+def two_sum(nums, target):
+    seen = {}
+    for i, num in enumerate(nums):
+        complement = target - num
+        if complement in seen:
+            return [seen[complement], i]
+        seen[num] = i
+    return []
+
+# Example
+nums = [2, 7, 11, 15]
+target = 9
+print(two_sum(nums, target))  # [0, 1]
+```
+
+## Analysis
+
+**Time Complexity**: O(n)  
+**Space Complexity**: O(n)
+
+## Approach
+
+1. **Hash Map Approach**: Use a hash map to store numbers we've seen
+2. **One Pass**: For each number, check if its complement exists in the map
+3. **Return Indices**: Return the indices when complement is found
+
+## Edge Cases
+
+- Empty array
+- No solution exists
+- Duplicate numbers
+- Array with single element
+
+## Variations
+
+- **Two Sum II (Sorted Array)**: Use two pointers approach
+- **Three Sum**: Extend to find three numbers
+- **Four Sum**: Extend to find four numbers 

@@ -2581,5 +2581,35 @@
   },
   "system-design/patterns.qmd": {
     "patterns.html": "b7e4207c"
+  },
+  "technical-blogs/breakdowns/index.qmd": {
+    "index.html": "496b359d"
+  },
+  "dsa/problems/valid-parentheses.qmd": {
+    "valid-parentheses.html": "6c7e297e"
+  },
+  "dsa/problems/index.qmd": {
+    "index.html": "e7c0eed8"
+  },
+  "dsa/problems/two-sum.qmd": {
+    "two-sum.html": "c3952cc9"
+  },
+  "dsa/problems/climbing-stairs.qmd": {
+    "climbing-stairs.html": "ff6e6825"
+  },
+  "dsa/problems/longest-substring.qmd": {
+    "longest-substring.html": "0e44541c"
+  },
+  "books/reading-list/designing-data-intensive.qmd": {
+    "designing-data-intensive.html": "d3ff8580"
+  },
+  "books/reading-list/index.qmd": {
+    "index.html": "dfedbe00"
+  },
+  "system-design/patterns/index.qmd": {
+    "index.html": "3ad7337c"
+  },
+  "system-design/patterns/consistent-hashing.qmd": {
+    "consistent-hashing.html": "922f9c5f"
   }
 }
