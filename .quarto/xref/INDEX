@@ -2626,5 +2626,11 @@
   },
   "technical-blogs/001.qmd": {
     "001.html": "50a31421"
+  },
+  "dsa/algorithms/binary_search.qmd": {
+    "binary_search.html": "994d126e"
+  },
+  "dsa/problems/binary_search_01.qmd": {
+    "binary_search_01.html": "da8d21d5"
   }
 }

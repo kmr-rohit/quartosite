@@ -1,0 +1,112 @@
+---
+title: "Binary Search"
+order: 1
+---
+
+# Binary Search Algorithm
+
+Binary Search is one of the most fundamental and efficient searching algorithms. It works on **sorted arrays** and has a time complexity of **O(log n)**.
+
+## Overview
+
+Binary Search follows the **divide and conquer** approach by repeatedly dividing the search interval in half. If the value of the search key is less than the item in the middle of the interval, narrow the interval to the lower half. Otherwise, narrow it to the upper half.
+
+## Problem Statement
+
+Given a **sorted array** of integers, find the index of a given target value. If the target is not found in the array, return -1.
+
+### Examples
+
+**Example 1:**
+```
+Input:  nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], target = 2
+Output: 1 (index of 2)
+```
+
+**Example 2:**
+```
+Input:  nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], target = 11
+Output: -1 (not found)
+```
+
+## Algorithm Approach
+
+### Step-by-Step Process
+
+Let's trace through finding target = 2 in array [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]:
+
+1. **Initialize pointers:**
+   - `start = 0`
+   - `end = 9` (array length - 1)
+
+2. **First iteration:**
+   - `mid = (start + end) / 2 = (0 + 9) / 2 = 4`
+   - `array[mid] = 5`
+   - Since `target (2) < array[mid] (5)`, move `end = mid - 1 = 3`
+
+3. **Second iteration:**
+   - `mid = (start + end) / 2 = (0 + 3) / 2 = 1`
+   - `array[mid] = 2`
+   - `target (2) == array[mid] (2)` → **Found!** Return index 1
+
+### Key Insights
+
+- **Sorted array advantage:** We can eliminate half the search space in each step
+- **Two cases per iteration:**
+  - If `target < array[mid]`: search left half (`end = mid - 1`)
+  - If `target > array[mid]`: search right half (`start = mid + 1`)
+- **Termination condition:** `start > end` means target not found
+
+## Implementation
+
+### C++ Code
+
+```cpp
+int binarySearch(vector<int>& nums, int target) {
+    int start = 0;
+    int end = nums.size() - 1;
+    
+    while (start <= end) {
+        int mid = start + (end - start) / 2;  // Avoid overflow
+        
+        if (nums[mid] == target) {
+            return mid;  // Target found
+        } else if (nums[mid] < target) {
+            start = mid + 1;  // Search right half
+        } else {
+            end = mid - 1;    // Search left half
+        }
+    }
+    
+    return -1;  // Target not found
+}
+```
+
+## Complexity Analysis
+
+### Time Complexity: **O(log n)**
+- Each iteration reduces search space by half
+- Maximum iterations = log₂(n)
+
+### Space Complexity: **O(1)**
+- Only uses a constant amount of extra space
+- No additional data structures needed
+
+## Important Notes
+
+### 1. Overflow Prevention
+Use `mid = start + (end - start) / 2` instead of `(start + end) / 2` to avoid integer overflow for large arrays.
+
+### 2. Edge Cases
+- Empty array
+- Single element array
+- Target at first/last position
+- Target not in array
+
+### 3. When to Use Binary Search
+- **Prerequisite:** Array must be sorted
+- **Best for:** Large datasets where linear search would be inefficient
+- **Applications:** Finding elements, lower/upper bounds, peak finding
+
+### Problems we will solve:
+- [Binary Search in reversed sorted array](https://leetcode.com/problems/search-in-rotated-sorted-array/description/) Explanation [here](/dsa/problems/binary_search_01.qmd)

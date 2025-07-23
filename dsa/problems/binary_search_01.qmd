@@ -1,0 +1,52 @@
+---
+title: "Binary Search in Reversed Sorted Array"
+order: 1
+---
+
+# Binary Search in Reversed Sorted Array
+
+## Problem Statement
+
+Given a **reversed sorted array** of integers, find the index of a given target value. If the target is not found in the array, return -1.
+
+### Example
+
+```
+Input: nums = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1], target = 2
+Output: 8 (index of 2)
+```
+
+### Approach
+
+We can use the same approach as the binary search algorithm.
+
+```cpp
+int binarySearch(vector<int>& nums, int target) {
+    int start = 0;
+    int end = nums.size() - 1;
+    
+    while (start <= end) {
+        int mid = start + (end - start) / 2;  // Avoid overflow
+        
+        if (nums[mid] == target) {
+            return mid;
+        } else if (nums[mid] < target) {
+            end = mid - 1;
+        } else {
+            start = mid + 1;
+        }
+    }
+    return -1;
+}   
+```
+
+### Explanation
+
+- We start by initializing the start and end pointers.
+- We then enter a while loop that continues as long as the start pointer is less than or equal to the end pointer.
+- In each iteration, we calculate the middle index mid.
+- We then check if the value at the middle index is equal to the target.
+- If it is, we return the middle index.
+- If the value at the middle index is less than the target, we move the end pointer to mid - 1.
+- If the value at the middle index is greater than the target, we move the start pointer to mid + 1.
+
